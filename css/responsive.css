@@ -1,0 +1,37 @@
+@media (max-width: 768px) {
+    .ui-mobile-hide {
+        display: none !important;
+    }
+
+    .ui-mobile-show {
+        display: block !important;
+    }
+
+    .ui-mobile-flexWrap {
+        flex-wrap: wrap !important;
+    }
+
+    .ui-mobile-flexColumn {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* Standard responsive font scales mapping to member_platform variables */
+    h1,
+    .p-ref-h1 {
+        font-size: var(--ui-font-size-h2) !important;
+        line-height: var(--ui-line-height-h2) !important;
+    }
+
+    h2,
+    .p-ref-h2 {
+        font-size: var(--ui-font-size-h3) !important;
+        line-height: var(--ui-line-height-h3) !important;
+    }
+
+    h3,
+    .p-ref-h3 {
+        font-size: var(--ui-font-size-h4) !important;
+        line-height: var(--ui-line-height-h4) !important;
+    }
+}

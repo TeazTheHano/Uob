@@ -1,0 +1,163 @@
+[class^="ui-hamburger"] {
+    --bg-color: var(--ui-on-bg);
+    --text-color: var(--ui-bg);
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ==========================================================================
+   REUSABLE HAMBURGER MENU SYSTEM
+   A fully CSS-driven overlay mobile menu. Requires no JavaScript.
+   ========================================================================== */
+
+/* 1. Toggle Checkbox (Hidden) */
+#menu-toggle,
+.ui-menu-toggle {
+    display: none !important;
+}
+
+/* 2. Hamburger Trigger Button Icon */
+#hamburger-menu-icon,
+.ui-hamburger-trigger {
+    position: relative;
+    z-index: 10000;
+    /* Ensure icon stays on top of the fullscreen overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: var(--ui-transition);
+}
+
+/* Trigger states during open/close */
+#menu-toggle:checked~label,
+.ui-menu-toggle:checked~.ui-hamburger-trigger {
+
+    .hamburger-open,
+    .ui-icon-open {
+        display: none !important;
+    }
+
+    .hamburger-close,
+    .ui-icon-close {
+        display: block !important;
+        color: var(--text-color);
+    }
+}
+
+#menu-toggle:not(:checked)~label .hamburger-close,
+.ui-menu-toggle:not(:checked)~.ui-hamburger-trigger .ui-icon-close {
+    display: none !important;
+}
+
+#menu-toggle:not(:checked)~label .hamburger-open,
+.ui-menu-toggle:not(:checked)~.ui-hamburger-trigger .ui-icon-open {
+    display: block !important;
+}
+
+/* 3. Fullscreen Mobile Navigation Overlay Menu */
+#hamburger-menu,
+.ui-hamburger-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+
+    /* Center links vertically */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--ui-spacing-lg);
+
+    /* Theme stylings */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    /* Animation: start hidden, slide/fade in when active */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode adjustment for backdrop */
+.is-dark #hamburger-menu,
+:root.is-dark .ui-hamburger-menu {
+    background-color: rgba(15, 23, 42, 0.95);
+    color: var(--text-color);
+}
+
+/* Activated State (Checkbox is checked) */
+#menu-toggle:checked~#hamburger-menu,
+.ui-menu-toggle:checked~.ui-hamburger-menu {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    transform: translateY(0) !important;
+    display: flex !important;
+    /* Fallback support */
+}
+
+/* Responsive visibility helper (Show trigger only on mobile by default) */
+@media (min-width: 769px) {
+
+    #hamburger-menu-icon,
+    .ui-hamburger-trigger {
+        display: none !important;
+    }
+
+    #hamburger-menu,
+    .ui-hamburger-menu {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    #hamburger-menu-icon,
+    .ui-hamburger-trigger {
+        display: flex !important;
+    }
+}
+
+/* <div>
+        <!-- 1. Checkbox ẩn để quản lý trạng thái Đóng/Mở -->
+        <input type="checkbox" id="menu-toggle" class="ui-menu-toggle" />
+
+        <!-- 2. Nút bấm Hamburger Trigger -->
+        <label for="menu-toggle" id="hamburger-menu-icon" class="ui-hamburger-trigger">
+          <!-- Icon mở (Hiển thị khi CHƯA check) -->
+          <span class="hamburger-open ui-icon-open">☰</span>
+          <!-- Icon đóng (Hiển thị khi ĐÃ check) -->
+          <span class="hamburger-close ui-icon-close">✕</span>
+        </label>
+
+        <!-- 3. Giao diện Menu toàn màn hình -->
+        <nav id="hamburger-menu" class="ui-hamburger-menu">
+          <a href="#hero">Trang chủ</a>
+          <a href="#about">Giới thiệu</a>
+          <a href="#services">Dịch vụ</a>
+          <a href="#contact">Liên hệ</a>
+        </nav>
+
+      </div> */

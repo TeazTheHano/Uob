@@ -1,0 +1,265 @@
+/* ==========================================================================
+   REUSABLE DROPDOWN MENU SYSTEM
+   Highly accessible, theme-aware, and supports both Hover-trigger and 
+   native HTML5 Click-trigger (<details>/<summary>).
+   ========================================================================== */
+
+/* 1. Main Parent Container */
+.ui-dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Dropdown Menu Panel */
+.ui-dropdown-menu {
+    position: absolute;
+    top: calc(100% + var(--ui-spacing-2xs));
+    /* Offset slightly from trigger */
+    left: 0;
+    z-index: 1000000;
+
+    /* Panel Dimensions & Layout */
+    min-width: 200px;
+    width: max-content;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ui-spacing-2xs);
+    padding: var(--ui-spacing-2xs);
+
+    /* Theme Stylings (Light/Dark Mode Adaptive) */
+    background-color: var(--ui-surface);
+    border: 1px solid var(--ui-border);
+    /* border-radius: var(--ui-radius-md); */
+    box-shadow: var(--ui-shadow-md);
+
+    /* Animation Core State: Starts hidden and shifted down slightly */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0.2s;
+}
+
+/* 3. Modifier: Right Alignment (For elements on the right of navbars) */
+.ui-dropdown-right .ui-dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+/* 4. Dropdown Menu Item */
+.ui-dropdown-item {
+    color: currentColor;
+    background-color: unset;
+    border: unset;
+    padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
+    transition: var(--ui-transition);
+    font-family: var(--ui-font-family);
+    font-size: var(--ui-font-size-label);
+    font-weight: var(--ui-font-weight-normal);
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    flex: 1;
+}
+
+.ui-dropdown-item * {
+    color: currentColor;
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+/* Hover & Active states for items */
+.ui-dropdown-item:hover {
+    background-color: var(--ui-bg-subtle);
+    color: var(--ui-primary);
+}
+
+.ui-dropdown-item:active {
+    background-color: var(--ui-);
+}
+
+/* Item styling for destructive/danger actions (e.g., Logout) */
+.ui-dropdown-item.ui-destructive {
+    color: #ef4444;
+    /* Danger red */
+}
+
+.ui-dropdown-item.ui-destructive:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* 5. Separator Divider Line */
+.ui-dropdown-divider {
+    height: 1px;
+    background-color: var(--ui-border);
+    margin: var(--ui-spacing-2xs) 0;
+    border: none;
+}
+
+/* 6. Arrow Indicator Chevron */
+.ui-dropdown-chevron {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+    pointer-events: none;
+}
+
+
+/* ==========================================================================
+   TRIGGER METHODS & ANIMATIONS (Pure CSS)
+   ========================================================================== */
+
+/* Dropdown Slide-Down Keyframe */
+@keyframes ui-dropdown-slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- METHOD A: Hover-Triggered Dropdowns --- */
+.ui-dropdown-hover:hover .ui-dropdown-menu {
+    animation: ui-dropdown-slide-down 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.ui-dropdown-hover:hover .ui-dropdown-chevron {
+    transform: rotate(180deg);
+}
+
+/* --- METHOD B: Native HTML5 Click-Triggered Dropdowns (using <details>) --- */
+details.ui-dropdown {
+    list-style: none;
+}
+
+/* Remove default browser disclosure arrow */
+details.ui-dropdown>summary {
+    list-style: none;
+    outline: none;
+    cursor: pointer;
+}
+
+details.ui-dropdown>summary * {
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+
+details.ui-dropdown>summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Open State (Triggered natively by browser when clicked) */
+details.ui-dropdown[open] .ui-dropdown-menu {
+    animation: ui-dropdown-slide-down 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+details.ui-dropdown[open] .ui-dropdown-chevron {
+    transform: rotate(180deg);
+}
+
+details.ui-dropdown[open] summary {
+    color: var(--ui-primary);
+    font-weight: 900;
+}
+
+/* ==========================================================================
+   REUSABLE BUTTON COMPONENT
+   SIZE, TYPE, STATE
+   ========================================================================== */
+
+[class^="ui-button-"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ui-font-family);
+    cursor: pointer;
+    transition: var(--ui-transition);
+    color: inherit;
+}
+
+.ui-button-primary {}
+
+.ui-button-secondary {
+    border: 1px solid currentColor;
+    border-radius: var(--ui-spacing-2xs);
+    padding: var(--ui-spacing-xs) var(--ui-spacing-lg);
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: var(--ui-spacing-sm);
+    font-weight: 600;
+    font-size: var(--ui-font-size-label);
+    line-height: var(--ui-line-height-label);
+}
+
+.ui-button-link {
+    font-weight: 600;
+    font-size: var(--ui-font-size-label);
+    line-height: var(--ui-line-height-body);
+}
+
+.ui-button-icon {
+    aspect-ratio: 1;
+    display: block;
+}
+
+.ui-button-icon span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ui-spacing-xl);
+    height: var(--ui-spacing-xl);
+    color: currentColor;
+}
+
+.ui-button-small {
+    padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
+    gap: var(--ui-spacing-xs);
+}
+
+.ui-button-small span {
+    font-size: 0.6rem;
+    color: currentColor;
+}
+
+.ui-button-medium {
+    padding: var(--ui-spacing-sm) var(--ui-spacing-md);
+    gap: var(--ui-spacing-xs);
+}
+
+.ui-button-medium span {
+    font-size: 0.6rem;
+    color: currentColor;
+}
+
+.ui-button-large {}
+
+/* special */
+.uob-button-special-img {
+    width: var(--ui-spacing-lg);
+    height: var(--ui-spacing-lg);
+}
+
+details.ui-dropdown[open] [class^="ui-button-"] .uob-button-special-img {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+}
