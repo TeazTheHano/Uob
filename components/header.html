@@ -1,9 +1,10 @@
 <div>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
+    rel="stylesheet"
+  />
   <style>
     /* ==========================================================================
       IDENTIFICATION
@@ -42,11 +43,9 @@
       width: 100%;
     }
 
-
     header a {
       text-decoration: none;
       color: inherit;
-
     }
 
     #logo {
@@ -58,7 +57,7 @@
       margin-left: var(--ui-spacing-sm);
     }
 
-    #logo>img {
+    #logo > img {
       height: var(--ui-spacing-lg);
     }
 
@@ -70,9 +69,9 @@
       display: grid;
       grid-template-columns: auto 1fr;
       grid-template-areas:
-        'logoGr inputGr menuIconGr'
-        'menuGr menuGr menuGr'
-        'topBarGr topBarGr topBarGr';
+        "logoGr inputGr menuIconGr"
+        "menuGr menuGr menuGr"
+        "topBarGr topBarGr topBarGr";
       overflow: visible;
       position: fixed;
       top: 0;
@@ -81,15 +80,15 @@
     }
 
     /* Change header background color when hamburger menu is active (Option 2 - iOS 13 Safe) */
-    #menu-toggle:checked~#section-header {
+    #menu-toggle:checked ~ #section-header {
       background-color: var(--ui-bg-overlay, #000);
     }
 
-    #menu-toggle:checked~#section-header #logo {
+    #menu-toggle:checked ~ #section-header #logo {
       z-index: 10000;
     }
 
-    #section-header-top-bar>span {
+    #section-header-top-bar > span {
       font-weight: 200;
     }
 
@@ -111,7 +110,6 @@
     #login {
       border: 1px solid currentColor;
       border-radius: var(--ui-spacing-2xs);
-      padding: var(--ui-spacing-xs) var(--ui-spacing-lg);
       justify-content: center;
       text-align: center;
       align-items: center;
@@ -119,15 +117,20 @@
       font-weight: 600;
       font-size: var(--ui-font-size-label);
       line-height: var(--ui-line-height-label);
+      margin: 0 var(--ui-spacing-md);
+      width: stretch;
     }
 
     #section-header:has(#menu-toggle:checked) {
       background-color: var(--ui-bg-overlay);
       backdrop-filter: blur(var(--ui-spacing-sm));
-      box-shadow: 0 2px 10px var(--ui-bg-overlay), 0 0 0 100vmax var(--ui-bg-overlay);
+      box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.2),
+        0 0 0 100vmax rgba(0, 0, 0, 0.2);
       height: fit-content;
       grid-template-rows: fit-content(20%) 1fr fit-content(0);
       overflow-y: scroll;
+      padding-bottom: var(--ui-spacing-xl);
     }
 
     /* Anti scroll background page when menu is open */
@@ -135,42 +138,59 @@
       overflow: hidden;
     }
 
-    #section-header #menu-toggle:checked~#hamburger-menu-icon .hamburger-open {
+    #section-header
+      #menu-toggle:checked
+      ~ #hamburger-menu-icon
+      .hamburger-open {
       display: none !important;
     }
 
-    #section-header #menu-toggle:checked~#hamburger-menu-icon .hamburger-close {
+    #section-header
+      #menu-toggle:checked
+      ~ #hamburger-menu-icon
+      .hamburger-close {
       display: block !important;
     }
 
-    #section-header #menu-toggle:checked~#hamburger-menu,
-    #section-header #menu-toggle:checked~#section-header-top-bar {
+    #section-header #menu-toggle:checked ~ #hamburger-menu,
+    #section-header #menu-toggle:checked ~ #section-header-top-bar {
       display: flex !important;
       flex-direction: column;
       align-items: flex-start;
       margin: 0 var(--ui-spacing-xs);
     }
 
-    #section-header #menu-toggle:checked~#section-header-top-bar div {
+    #section-header #menu-toggle:checked ~ #section-header-top-bar div {
       flex-direction: column;
     }
 
-    #section-header #menu-toggle:checked~#section-header-top-bar span {
+    #section-header #menu-toggle:checked ~ #section-header-top-bar span {
       display: none !important;
     }
 
-    #section-header #menu-toggle:checked~#hamburger-menu *,
-    #section-header #menu-toggle:checked~#section-header-top-bar * {
+    #section-header #menu-toggle:checked ~ #hamburger-menu *,
+    #section-header #menu-toggle:checked ~ #section-header-top-bar * {
       text-align: left;
     }
 
-    #section-header #menu-toggle:checked~#hamburger-menu details.ui-dropdown a,
-    #section-header #menu-toggle:checked~#section-header-top-bar details.ui-dropdown a {
+    #section-header
+      #menu-toggle:checked
+      ~ #hamburger-menu
+      details.ui-dropdown
+      a,
+    #section-header
+      #menu-toggle:checked
+      ~ #section-header-top-bar
+      details.ui-dropdown
+      a {
       padding-left: var(--ui-spacing-lg);
     }
 
-    #section-header #menu-toggle:checked~#hamburger-menu .ui-dropdown-menu,
-    #section-header #menu-toggle:checked~#section-header-top-bar .ui-dropdown-menu {
+    #section-header #menu-toggle:checked ~ #hamburger-menu .ui-dropdown-menu,
+    #section-header
+      #menu-toggle:checked
+      ~ #section-header-top-bar
+      .ui-dropdown-menu {
       position: static;
       background-color: unset;
       border: unset;
@@ -180,8 +200,16 @@
       box-shadow: unset;
     }
 
-    #section-header #menu-toggle:checked~#hamburger-menu details.ui-dropdown[open] .ui-dropdown-menu::before,
-    #section-header #menu-toggle:checked~#section-header-top-bar details.ui-dropdown[open] .ui-dropdown-menu::before {
+    #section-header
+      #menu-toggle:checked
+      ~ #hamburger-menu
+      details.ui-dropdown[open]
+      .ui-dropdown-menu::before,
+    #section-header
+      #menu-toggle:checked
+      ~ #section-header-top-bar
+      details.ui-dropdown[open]
+      .ui-dropdown-menu::before {
       content: "";
       position: absolute;
       top: 0;
@@ -203,10 +231,10 @@
       #section-header {
         --side-padding: max(0px, calc((100vw - var(--breakpoint-xl)) / 2));
         grid-template-areas:
-          'topBarGr topBarGr topBarGr topBarGr'
-          '. logoGr menuGr .'
-          '. inputGr menuIconGr .'
-          'headerSliderGr headerSliderGr headerSliderGr headerSliderGr';
+          "topBarGr topBarGr topBarGr topBarGr"
+          ". logoGr menuGr ."
+          ". inputGr menuIconGr ."
+          "headerSliderGr headerSliderGr headerSliderGr headerSliderGr";
         background-color: unset;
       }
 
@@ -270,7 +298,11 @@
         max-height: 200px;
         opacity: 1;
         overflow: hidden;
-        transition: max-height 0.3s ease, opacity 0.3s ease, margin-bottom 0.3s ease, padding 0.3s ease;
+        transition:
+          max-height 0.3s ease,
+          opacity 0.3s ease,
+          margin-bottom 0.3s ease,
+          padding 0.3s ease;
       }
 
       header.hide-top-bar #section-header-top-bar {
@@ -288,7 +320,7 @@
         color: inherit;
       }
 
-      #section-header-top-bar>div:last-child>button {
+      #section-header-top-bar > div:last-child > button {
         padding: var(--ui-spacing-xs) var(--ui-spacing-md);
       }
 
@@ -303,80 +335,172 @@
         font-weight: unset;
         font-size: unset;
         line-height: unset;
+        margin: unset;
+      }
+
+      #section-header button.ui-button-link.ui-button-medium.w100 {
+        white-space: nowrap;
+        width: max-content;
       }
     }
   </style>
 
   <section id="section-header" class="">
     <!-- 1. Checkbox ẩn để quản lý trạng thái Đóng/Mở -->
-    <input type="checkbox" id="menu-toggle" checked class="ui-menu-toggle ui-d-none" />
+    <input type="checkbox" id="menu-toggle" class="ui-menu-toggle ui-d-none" />
     <!-- top bar -->
 
     <div id="section-header-top-bar" class="ui-row-h-between ui-gap-md">
       <div class="ui-row-v-center ui-gap-sm w100">
         <details class="ui-dropdown w100">
           <summary class="ui-button-link ui-button-small w100">
-            <img src="assets\angle-small-down-W.svg" class="uob-button-special-img" alt="">
-            <p class="ui-font-label">Khách hàng ưu tiên</p>
+            <img
+              src="assets\angle-small-down-W.svg"
+              class="uob-button-special-img"
+              alt=""
+            />
+            <p class="ui-font-label" bindling-name="Khách hàng ưu tiên">
+              Khách hàng ưu tiên
+            </p>
           </summary>
 
           <!-- Menu tự hiển thị khi người dùng click vào summary -->
           <div class="ui-dropdown-menu">
-            <a href="">abc</a>
-            <a href="">cde</a>
-            <a href="">fgh</a>
+            <a
+              href=""
+              class="ui-dropdown-item"
+              binding-btntext="Khách hàng ưu tiên 1"
+              binding-btnhref="Khách hàng ưu tiên 1"
+              >Khách hàng ưu tiên 1</a
+            >
+            <a
+              href=""
+              class="ui-dropdown-item"
+              binding-btntext="Khách hàng ưu tiên 2"
+              binding-btnhref="Khách hàng ưu tiên 2"
+              >Khách hàng ưu tiên 2</a
+            >
+            <a
+              href=""
+              class="ui-dropdown-item"
+              binding-btntext="Khách hàng ưu tiên 3"
+              binding-btnhref="Khách hàng ưu tiên 3"
+              >Khách hàng ưu tiên 3</a
+            >
           </div>
         </details>
         <span>|</span>
         <details class="ui-dropdown w100">
           <summary class="ui-button-link ui-button-small w100">
-            <img src="assets\angle-small-down-W.svg" class="uob-button-special-img" alt="">
-            <p class="ui-font-label">Khách hàng ưu tiên</p>
+            <img
+              src="assets\angle-small-down-W.svg"
+              class="uob-button-special-img"
+              alt=""
+            />
+            <p class="ui-font-label" bindling-name="Việt Nam">Việt Nam</p>
           </summary>
 
           <div class="ui-dropdown-menu">
-            <a href="">abc</a>
-            <a href="">cde</a>
-            <a href="">fgh</a>
+            <a
+              href=""
+              class="ui-dropdown-item"
+              binding-btntext="Việt Nam"
+              binding-btnhref="Việt Nam"
+              >Việt Nam</a
+            >
+            <a
+              href=""
+              class="ui-dropdown-item"
+              binding-btntext="US"
+              binding-btnhref="US"
+              >US</a
+            >
+            <a
+              href=""
+              class="ui-dropdown-item"
+              binding-btntext="Singapore"
+              binding-btnhref="Singapore"
+              >Singapore</a
+            >
           </div>
         </details>
         <span>|</span>
         <details class="ui-dropdown w100">
           <summary class="ui-button-link ui-button-small w100">
-            <img src="assets\angle-small-down-W.svg" class="uob-button-special-img" alt="">
-            <p class="ui-font-label">Vietnam</p>
+            <img
+              src="assets\angle-small-down-W.svg"
+              class="uob-button-special-img"
+              alt=""
+            />
+            <p class="ui-font-label" bindling-name="Tiếng Việt">Tiếng Việt</p>
           </summary>
 
           <div class="ui-dropdown-menu">
-            <a href="">abc</a>
-            <a href="">cde</a>
-            <a href="">fgh</a>
+            <a
+              href=""
+              class="ui-dropdown-item"
+              binding-btntext="Tiếng Việt"
+              binding-btnhref="Tiếng Việt"
+              >Tiếng Việt</a
+            >
+            <a
+              href=""
+              class="ui-dropdown-item"
+              binding-btntext="English"
+              binding-btnhref="English"
+              >English</a
+            >
           </div>
         </details>
-
       </div>
 
       <div class="ui-row-v-center ui-gap-sm w100">
-        <button class="ui-button-link ui-button-medium w100" color>Liên hệ</button>
+        <button
+          class="ui-button-link ui-button-medium w100"
+          binding-btntext="Liên hệ"
+          binding-btnhref="Liên hệ"
+        >
+          Liên hệ
+        </button>
         <span>|</span>
-        <button class="ui-button-link ui-button-medium w100" id="login" style="justify-content: center;">Đăng
-          nhập</button>
+        <button
+          id="login"
+          class="ui-button-link ui-button-medium w100"
+          binding-btntext="Đăng nhập"
+          binding-btnhref="Đăng nhập"
+          style="justify-content: center"
+        >
+          Đăng nhập
+        </button>
       </div>
     </div>
 
     <!-- header -->
-    <a href="" id="logo"><img src="assets\Logo-L.svg" alt="logo"></a>
+    <a href="" id="logo"><img src="assets\Logo-L.svg" alt="logo" /></a>
 
-    <label for="menu-toggle" id="hamburger-menu-icon" class="ui-hamburger-trigger ui-button-icon">
+    <label
+      for="menu-toggle"
+      id="hamburger-menu-icon"
+      class="ui-hamburger-trigger ui-button-icon"
+    >
       <!-- Icon mở (Hiển thị khi CHƯA check) -->
-      <span class="hamburger-open ui-icon-open" style="color: var(--ui-bg);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 11.625H21V12.375H3V11.625ZM3 6V6.75H21V6H3ZM3 18H21V17.25H3V18Z" fill="currentColor" />
+      <span class="hamburger-open ui-icon-open" style="color: var(--ui-bg)">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 11.625H21V12.375H3V11.625ZM3 6V6.75H21V6H3ZM3 18H21V17.25H3V18Z"
+            fill="currentColor"
+          />
         </svg>
       </span>
       <!-- Icon đóng (Hiển thị khi ĐÃ check) -->
       <span class="hamburger-close ui-icon-close">
-        <img src="assets\cross-small (3) 1.svg" alt="">
+        <img src="assets\cross-small (3) 1.svg" alt="" />
       </span>
     </label>
     <!-- menu -->
@@ -384,34 +508,65 @@
     <nav id="hamburger-menu" class="ui-hamburger-menu">
       <details class="ui-dropdown w100">
         <summary class="ui-button-link w100 ui-button-medium">
-          <img src="assets\angle-small-down-W.svg" class="uob-button-special-img" alt="">
-          <p class="ui-font-label  ">UOB Privilege</p>
+          <img
+            src="assets\angle-small-down-W.svg"
+            class="uob-button-special-img"
+            alt=""
+          />
+          <p class="ui-font-label" binding-name="UOB Privilege">
+            UOB Privilege
+          </p>
         </summary>
 
         <!-- Menu tự hiển thị khi người dùng click vào summary -->
         <div class="ui-dropdown-menu">
-          <a class="ui-dropdown-item ui-row-h-between ui-gap-sm" href="">
-            <p binding-name="Trải nghiệm trà chiều cao cấp">Trải nghiệm trà chiều cao
-              cấp</p><span class="material-symbols-outlined">
-              chevron_right
-            </span>
+          <a
+            class="ui-dropdown-item ui-row-h-between ui-gap-sm"
+            href=""
+            binding-btnhref="Trải nghiệm trà chiều cao cấp"
+          >
+            <p binding-btnhtext="Trải nghiệm trà chiều cao cấp">
+              Trải nghiệm trà chiều cao cấp
+            </p>
+            <span class="material-symbols-outlined"> chevron_right </span>
           </a>
-          <a class="ui-dropdown-item ui-row-h-between ui-gap-sm " href="">
-            <p binding-name="Dịch vụ trợ lý đón tiễn quốc tế">Dịch vụ trợ lý đón tiễn
-              quốc tế</p><span class="material-symbols-outlined">
-              chevron_right
-            </span>
+          <a
+            class="ui-dropdown-item ui-row-h-between ui-gap-sm"
+            href=""
+            binding-btnhref="Dịch vụ trợ lý đón tiễn quốc tế"
+          >
+            <p binding-btnhtext="Dịch vụ trợ lý đón tiễn quốc tế">
+              Dịch vụ trợ lý đón tiễn quốc tế
+            </p>
+            <span class="material-symbols-outlined"> chevron_right </span>
           </a>
         </div>
       </details>
-      <a class="ui-button-link w100 ui-button-medium" href="#about">UOB Dining</a>
-      <a class="ui-button-link w100 ui-button-medium" href="#services">Chi nhánh</a>
-      <a class="ui-button-link w100 ui-button-medium" href="#contact">Liên hệ</a>
+      <a
+        class="ui-button-link w100 ui-button-medium"
+        href="#about"
+        binding-btntext="UOB Dining"
+        binding-btnhref="UOB Dining"
+        >UOB Dining</a
+      >
+      <a
+        class="ui-button-link w100 ui-button-medium"
+        href="#services"
+        binding-btntext="Chi nhánh"
+        binding-btnhref="Chi nhánh"
+        >Chi nhánh</a
+      >
+      <a
+        class="ui-button-link w100 ui-button-medium"
+        href="#contact"
+        binding-btntext="Liên hệ"
+        binding-btnhref="Liên hệ"
+        >Liên hệ</a
+      >
     </nav>
 
     <div id="header-slider">
-      <hr>
+      <hr />
     </div>
   </section>
-
 </div>

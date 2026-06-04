@@ -75,8 +75,8 @@
 
 /* Hover & Active states for items */
 .ui-dropdown-item:hover {
-    background-color: var(--ui-bg-subtle);
-    color: var(--ui-primary);
+    background-color: var(--ui-primary) !important;
+    color: var(--ui-on-primary) !important;
 }
 
 .ui-dropdown-item:active {
@@ -187,7 +187,7 @@ details.ui-dropdown[open] summary {
    ========================================================================== */
 
 [class^="ui-button-"] {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--ui-font-family);
