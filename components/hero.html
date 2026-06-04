@@ -1,17 +1,82 @@
 <div>
   <style>
+    #section-hero .bg img {
+      object-position: 75% center;
+    }
+
     #section-hero-content {
       height: 100dvh;
+      padding: var(--ui-spacing-xl);
+    }
+
+    #section-hero-content > div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #section-hero {
+      color: var(--ui-bg);
+    }
+
+    #section-hero-content h1 {
+      font-size: var(--ui-font-size-h1) !important;
+    }
+
+    @media (min-width: 769px) {
+      #section-hero-content {
+        padding: var(--ui-spacing-15xl);
+      }
+
+      #section-hero-content > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      #section-hero-content h1 {
+        font-size: var(--ui-spacing-11xl) !important;
+      }
     }
   </style>
 
-  <section id="section-hero">
+  <section id="section-hero" class="ui-relative">
     <div class="bg">
-      <img src="assets\img\Hero Banner.png" alt="Hero Banner">
+      <img src="assets/img/Hero Banner.png" alt="Hero Banner" />
     </div>
 
-    <div id="section-hero-content" class="ui-col-v-end">
-      <h1>Chào mừng đến với...</h1>
+    <div
+      id="section-hero-content"
+      class="ui-col-v-end ui-w-max-breakpoint-2xl ui-gap-xl"
+    >
+      <h1>Chào mừng đến với <br />UOB Privilege Banking</h1>
+      <div class="ui-gap-md">
+        <a class="ui-button-primary-w ui-button-large" binding-btnhref="#">
+          <p binding-btntext="Trải nghiệm đặc quyền">Trải nghiệm đặc quyền</p>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_424_816)">
+              <path
+                d="M14.3331 0H5.99976V2H12.5858L0.0170898 14.5687L1.43109 15.9827L13.9998 3.414V10H15.9998V1.66667C15.9998 0.748 15.2524 0 14.3331 0Z"
+                fill="currentColor"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_424_816">
+                <rect width="16" height="16" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+
+        <a class="ui-button-secondary ui-button-large" binding-btnhref="#">
+          <p binding-btntext="Liên hệ hỗ trợ ngay">Liên hệ hỗ trợ ngay</p>
+        </a>
+      </div>
     </div>
   </section>
 </div>

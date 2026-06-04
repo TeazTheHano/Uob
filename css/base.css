@@ -158,6 +158,10 @@ p {
     width: 100%;
 }
 
+.ui-w-max-breakpoint-2xl {
+    max-width: var(--breakpoint-2xl, 1440px);
+}
+
 .ui-w-inherit {
     width: inherit;
 }

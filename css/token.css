@@ -53,6 +53,11 @@
   --ui-spacing-8xl: 52px;
   --ui-spacing-9xl: 56px;
   --ui-spacing-10xl: 60px;
+  --ui-spacing-11xl: 64px;
+  --ui-spacing-12xl: 68px;
+  --ui-spacing-13xl: 72px;
+  --ui-spacing-14xl: 76px;
+  --ui-spacing-15xl: 80px;
   --ui-spacing-full: 9999px;
 
   /* Fonts */

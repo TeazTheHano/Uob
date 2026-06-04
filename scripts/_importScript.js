@@ -29,6 +29,7 @@ const App = {
         FOOTER: 'components/footer.html',
         HERO: 'components/hero.html',
         INTRO1: 'components/intro1.html',
+        INTRO2: 'components/intro2.html',
 
     },
 
@@ -210,7 +211,11 @@ const landingPage = {
         {
             target: '#intro1_placeholder',
             component: COMPONENTS.INTRO1,
-        }
+        },
+        {
+            target: '#intro2_placeholder',
+            component: COMPONENTS.INTRO2,
+        },
 
     ]
 };

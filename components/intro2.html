@@ -1,0 +1,106 @@
+<div>
+  <style>
+    #section-intro2 * {
+      font-family: var(--ui-font-family-display);
+    }
+
+    /* Segmented Control / Toggle Switch */
+    .ui-toggle-input {
+      display: none;
+    }
+
+    .ui-toggle-label {
+      /* padding: var(--ui-spacing-xs) var(--ui-spacing-lg);
+      font-family: var(--ui-font-family);
+      font-size: var(--ui-font-size-label, 14px);
+      font-weight: 600;
+      color: var(--ui-text-muted, #64748b);
+      cursor: pointer;
+      border-radius: var(--ui-radius-full, 9999px);
+      transition: var(--ui-transition);
+      user-select: none;
+      text-align: center; */
+    }
+
+    .ui-toggle-input:checked + .ui-toggle-label {
+      background-color: var(--ui-primary, #a78072);
+      color: var(--ui-on-primary, #ffffff);
+      box-shadow: var(--ui-shadow-sm);
+    }
+
+    #section-intro2-content {
+      padding: var(--ui-spacing-7xl) var(--ui-spacing-xl);
+      gap: var(--ui-spacing-6xl);
+    }
+
+    #section-intro2-content .left {
+      height: fit-content;
+    }
+
+    #section-intro2-content .right {
+      width: inherit;
+      aspect-ratio: 1;
+      height: auto;
+    }
+
+    #section-intro2-content .right img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (min-width: 768px) {
+      #section-intro2-content {
+      }
+
+      #section-intro2-content .left {
+        height: 100%;
+        justify-content: space-between;
+      }
+
+      #section-intro2-content .right {
+        aspect-ratio: 16/9;
+        max-width: 50vw;
+      }
+    }
+  </style>
+
+  <section id="section-intro2" class="ui-relative ui-w100">
+    <div class="bg"></div>
+
+    <div id="section-intro2-content" class="ui-col2-grid ui-w100">
+      <div class="left ui-gap-xl ui-flex-col">
+        <div class="ui-flex-col ui-gap-xl">
+          <h2 binding-header-lv2="Các chương trình đặc quyền Ưu tiên đẳng cấp">
+            Các chương trình đặc quyền Ưu tiên đẳng cấp
+          </h2>
+          <div class="ui-row-v-center">
+            <input
+              type="radio"
+              name="section-intro2-privilege-selected"
+              id="section-intro2-privilege-selected-1"
+              class="ui-toggle-input"
+              checked
+            />
+            <label
+              for="section-intro2-privilege-selected-1"
+              class="ui-toggle-label ui-button-medium"
+              >UOB Privilege</label
+            >
+            <input
+              type="radio"
+              name="section-intro2-privilege-selected"
+              id="section-intro2-privilege-selected-2"
+              class="ui-toggle-input"
+            />
+            <label
+              for="section-intro2-privilege-selected-2"
+              class="ui-toggle-label ui-button-medium"
+              >UOB Dinning</label
+            >
+          </div>
+        </div>
+      </div>
+      <div class="right"><img src="/assets/img/UOB Dinning.png" alt="" /></div>
+    </div>
+  </section>
+</div>

@@ -7,38 +7,35 @@
   />
   <style>
     /* ==========================================================================
-      IDENTIFICATION
-    ========================================================================== */
-    #menu-toggle {
-      grid-area: inputGr;
+       1. LAYOUT & GRID SYSTEM (Mobile-First)
+       ========================================================================== */
+    #section-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas:
+        "logoGr inputGr menuIconGr"
+        "menuGr menuGr menuGr"
+        "topBarGr topBarGr topBarGr";
+      color: var(--ui-bg);
+      transition: background-color var(--ui-transition);
+      overflow: visible;
+      align-items: center;
+      z-index: 1000;
     }
 
-    #section-header-top-bar {
-      grid-area: topBarGr;
-      display: none;
-    }
-
-    #section-header-logo {
-      grid-area: logoGr;
-    }
-
-    #hamburger-menu {
-      grid-area: menuGr;
-    }
-
-    #hamburger-menu-icon {
-      grid-area: menuIconGr;
-      margin-right: var(--ui-spacing-sm);
-      padding: var(--ui-spacing-sm);
-    }
-
-    #header-slider {
-      grid-area: headerSliderGr;
-    }
+    #menu-toggle { grid-area: inputGr; }
+    #logo { grid-area: logoGr; }
+    #hamburger-menu { grid-area: menuGr; }
+    #hamburger-menu-icon { grid-area: menuIconGr; }
+    #section-header-top-bar { grid-area: topBarGr; }
+    #header-slider { grid-area: headerSliderGr; }
 
     /* ==========================================================================
-      END of IDENTIFICATION
-    ========================================================================== */
+       2. BASE STYLES & TYPOGRAPHY
+       ========================================================================== */
     .w100 {
       width: 100%;
     }
@@ -61,31 +58,8 @@
       height: var(--ui-spacing-lg);
     }
 
-    #section-header {
-      color: var(--ui-bg);
-      /* padding: var(--ui-spacing-sm) var(--ui-spacing-xl); */
-      transition: background-color var(--ui-transition);
-      /* Smooth transition when toggled */
-      display: grid;
-      grid-template-columns: auto 1fr;
-      grid-template-areas:
-        "logoGr inputGr menuIconGr"
-        "menuGr menuGr menuGr"
-        "topBarGr topBarGr topBarGr";
-      overflow: visible;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      align-items: center;
-    }
-
-    /* Change header background color when hamburger menu is active (Option 2 - iOS 13 Safe) */
-    #menu-toggle:checked ~ #section-header {
-      background-color: var(--ui-bg-overlay, #000);
-    }
-
-    #menu-toggle:checked ~ #section-header #logo {
-      z-index: 10000;
+    #section-header-top-bar {
+      display: none; /* Hidden on mobile by default */
     }
 
     #section-header-top-bar > span {
@@ -95,7 +69,13 @@
     #hamburger-menu {
       position: sticky;
       top: 0;
-      display: none;
+      display: none; /* Hidden on mobile by default */
+    }
+
+    #hamburger-menu-icon {
+      margin-right: var(--ui-spacing-sm);
+      padding: var(--ui-spacing-sm);
+      cursor: pointer;
     }
 
     #section-header .hamburger-close {
@@ -121,6 +101,10 @@
       width: stretch;
     }
 
+    /* ==========================================================================
+       3. INTERACTIVE STATES (Mobile Menu Opened via Checkbox Hack)
+       ========================================================================== */
+    /* Header background and drawer setup when menu is open */
     #section-header:has(#menu-toggle:checked) {
       background-color: var(--ui-bg-overlay);
       backdrop-filter: blur(var(--ui-spacing-sm));
@@ -133,64 +117,53 @@
       padding-bottom: var(--ui-spacing-xl);
     }
 
-    /* Anti scroll background page when menu is open */
+    #section-header:has(#menu-toggle:checked) #logo {
+      z-index: 10000;
+    }
+
+    /* Prevent background body scroll when menu is open */
     body:has(#menu-toggle:checked) {
       overflow: hidden;
     }
 
-    #section-header
-      #menu-toggle:checked
-      ~ #hamburger-menu-icon
-      .hamburger-open {
+    /* Toggle hamburger icon states */
+    #section-header:has(#menu-toggle:checked) #hamburger-menu-icon .hamburger-open {
       display: none !important;
     }
 
-    #section-header
-      #menu-toggle:checked
-      ~ #hamburger-menu-icon
-      .hamburger-close {
+    #section-header:has(#menu-toggle:checked) #hamburger-menu-icon .hamburger-close {
       display: block !important;
     }
 
-    #section-header #menu-toggle:checked ~ #hamburger-menu,
-    #section-header #menu-toggle:checked ~ #section-header-top-bar {
+    /* Display menu & top-bar content on mobile when open */
+    #section-header:has(#menu-toggle:checked) #hamburger-menu,
+    #section-header:has(#menu-toggle:checked) #section-header-top-bar {
       display: flex !important;
       flex-direction: column;
       align-items: flex-start;
       margin: 0 var(--ui-spacing-xs);
     }
 
-    #section-header #menu-toggle:checked ~ #section-header-top-bar div {
+    #section-header:has(#menu-toggle:checked) #section-header-top-bar div {
       flex-direction: column;
     }
 
-    #section-header #menu-toggle:checked ~ #section-header-top-bar span {
+    #section-header:has(#menu-toggle:checked) #section-header-top-bar span {
       display: none !important;
     }
 
-    #section-header #menu-toggle:checked ~ #hamburger-menu *,
-    #section-header #menu-toggle:checked ~ #section-header-top-bar * {
+    #section-header:has(#menu-toggle:checked) #hamburger-menu *,
+    #section-header:has(#menu-toggle:checked) #section-header-top-bar * {
       text-align: left;
     }
 
-    #section-header
-      #menu-toggle:checked
-      ~ #hamburger-menu
-      details.ui-dropdown
-      a,
-    #section-header
-      #menu-toggle:checked
-      ~ #section-header-top-bar
-      details.ui-dropdown
-      a {
+    #section-header:has(#menu-toggle:checked) #hamburger-menu details.ui-dropdown a,
+    #section-header:has(#menu-toggle:checked) #section-header-top-bar details.ui-dropdown a {
       padding-left: var(--ui-spacing-lg);
     }
 
-    #section-header #menu-toggle:checked ~ #hamburger-menu .ui-dropdown-menu,
-    #section-header
-      #menu-toggle:checked
-      ~ #section-header-top-bar
-      .ui-dropdown-menu {
+    #section-header:has(#menu-toggle:checked) #hamburger-menu .ui-dropdown-menu,
+    #section-header:has(#menu-toggle:checked) #section-header-top-bar .ui-dropdown-menu {
       position: static;
       background-color: unset;
       border: unset;
@@ -200,16 +173,8 @@
       box-shadow: unset;
     }
 
-    #section-header
-      #menu-toggle:checked
-      ~ #hamburger-menu
-      details.ui-dropdown[open]
-      .ui-dropdown-menu::before,
-    #section-header
-      #menu-toggle:checked
-      ~ #section-header-top-bar
-      details.ui-dropdown[open]
-      .ui-dropdown-menu::before {
+    #section-header:has(#menu-toggle:checked) #hamburger-menu details.ui-dropdown[open] .ui-dropdown-menu::before,
+    #section-header:has(#menu-toggle:checked) #section-header-top-bar details.ui-dropdown[open] .ui-dropdown-menu::before {
       content: "";
       position: absolute;
       top: 0;
@@ -220,9 +185,8 @@
     }
 
     /* ==========================================================================
-      DESKTOP
-    ========================================================================== */
-
+       4. DESKTOP MEDIA QUERIES (min-width: 769px)
+       ========================================================================== */
     @media (min-width: 769px) {
       .w100 {
         width: unset;
@@ -264,7 +228,6 @@
         backdrop-filter: none;
         color: inherit;
         text-decoration: none;
-        /* text-align: center; */
         margin-right: var(--side-padding);
       }
 
@@ -286,9 +249,7 @@
         backdrop-filter: blur(var(--ui-spacing-sm));
       }
 
-      /* ==========================================================================
-      SECTOR TOP BAR
-      ========================================================================== */
+      /* Desktop Top Bar hiding behavior on scroll down */
       #section-header-top-bar {
         background-color: var(--ui-bg-overlay, #000);
         color: var(--ui-bg);
@@ -297,7 +258,7 @@
         display: flex;
         max-height: 200px;
         opacity: 1;
-        overflow: hidden;
+        overflow: visible; /* Prevent dropdown clipping when visible */
         transition:
           max-height 0.3s ease,
           opacity 0.3s ease,
@@ -312,6 +273,7 @@
         padding-top: 0 !important;
         padding-bottom: 0 !important;
         pointer-events: none;
+        overflow: hidden; /* Hide overflow only when collapsed */
       }
 
       #section-header-top-bar p,
@@ -345,21 +307,21 @@
     }
   </style>
 
-  <section id="section-header" class="">
+  <section id="section-header">
     <!-- 1. Checkbox ẩn để quản lý trạng thái Đóng/Mở -->
     <input type="checkbox" id="menu-toggle" class="ui-menu-toggle ui-d-none" />
-    <!-- top bar -->
 
+    <!-- 2. Top bar -->
     <div id="section-header-top-bar" class="ui-row-h-between ui-gap-md">
       <div class="ui-row-v-center ui-gap-sm w100">
         <details class="ui-dropdown w100">
           <summary class="ui-button-link ui-button-small w100">
             <img
-              src="assets\angle-small-down-W.svg"
+              src="assets/angle-small-down-W.svg"
               class="uob-button-special-img"
               alt=""
             />
-            <p class="ui-font-label" bindling-name="Khách hàng ưu tiên">
+            <p class="ui-font-label" binding-name="Khách hàng ưu tiên">
               Khách hàng ưu tiên
             </p>
           </summary>
@@ -393,11 +355,11 @@
         <details class="ui-dropdown w100">
           <summary class="ui-button-link ui-button-small w100">
             <img
-              src="assets\angle-small-down-W.svg"
+              src="assets/angle-small-down-W.svg"
               class="uob-button-special-img"
               alt=""
             />
-            <p class="ui-font-label" bindling-name="Việt Nam">Việt Nam</p>
+            <p class="ui-font-label" binding-name="Việt Nam">Việt Nam</p>
           </summary>
 
           <div class="ui-dropdown-menu">
@@ -428,11 +390,11 @@
         <details class="ui-dropdown w100">
           <summary class="ui-button-link ui-button-small w100">
             <img
-              src="assets\angle-small-down-W.svg"
+              src="assets/angle-small-down-W.svg"
               class="uob-button-special-img"
               alt=""
             />
-            <p class="ui-font-label" bindling-name="Tiếng Việt">Tiếng Việt</p>
+            <p class="ui-font-label" binding-name="Tiếng Việt">Tiếng Việt</p>
           </summary>
 
           <div class="ui-dropdown-menu">
@@ -475,9 +437,10 @@
       </div>
     </div>
 
-    <!-- header -->
-    <a href="" id="logo"><img src="assets\Logo-L.svg" alt="logo" /></a>
+    <!-- 3. Logo -->
+    <a href="" id="logo"><img src="assets/Logo-L.svg" alt="logo" /></a>
 
+    <!-- 4. Hamburger Icon -->
     <label
       for="menu-toggle"
       id="hamburger-menu-icon"
@@ -500,16 +463,16 @@
       </span>
       <!-- Icon đóng (Hiển thị khi ĐÃ check) -->
       <span class="hamburger-close ui-icon-close">
-        <img src="assets\cross-small (3) 1.svg" alt="" />
+        <img src="assets/cross-small (3) 1.svg" alt="" />
       </span>
     </label>
-    <!-- menu -->
 
+    <!-- 5. Hamburger Menu -->
     <nav id="hamburger-menu" class="ui-hamburger-menu">
       <details class="ui-dropdown w100">
         <summary class="ui-button-link w100 ui-button-medium">
           <img
-            src="assets\angle-small-down-W.svg"
+            src="assets/angle-small-down-W.svg"
             class="uob-button-special-img"
             alt=""
           />
