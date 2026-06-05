@@ -1,4 +1,4 @@
-/* d:\Gipyxl_Local\UOB\css\base.css */
+/* d:\Gipyxl_Local\UOB\css\global.css */
 
 /*++++++++++++++ RESET & GLOBAL ++++++++++++++*/
 * {
@@ -127,7 +127,7 @@ p {
 }
 
 /* Secondary Typography Helpers */
-.tag {
+.ui-tag {
     color: var(--ui-secondary);
     font-size: var(--ui-font-size-caption);
     font-weight: var(--ui-font-weight-semibold);
@@ -135,28 +135,26 @@ p {
     text-transform: uppercase;
 }
 
-.p-subbody {
+.ui-font-subbody {
     font-size: var(--ui-font-size-sm);
     font-weight: var(--ui-font-weight-normal);
 }
 
-.p-mini {
+.ui-font-mini {
     font-size: var(--ui-font-size-caption);
     font-weight: var(--ui-font-weight-normal);
 }
 
-.text-bold {
+.ui-text-bold {
     font-weight: var(--ui-font-weight-bold);
 }
 
-.text-justify {
+.ui-text-justify {
     text-align: justify;
 }
 
 /*++++++++++++++ LAYOUT & FLEX/GRID HELPERS (NAMESPACE PREVENT CONFLICTS) ++++++++++++++*/
-.ui-w100 {
-    width: 100%;
-}
+
 
 .ui-w-max-breakpoint-2xl {
     max-width: var(--breakpoint-2xl, 1440px);
@@ -221,39 +219,39 @@ p {
     justify-content: space-between;
 }
 
-.ui-row-v-between {
+.ui-row-align-between {
     display: flex;
     flex-direction: row;
-    align-items: space-between;
+    align-content: space-between;
 }
 
-.ui-row-justify-v-center {
+.ui-row-between-center {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.ui-row-justify-h-center {
+.ui-row-center-center {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.ui-col-h-center {
+.ui-col-align-center {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.ui-col-v-center {
+.ui-col-justify-center {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.ui-col-v-end {
+.ui-col-justify-end {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -355,7 +353,7 @@ section>div[id$="_content"] {
 }
 
 /* Line clamps */
-.lineclamp-1 {
+.ui-lineclamp-1 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -363,7 +361,7 @@ section>div[id$="_content"] {
     -webkit-box-orient: vertical;
 }
 
-.lineclamp-2 {
+.ui-lineclamp-2 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -371,7 +369,7 @@ section>div[id$="_content"] {
     -webkit-box-orient: vertical;
 }
 
-.lineclamp-3 {
+.ui-lineclamp-3 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -379,7 +377,7 @@ section>div[id$="_content"] {
     -webkit-box-orient: vertical;
 }
 
-.lineclamp-keep-height-2 {
+.ui-lineclamp-keep-height-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -388,7 +386,7 @@ section>div[id$="_content"] {
     min-height: calc(2 * 1.4em);
 }
 
-.lineclamp-keep-height-3 {
+.ui-lineclamp-keep-height-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     line-clamp: 3;
@@ -414,7 +412,7 @@ hr {
     scroll-behavior: auto !important;
 }
 
-.bg-grid-pattern {
+.ui-bg-grid-pattern {
     background-image: linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;

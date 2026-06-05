@@ -6,7 +6,7 @@
 @import "token.css" layer(tokens);
 
 /* BASE */
-@import "base.css" layer(base);
+@import "global.css" layer(base);
 
 /* LAYOUT */
 @import "layout.css" layer(layout);
