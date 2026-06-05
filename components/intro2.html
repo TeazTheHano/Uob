@@ -1,11 +1,11 @@
 <div>
   <style>
     /* Segmented Control / Toggle Switch */
-    .ui-toggle-input {
+    #section-intro2 .ui-toggle-input {
       display: none;
     }
 
-    .ui-toggle-input:checked+.ui-toggle-label {
+    #section-intro2 .ui-toggle-input:checked+.ui-toggle-label {
       color: var(--ui-primary, #a78072);
       border-bottom: 1px solid currentColor;
     }
@@ -34,6 +34,7 @@
       left: 0;
       width: 100%;
       height: 100%;
+      min-height: fit-content;
       border-radius: var(--ui-spacing-2xs);
       overflow: hidden;
       transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, filter 2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -55,20 +56,72 @@
       text-align: justify;
     }
 
+    #section-intro2-logoSlider {
+      opacity: 0.4;
+    }
+
+    /* Logo Marquee Slider */
+    #section-intro2-logoSlider {
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: var(--ui-spacing-2xl);
+      padding: var(--ui-spacing-5xl) 0;
+    }
+
+    .logo-row {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      user-select: none;
+      position: relative;
+    }
+
+    .logo-track {
+      display: flex;
+      width: max-content;
+      gap: var(--ui-spacing-5xl);
+      animation: logo-marquee linear infinite;
+    }
+
+    .logo-row:nth-child(1) .logo-track {
+      animation-duration: 25s;
+    }
+
+    .logo-row:nth-child(2) .logo-track {
+      animation-duration: 35s;
+    }
+
+    .logo-row:nth-child(3) .logo-track {
+      animation-duration: 30s;
+    }
+
+    @keyframes logo-marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
 
     @media (min-width: 768px) {
       #section-intro2-content .ui-w-full {
-        width: fit-content;
+        width: max-content;
       }
 
       #section-intro2-content .left {
         height: 100%;
         justify-content: space-between;
+        flex-direction: row;
+        align-items: flex-end;
       }
 
       #section-intro2-content .right {
         aspect-ratio: 16/9;
-        max-width: 50vw;
+        height: fit-content;
         max-height: unset;
       }
     }
@@ -77,23 +130,23 @@
   <section id="section-intro2" class="ui-relative ui-w-full">
     <div class="bg"></div>
 
-    <div id="section-intro2-content" class="ui-col2-grid ui-w-full">
+    <div id="section-intro2-content" class="ui-flex-col ui-w-full ui-w-max-breakpoint-2xl">
       <div class="left ui-gap-xl ui-flex-col">
-        <div class="ui-flex-col ui-gap-xl">
-          <h2 binding-header-lv2="Các chương trình đặc quyền Ưu tiên đẳng cấp">
-            Các chương trình đặc quyền Ưu tiên đẳng cấp
-          </h2>
-          <div class="ui-row-v-center ui-w-full">
-            <input type="radio" name="section-intro2-privilege-selected" id="section-intro2-privilege-selected-1"
-              class="ui-toggle-input" checked />
-            <label for="section-intro2-privilege-selected-1" class="ui-w-full ui-toggle-label ui-button-medium">UOB
-              Privilege</label>
-            <input type="radio" name="section-intro2-privilege-selected" id="section-intro2-privilege-selected-2"
-              class="ui-toggle-input" />
-            <label for="section-intro2-privilege-selected-2" class="ui-w-full ui-toggle-label ui-button-medium">UOB
-              Dinning</label>
-          </div>
+
+        <h2 binding-header-lv2="Các chương trình đặc quyền Ưu tiên đẳng cấp">
+          Các chương trình đặc quyền Ưu tiên đẳng cấp
+        </h2>
+        <div class="ui-row-v-center ui-w-full">
+          <input type="radio" name="section-intro2-privilege-selected" id="section-intro2-privilege-selected-1"
+            class="ui-toggle-input" checked />
+          <label for="section-intro2-privilege-selected-1" class="ui-w-full ui-toggle-label ui-button-medium">UOB
+            Privilege</label>
+          <input type="radio" name="section-intro2-privilege-selected" id="section-intro2-privilege-selected-2"
+            class="ui-toggle-input" />
+          <label for="section-intro2-privilege-selected-2" class="ui-w-full ui-toggle-label ui-button-medium">UOB
+            Dinning</label>
         </div>
+
       </div>
       <div class="right">
         <div class="item-containter ui-relative ui-col-justify-end ">
@@ -154,6 +207,75 @@
             <img src="/assets/img/UOB Dinning.png" alt="" />
           </div>
         </div>
+      </div>
+    </div>
+
+    <div id="section-intro2-logoSlider" class="ui-flex-col">
+      <div class="logo-row" style="color: var(--ui-on-bg);">
+        <svg width="141" height="40" viewBox="0 0 141 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M38.7123 17.7852C38.5017 17.7852 38.3024 17.7778 38.0911 17.7778H33.8978V1.11245C33.9113 0.117758 32.65 0 31.8928 0H31.4844C30.7249 0 29.4702 0.117758 29.4822 1.11245C29.4822 1.32324 29.4763 1.52573 29.4763 1.73651V17.7778H26.0469V1.11245C26.0611 0.117758 24.7992 0 24.0426 0H23.6342C22.8739 0 21.6209 0.117758 21.632 1.11245C21.632 1.32324 21.6239 1.52573 21.6239 1.73651V17.7778H18.1962V1.11245C18.2089 0.117758 16.9476 0 16.1912 0H15.7819C15.0225 0 13.7687 0.117758 13.7783 1.11245C13.7783 1.32324 13.7731 1.52573 13.7731 1.73651V17.7778H10.3435V1.11245C10.3569 0.117758 9.09644 0 8.33843 0H7.92997C7.1713 0 5.91594 0.117758 5.92941 1.11245C5.92941 1.32324 5.92114 1.52573 5.92114 1.73651V17.7778H1.72355C1.70339 17.7778 1.67943 17.7778 1.62193 17.7852H1.09922C0.105997 17.7732 0 19.0327 0 19.7978V20.2096C0 20.2846 0.00223095 20.3446 0.00966646 20.4324C0.101536 22.2342 0.778084 22.2222 1.09922 22.2222C1.26875 22.2162 1.44125 22.2162 1.64135 22.2222H5.92114V38.268C5.92114 38.2875 5.92114 38.3153 5.92941 38.37V38.8944C5.91594 39.892 7.1713 40 7.92997 40H8.33843C8.41386 40 8.47582 39.9978 8.56249 39.9895C10.3569 39.8964 10.3435 39.2168 10.3435 38.8944C10.3398 38.7256 10.3398 38.5508 10.3435 38.3512V22.2222H13.7731V38.268C13.7731 38.2875 13.7731 38.3153 13.7783 38.37V38.8944C13.7687 39.892 15.0225 40 15.7819 40H16.1912C16.2651 40 16.3263 39.9978 16.4151 39.9895C18.2089 39.8964 18.1962 39.2168 18.1962 38.8944C18.1895 38.7256 18.1895 38.5508 18.1962 38.3512V22.2222H21.6239V38.268C21.6239 38.2875 21.6239 38.3153 21.632 38.37V38.8944C21.6209 39.892 22.8739 40 23.6342 40H24.0426C24.1166 40 24.1785 39.9978 24.2651 39.9895C26.0611 39.8964 26.0469 39.2168 26.0469 38.8944C26.0425 38.7256 26.0425 38.5508 26.0469 38.3512V22.2222H29.4763V38.268C29.4763 38.2875 29.4763 38.3153 29.4822 38.37V38.8944C29.4702 39.892 30.7249 40 31.4844 40H31.8928C31.9682 40 32.0287 39.9978 32.1176 39.9895C33.9113 39.8964 33.8978 39.2168 33.8978 38.8944C33.8926 38.7256 33.8926 38.5508 33.8978 38.3512V22.2222H38.7123C39.7033 22.2342 39.8198 20.968 39.8198 20.2096V19.7978C39.8198 19.0327 39.7033 17.7732 38.7123 17.7852Z"
+            fill="currentColor" />
+          <path
+            d="M94.7099 32.0364H94.6323C88.5543 32.0364 86.1864 28.6211 86.1864 19.8567C86.1864 11.1876 88.4587 7.96515 94.5703 7.96515H94.7682C100.882 7.96515 103.155 11.1876 103.155 19.8567C103.155 28.6211 100.787 32.0364 94.7099 32.0364ZM94.6815 2.93038C84.0939 2.93038 79.3729 8.16764 79.3729 19.9115C79.3729 31.3845 84.2925 36.9976 94.4134 37.0696H94.9063C105.046 37.0187 109.976 31.4047 109.976 19.9115C109.976 8.16764 105.259 2.93038 94.6815 2.93038Z"
+            fill="currentColor" />
+          <path
+            d="M52.1641 34.4716C54.3111 36.1369 57.2324 36.8457 61.9333 36.8457H62.2298C66.9665 36.8457 69.8961 36.1369 72.0251 34.4731C75.1153 32.1133 75.6365 29.3349 75.6365 23.9963L75.6417 4.84276C75.6455 4.56375 75.6507 4.2157 75.3423 3.90068C74.8553 3.40558 73.7696 3.15421 72.114 3.15421C70.4741 3.15421 69.3965 3.40483 68.9118 3.89836C68.6012 4.21421 68.6057 4.56375 68.6102 4.845L68.6109 24.8574C68.6117 28.1894 68.6117 28.8833 67.1375 30.1022C65.7784 31.2131 63.7263 31.3556 62.0916 31.3556C60.457 31.3556 58.4063 31.2131 57.048 30.1037C55.5791 28.8916 55.5791 28.2089 55.5806 24.9301L55.5813 4.845C55.5858 4.5645 55.5895 4.2157 55.2796 3.8991C54.7935 3.40483 53.7137 3.15421 52.0686 3.15421C50.4197 3.15421 49.3384 3.40558 48.8529 3.89985C48.5423 4.2157 48.5475 4.56375 48.5513 4.84433L48.5521 4.92682V23.9963C48.5521 29.3311 49.0733 32.1096 52.1641 34.4716Z"
+            fill="currentColor" />
+          <path
+            d="M128.085 31.8627H120.631V21.8307H128.625C133.057 21.8307 133.948 23.7697 133.948 26.8977C133.948 31.1126 132.412 31.8627 128.085 31.8627ZM120.637 8.02098H128.242C132.178 8.02098 132.491 10.0261 132.491 12.647C132.491 15.7802 131.061 17.1162 127.712 17.1162H120.637V8.02098ZM136.414 5.14206C134.665 3.83608 132.579 3.37326 128.44 3.37326H114.828C114.209 3.37326 113.706 3.87733 113.706 4.49625V35.4948C113.706 36.1189 114.209 36.6267 114.828 36.6267H129.107C132.983 36.6267 135.693 36.4992 137.945 34.7964C140.47 32.8304 141 29.6071 141 27.2503C141 24.1387 139.961 21.6754 138.073 20.3147C137.253 19.7011 136.285 19.3335 135.364 19.0087L134.745 18.7912L135.337 18.5076C138.117 17.1732 139.135 15.3197 139.091 11.6658C139.067 9.95559 138.688 6.8321 136.414 5.14206Z"
+            fill="currentColor" />
+        </svg>
+      </div>
+
+      <div class="logo-row" style="color: var(--ui-primary);">
+        <svg width="292" height="40" viewBox="0 0 292 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12.5977 20.8698C17.0695 20.8698 20.2053 18.6159 20.2053 14.6172C20.2053 10.6182 17.0694 8.51207 12.5486 8.51207H8.66577V20.8698H12.5977ZM0 0.869781H11.6979C22.5996 0.869781 28.9801 6.09969 28.9801 14.3051C28.9801 22.0515 23.0249 28.3096 12.2268 28.3096H8.66577V39.1302H0V0.869781Z"
+            fill="currentColor" />
+          <path
+            d="M49.5618 19.2286C54.2409 19.2286 56.7387 17.2319 56.7387 13.8457C56.7387 10.361 54.0229 8.51198 49.7201 8.51198H46.0499V19.2286H49.5618ZM37.3841 0.869937H49.9327C59.5038 0.869937 65.459 5.33375 65.459 13.3315C65.459 17.8994 62.9558 23.0799 55.4081 24.9725L67.3733 39.1301H56.9515L46.4207 25.6947H46.0499V39.1301H37.3841V0.869937Z"
+            fill="currentColor" />
+          <path d="M83.9684 0.869846H75.3026V39.1302H83.9684V0.869846Z" fill="currentColor" />
+          <path
+            d="M115.659 39.1301H106.301L90.9326 0.869735H100.024L110.98 30.2078L121.773 0.869735H130.76L115.659 39.1301Z"
+            fill="currentColor" />
+          <path d="M146.559 0.869846H137.893V39.1302H146.559V0.869846Z" fill="currentColor" />
+          <path d="M157.837 0.869853H166.503V31.5371H182.934V39.1302H157.837V0.869853Z" fill="currentColor" />
+          <path
+            d="M190.967 0.869853H215.852V8.40805H199.633V16.3621H214.467V23.2822H199.633V31.641H215.852V39.1302H190.967V0.869853Z"
+            fill="currentColor" />
+          <path
+            d="M243.714 32.3577C246.054 32.3577 247.755 31.9528 249.457 31.1815V18.512H257.381V36.1048C253.552 38.4628 249.195 40 243.61 40C232.605 40 223.083 32.2591 223.083 20.0492C223.083 7.84473 232.605 0 243.665 0C248.448 0 252.598 1.17623 255.783 2.92137V11.1817C252.331 8.81851 248.344 7.84472 244.674 7.84472C237.066 7.84472 231.858 13.1291 231.858 20.208C231.858 27.2811 236.963 32.3577 243.714 32.3577Z"
+            fill="currentColor" />
+          <path
+            d="M267.115 0.869853H292V8.40805H275.781V16.3621H290.615V23.2822H275.781V31.641H292V39.1302H267.115V0.869853Z"
+            fill="currentColor" />
+        </svg>
+      </div>
+
+      <div class="logo-row" style="color: var(--ui-on-bg);">
+        <svg width="265" height="40" viewBox="0 0 265 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M14.8586 32.0514C19.0103 32.0514 21.1952 30.0546 21.1952 27.336C21.1952 24.5132 18.7479 22.6695 15.0171 22.6695H8.62567V32.0514H14.8586ZM14.5417 16.7723C18.4258 16.7723 20.3977 14.7703 20.3977 12.3085C20.3977 9.7923 18.3765 7.94856 14.7003 7.94856H8.62567V16.7723H14.5417ZM0 0.869924H14.8586C23.8613 0.869924 28.6028 5.43784 28.6028 11.127C28.6028 15.3829 26.0953 18.1018 22.7959 19.4857C27.2699 20.9246 29.6626 24.2067 29.6626 28.4136C29.6626 34.1575 25.0849 39.13 15.4978 39.13H0V0.869924Z"
+            fill="currentColor" />
+          <path
+            d="M58.855 22.9212L53.8512 9.58974L48.8419 22.9212H58.855ZM64.8202 39.1302L61.3078 29.7977H46.4437L43.035 39.1302H33.9833L48.8419 0.869819H58.855L73.9321 39.1302H64.8202Z"
+            fill="currentColor" />
+          <path
+            d="M115.268 39.1301H107.068L89.3803 14.1521H89.3313V39.1301H81.0225V0.869793H89.4349L106.959 25.4377H107.014V0.869793H115.268V39.1301Z"
+            fill="currentColor" />
+          <path
+            d="M144.406 19.7429L160.597 39.1301H150.213L135.245 20.9247V39.1301H126.565V0.869989H135.245V18.8732L150.104 0.869989H160.275L144.406 19.7429Z"
+            fill="currentColor" />
+          <path d="M176.046 0.869845H167.366V39.1302H176.046V0.869845Z" fill="currentColor" />
+          <path
+            d="M221.588 39.1301H213.383L195.706 14.1521H195.651V39.1301H187.342V0.869793H195.755L213.279 25.4377H213.334V0.869793H221.588V39.1301Z"
+            fill="currentColor" />
+          <path
+            d="M251.31 32.3632C253.654 32.3632 255.358 31.9476 257.063 31.1815V18.512H265V36.1051C261.165 38.4628 256.8 40 251.207 40C240.183 40 230.645 32.2594 230.645 20.0547C230.645 7.84473 240.183 0 251.261 0C256.052 0 260.209 1.18175 263.399 2.92137V11.1818C259.941 8.81854 255.948 7.84475 252.272 7.84475C244.651 7.84475 239.435 13.1291 239.435 20.2079C239.435 27.2811 244.548 32.3632 251.31 32.3632Z"
+            fill="currentColor" />
+        </svg>
       </div>
     </div>
   </section>

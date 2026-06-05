@@ -17,6 +17,12 @@ body {
     font-family: var(--ui-font-family);
     background-color: var(--ui-bg);
     color: var(--ui-text);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
 }
 
 img {
@@ -158,10 +164,27 @@ p {
 
 .ui-w-max-breakpoint-2xl {
     max-width: var(--breakpoint-2xl, 1440px);
+    margin: auto;
 }
 
 .ui-w-inherit {
     width: inherit;
+}
+
+.ui-w-fit {
+    width: fit-content;
+}
+
+.ui-w-max {
+    width: max-content;
+}
+
+.ui-w-full {
+    width: 100%;
+}
+
+.ui-h-full {
+    height: 100%;
 }
 
 .ui-relative {
@@ -308,14 +331,6 @@ p {
 
 .ui-m-auto {
     margin: auto;
-}
-
-.ui-w-full {
-    width: 100%;
-}
-
-.ui-h-full {
-    height: 100%;
 }
 
 /* Scrollbar Hide Helper */

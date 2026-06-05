@@ -30,6 +30,7 @@ const App = {
         HERO: 'components/hero.html',
         INTRO1: 'components/intro1.html',
         INTRO2: 'components/intro2.html',
+        LANDINGCONTACT: 'components/landingContact.html',
 
     },
 
@@ -219,8 +220,20 @@ const landingPage = {
                 if (typeof initIntro2Slider === 'function') {
                     initIntro2Slider();
                 }
+                if (typeof initLogoMarquees === 'function') {
+                    initLogoMarquees();
+                }
             }
         },
+        {
+            target: '#landingContact_placeholder',
+            component: COMPONENTS.LANDINGCONTACT,
+            // afterLoad() {
+            //     if (typeof initContactFormValidation === 'function') {
+            //         initContactFormValidation();
+            //     }
+            // }
+        }
 
     ]
 };

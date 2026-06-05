@@ -680,6 +680,25 @@ function initIntro2Slider() {
     }, { passive: false });
 }
 
+function initLogoMarquees() {
+    const slider = document.getElementById('section-intro2-logoSlider');
+    if (!slider) return;
+    const rows = slider.querySelectorAll('.logo-row');
+    rows.forEach(row => {
+        if (row.querySelector('.logo-track')) return;
+        const originalSvg = row.querySelector('svg');
+        if (!originalSvg) return;
+        const track = document.createElement('div');
+        track.className = 'logo-track';
+        const clonesCount = 20; // 10 per set * 2 sets
+        for (let i = 0; i < clonesCount; i++) {
+            track.appendChild(originalSvg.cloneNode(true));
+        }
+        originalSvg.remove();
+        row.appendChild(track);
+    });
+}
+
 // CALLING FUNCTIONs
 headerScroll();
 
@@ -723,6 +742,7 @@ function landingPageCall() {
         autoNextTime: 5000,
     });
     initIntro2Slider();
+    initLogoMarquees();
 }
 
 function courseListPageCall() {
