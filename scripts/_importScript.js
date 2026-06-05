@@ -215,6 +215,11 @@ const landingPage = {
         {
             target: '#intro2_placeholder',
             component: COMPONENTS.INTRO2,
+            afterLoad() {
+                if (typeof initIntro2Slider === 'function') {
+                    initIntro2Slider();
+                }
+            }
         },
 
     ]
