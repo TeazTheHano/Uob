@@ -1,52 +1,52 @@
 <div>
     <style>
-        #section-dinning-hero .bg img {
+        #section-dinning-detail-hero .bg img {
             object-position: 55% center;
         }
 
-        #section-dinning-hero-content {
-            min-height: 60dvh;
+        #section-dinning-detail-hero-content {
+            min-height: 40dvh;
             padding: var(--ui-spacing-xl);
         }
 
-        #section-dinning-hero-content>div {
+        #section-dinning-detail-hero-content>div {
             display: flex;
             flex-direction: column;
         }
 
-        #section-dinning-hero {
+        #section-dinning-detail-hero {
             color: var(--ui-bg);
         }
 
-        #section-dinning-hero-content h1 {
+        #section-dinning-detail-hero-content h1 {
             font-size: var(--ui-font-size-h1) !important;
             text-align: center;
         }
 
         @media (min-width: 769px) {
-            #section-dinning-hero-content {
+            #section-dinning-detail-hero-content {
                 padding: var(--ui-spacing-15xl) var(--ui-spacing-xl);
             }
 
-            #section-dinning-hero-content>div {
+            #section-dinning-detail-hero-content>div {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
             }
 
-            #section-dinning-hero-content h1 {
+            #section-dinning-detail-hero-content h1 {
                 font-size: var(--ui-spacing-11xl) !important;
             }
         }
     </style>
 
-    <section id="section-dinning-hero" class="ui-relative">
+    <section id="section-dinning-detail-hero" class="ui-relative">
         <div class="bg">
             <img binding-imgpath="Hero Banner" src="/assets/img/Banner Dining Detail.png" alt="Hero Banner" />
         </div>
 
-        <div id="section-dinning-hero-content" class="ui-col-justify-end ui-w-max-breakpoint-2xl ui-gap-xl">
-            <h1 binding-name="Hương vị tinh tế">Trải nghiệm đỉnh cao</h1>
+        <div id="section-dinning-detail-hero-content" class="ui-col-justify-end ui-w-max-breakpoint-2xl ui-gap-xl">
+            <h1 binding-name="Thông tin nhà hàng">Thông tin nhà hàng</h1>
         </div>
     </section>
 </div>

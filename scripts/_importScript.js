@@ -38,6 +38,9 @@ const App = {
         PRIVILEGE1: 'components/privilege1.html',
         PRIVILEGE2: 'components/privilege2.html',
         PRIVILEGE3: 'components/privilege3.html',
+        DINNING_DETAIL_HERO: 'components/dinning-detail_hero.html',
+        DINNING_DETAIL1: 'components/dinning-detail1.html',
+        DINNING_DETAIL2: 'components/dinning-detail2.html',
     },
 
     // 3. HTML Cache Store
@@ -247,22 +250,34 @@ const landingPage = {
         //     target: '#dinning2_placeholder',
         //     component: COMPONENTS.DINNING2
         // },
+        // {
+        //     target: '#privilege_hero_placeholder',
+        //     component: COMPONENTS.PRIVILEGE_HERO
+        // },
+        // {
+        //     target: '#privilege1_placeholder',
+        //     component: COMPONENTS.PRIVILEGE1
+        // },
+        // {
+        //     target: '#privilege2_placeholder',
+        //     component: COMPONENTS.PRIVILEGE2,
+        // },
+        // {
+        //     target: '#privilege3_placeholder',
+        //     component: COMPONENTS.PRIVILEGE3,
+        // },
         {
-            target: '#privilege_hero_placeholder',
-            component: COMPONENTS.PRIVILEGE_HERO
+            target: '#dinning-detail_hero_placeholder',
+            component: COMPONENTS.DINNING_DETAIL_HERO
         },
         {
-            target: '#privilege1_placeholder',
-            component: COMPONENTS.PRIVILEGE1
+            target: '#dinning-detail1_placeholder',
+            component: COMPONENTS.DINNING_DETAIL1
         },
         {
-            target: '#privilege2_placeholder',
-            component: COMPONENTS.PRIVILEGE2,
-        },
-        {
-            target: '#privilege3_placeholder',
-            component: COMPONENTS.PRIVILEGE3,
-        },
+            target: '#dinning-detail2_placeholder',
+            component: COMPONENTS.DINNING_DETAIL2
+        }
 
     ]
 };
