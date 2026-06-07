@@ -160,6 +160,10 @@ p {
     text-align: justify;
 }
 
+.ui-text-center {
+    text-align: center;
+}
+
 /*++++++++++++++ LAYOUT & FLEX/GRID HELPERS (NAMESPACE PREVENT CONFLICTS) ++++++++++++++*/
 
 

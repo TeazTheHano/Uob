@@ -1,43 +1,195 @@
 <div>
+    <input type="radio" name="popup-privilege-control" id="popup-privilege-open" style="display: none;" />
+    <input type="radio" name="popup-privilege-control" id="popup-privilege-close" style="display: none;" checked />
+
     <style>
-        /* 1. Base styles for the dialog */
+        .popup-privilege-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .popup-privilege-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--ui-bg-overlay);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 1;
+        }
+
+        body:has(#popup-privilege-open:checked) {
+            overflow: hidden;
+            height: 100%;
+        }
+
         #popupPrivilege {
+            position: relative;
+            z-index: 2;
             border: none;
             padding: var(--ui-spacing-4xl);
             border-radius: var(--ui-spacing-xs);
-            background-color: var(--ui-bg, #ffffff);
+            background-color: var(--ui-on-bg, #ffffff);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            margin: auto;
-            /* Required for native dialog centering */
-            max-width: 90vw;
-            width: 400px;
+            color: var(--ui-bg);
+            box-sizing: border-box;
+
+            /* Center horizontally and add vertical margin for natural scroll */
+            margin: 40px auto;
+            width: 90%;
+            max-width: 600px;
         }
 
-        /* 2. Apply flexbox ONLY when the dialog is open */
-        #popupPrivilege[open] {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--ui-spacing-xl);
+        #popup-privilege-open:checked~.popup-privilege-container {
+            display: block;
         }
 
-        /* 3. Native backdrop styling (replaces your .popup-overlay) */
-        #popupPrivilege::backdrop {
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
+        .popup-close {
+            cursor: pointer;
+            position: absolute;
+            top: var(--ui-spacing-xl);
+            right: var(--ui-spacing-xl);
+            z-index: 10;
         }
 
-        /* 4. Fixed typo in the ID selector */
         #popupPrivilege>img {
             height: var(--ui-spacing-5xl);
             width: auto;
+            margin: 0 auto var(--ui-spacing-xl) auto;
+            display: block;
+        }
+
+        #popupPrivilege form {
+            width: 100%;
+        }
+
+        #popupPrivilege input,
+        #popupPrivilege select,
+        #popupPrivilege textarea {
+            background-color: transparent;
+            border-radius: var(--ui-radius-sm);
+            padding: var(--ui-spacing-sm) var(--ui-spacing-md);
+            outline: none;
+            border: 1px solid var(--ui-bg, #ffffff);
+            color: var(--ui-bg, #ffffff);
+            font-size: var(--ui-font-size-body);
+            margin-bottom: var(--ui-spacing-md);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #popupPrivilege label:has(+input:required):after {
+            content: " *";
+            color: red;
+        }
+
+        #popupPrivilege form div:not([class*="ui-col2-grid"]) {
+            display: flex;
+            flex-direction: column;
+            gap: var(--ui-spacing-xs);
+        }
+
+        @media (max-width: 767px) {
+            #popupPrivilege {
+                margin: 20px auto;
+                padding: var(--ui-spacing-xl);
+                max-width: 95vw;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #popupPrivilege {
+                max-width: 50vw;
+            }
         }
     </style>
 
-    <dialog id="popupPrivilege" open>
-        <img src="/assets/img/Logo-O-I.png" alt="popup dining">
-        <button class="ui-button-primary ui-button-medium ui-w-full" id="closeBtn">Submit</button>
-    </dialog>
+    <div class="popup-privilege-container">
+        <!-- Clicking outside the card will check the close radio -->
+        <label for="popup-privilege-close" class="popup-privilege-overlay"></label>
 
-    <button id="openBtn">Open Dialog</button>
+        <div id="popupPrivilege">
+            <img src="/assets/img/UOB Pri.png" alt="popup dining">
+            <label for="popup-privilege-close" class="popup-close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </label>
+            <div class="ui-flex-col ui-gap-md">
+                <p class="ui-font-label ui-text-center" binding-name="Đặc quyền">Đặc quyền</p>
+                <h1 binding-name="Trải nghiệm trà chiều cao cấp" class="ui-text-center">Trải nghiệm trà chiều cao cấp
+                </h1>
+                <p class="ui-font-label ui-text-center"
+                    binding-name="Mã kích hoạt được in trên thư mời sử dụng dịch vụ hoặc liên hệ với Hotline (028) 7305 6896 để kiểm tra thông tin">
+                    Mã kích hoạt được in trên thư mời sử dụng dịch vụ hoặc liên hệ với Hotline (028) 7305 6896 để kiểm
+                    tra
+                    thông tin</p>
+            </div>
+
+            <form action="">
+                <div class="ui-col2-grid">
+                    <div>
+                        <label for="name">Họ và tên người đặt bàn</label>
+                        <input type="text" placeholder="Nhập họ và tên" required>
+                    </div>
+                    <div>
+                        <label for="tel">Số điện thoại người đặt bàn</label>
+                        <input type="tel" placeholder="Nhập số điện thoại" required minlength="10" maxlength="15"
+                            inputmode="numeric">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email">Email đặt bàn</label>
+                    <input type="email" placeholder="Nhập email liên hệ" required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                </div>
+
+                <div class="ui-col2-grid">
+                    <div>
+                        <label for="address">Chọn địa điểm đặt bàn</label>
+                        <select name="" id="address" required>
+                            <option value="">--Chọn địa điểm--</option>
+                            <option value="">--Chọn địa điểm--</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="date">Ngày giờ đặt bàn</label>
+                        <input type="datetime-local" id="date" name="date" required>
+                    </div>
+                </div>
+
+                <div class="ui-col2-grid">
+                    <div>
+                        <label for="code">Mã voucher sử dụng</label>
+                        <input type="text" id="code" name="code" inputmode="numeric"
+                            placeholder="Nhập mã voucher của bạn để sử dụng" required>
+                    </div>
+                    <div>
+                        <label for="card_end">4 số cuối thẻ</label>
+                        <input type="text" id="card_end" name="card_end" inputmode="numeric" pattern="[0-9]*"
+                            placeholder="Nhập các số đầu của thẻ">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="note">Ghi chú</label>
+                    <textarea name="note" id="note" cols="30" rows="10"
+                        placeholder="Ghi chú cho buổi đặt bàn"></textarea>
+                </div>
+            </form>
+
+            <label for="popup-privilege-close" class="ui-button-primary ui-button-medium ui-w-full ui-center"
+                style="cursor: pointer;">Đặt dịch vụ</label>
+        </div>
+    </div>
 </div>

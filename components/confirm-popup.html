@@ -1,0 +1,103 @@
+<div>
+    <input type="radio" name="popup-confirm-control" id="popup-confirm-open" style="display: none;" />
+    <input type="radio" name="popup-confirm-control" id="popup-confirm-close" style="display: none;" checked />
+
+    <style>
+        .popup-confirm-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .popup-confirm-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 1;
+        }
+
+        body:has(#popup-confirm-open:checked) {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        #popupConfirm {
+            position: relative;
+            z-index: 2;
+            border: none;
+            padding: var(--ui-spacing-4xl);
+            border-radius: var(--ui-spacing-xs);
+            background-color: var(--ui-bg, #ffffff);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            color: var(--ui-text);
+            box-sizing: border-box;
+            
+            /* Center horizontally and add vertical margin for natural scroll */
+            margin: 40px auto;
+            width: 90%;
+            max-width: 450px;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--ui-spacing-xl);
+        }
+
+        #popup-confirm-open:checked~.popup-confirm-container {
+            display: block;
+        }
+
+        #popupConfirm>img {
+            height: var(--ui-spacing-5xl);
+            width: auto;
+        }
+
+        @media (max-width: 767px) {
+            #popupConfirm {
+                margin: 20px auto;
+                padding: var(--ui-spacing-xl);
+                max-width: 95vw;
+            }
+        }
+    </style>
+
+    <div class="popup-confirm-container">
+        <!-- Clicking outside the card will check the close radio -->
+        <label for="popup-confirm-close" class="popup-confirm-overlay"></label>
+
+        <div id="popupConfirm">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="120" height="120" rx="60" fill="#A78072" />
+                <g clip-path="url(#clip0_590_1597)">
+                    <path
+                        d="M51.0999 77.56C50.3121 77.5615 49.5319 77.4072 48.8039 77.1062C48.0759 76.8052 47.4146 76.3634 46.8579 75.806L35.6719 64.622L38.4999 61.792L49.6859 72.978C50.0609 73.3529 50.5695 73.5636 51.0999 73.5636C51.6302 73.5636 52.1388 73.3529 52.5139 72.978L80.4999 44.992L83.3279 47.82L55.3419 75.806C54.7852 76.3634 54.1238 76.8052 53.3959 77.1062C52.6679 77.4072 51.8876 77.5615 51.0999 77.56Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_590_1597">
+                        <rect width="48" height="48" fill="white" transform="translate(35.5 36.5)" />
+                    </clipPath>
+                </defs>
+            </svg>
+            <h1 binding-name="Xác nhận thông tin">Xác nhận thông tin</h1>
+            <p class="ui-font-label"
+                binding-description="Thông tin đặc dịch vụ của bạn đã được ghi nhận, bộ phận chăm sóc khách hàng của chúng tôi sẽ gọi lại để xác nhận thông tin trước khi tiếp đón bạn. Xin chú ý điện thoại hoặc email để được phục vụ tốt nhât">
+                Thông tin đặc dịch vụ của bạn đã được ghi nhận, bộ phận chăm sóc khách hàng của chúng tôi sẽ gọi lại để xác
+                nhận thông tin trước khi tiếp đón bạn. Xin chú ý điện thoại hoặc email để được phục vụ tốt nhât</p>
+
+            <label for="popup-confirm-close" class="ui-button-primary ui-button-medium ui-w-full ui-center"
+                style="cursor: pointer;">Đóng</label>
+        </div>
+    </div>
+</div>

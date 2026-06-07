@@ -42,7 +42,9 @@ const App = {
         DINNING_DETAIL1: 'components/dinning-detail1.html',
         DINNING_DETAIL2: 'components/dinning-detail2.html',
         DINNING_POPUP: 'components/dinning-popup.html',
-        PRIVILEGE_POPUP: 'components/privilege-popup.html'
+        PRIVILEGE_POPUP: 'components/privilege-popup.html',
+        PRIVILEGE_POPUP2: 'components/privilege-popup2.html',
+        CONFIRM_POPUP: 'components/confirm-popup.html',
     },
 
     // 3. HTML Cache Store
@@ -290,6 +292,14 @@ const landingPage = {
         {
             target: '#privilege_popup_placeholder',
             component: COMPONENTS.PRIVILEGE_POPUP
+        },
+        {
+            target: '#privilege_popup2_placeholder',
+            component: COMPONENTS.PRIVILEGE_POPUP2
+        },
+        {
+            target: '#confirm_popup_placeholder',
+            component: COMPONENTS.CONFIRM_POPUP
         }
 
     ]
