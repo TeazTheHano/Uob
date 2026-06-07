@@ -41,6 +41,8 @@ const App = {
         DINNING_DETAIL_HERO: 'components/dinning-detail_hero.html',
         DINNING_DETAIL1: 'components/dinning-detail1.html',
         DINNING_DETAIL2: 'components/dinning-detail2.html',
+        DINNING_POPUP: 'components/dinning-popup.html',
+        PRIVILEGE_POPUP: 'components/privilege-popup.html'
     },
 
     // 3. HTML Cache Store
@@ -201,71 +203,74 @@ const COMPONENTS = App.components;
 const landingPage = {
     template: 'pages/landing.html',
     sections: [
-        // {
-        //     target: '#hero-section_placeholder',
-        //     component: COMPONENTS.HERO,
-        //     // afterLoad() {
-        //     //     if (typeof trackMousePosition === 'function') {
-        //     //         trackMousePosition('#hero');
-        //     //     }
-        //     //     if (typeof autoNextSelection === 'function') {
-        //     //         autoNextSelection({
-        //     //             container: '#hero',
-        //     //             itemSelector: 'input[name="hero"]',
-        //     //             interval: 5000,
-        //     //             type: 'radio'
-        //     //         });
-        //     //     }
-        //     // }
-        // },
-        // {
-        //     target: '#intro1_placeholder',
-        //     component: COMPONENTS.INTRO1,
-        // },
-        // {
-        //     target: '#intro2_placeholder',
-        //     component: COMPONENTS.INTRO2,
-        //     afterLoad() {
-        //         if (typeof initIntro2Slider === 'function') {
-        //             initIntro2Slider('section-intro2', [
-        //                 'section-intro2-privilege-selected-1',
-        //                 'section-intro2-privilege-selected-2'
-        //             ]);
-        //         }
-        //     }
-        // },
-        // {
-        //     target: '#landingContact_placeholder',
-        //     component: COMPONENTS.LANDINGCONTACT,
-        // },
-        // {
-        //     target: '#dinning_hero_placeholder',
-        //     component: COMPONENTS.DINNING_HERO
-        // },
-        // {
-        //     target: '#dinning1_placeholder',
-        //     component: COMPONENTS.DINNING1
-        // },
-        // {
-        //     target: '#dinning2_placeholder',
-        //     component: COMPONENTS.DINNING2
-        // },
-        // {
-        //     target: '#privilege_hero_placeholder',
-        //     component: COMPONENTS.PRIVILEGE_HERO
-        // },
-        // {
-        //     target: '#privilege1_placeholder',
-        //     component: COMPONENTS.PRIVILEGE1
-        // },
-        // {
-        //     target: '#privilege2_placeholder',
-        //     component: COMPONENTS.PRIVILEGE2,
-        // },
-        // {
-        //     target: '#privilege3_placeholder',
-        //     component: COMPONENTS.PRIVILEGE3,
-        // },
+        {
+            target: '#hero-section_placeholder',
+            component: COMPONENTS.HERO,
+            // afterLoad() {
+            //     if (typeof trackMousePosition === 'function') {
+            //         trackMousePosition('#hero');
+            //     }
+            //     if (typeof autoNextSelection === 'function') {
+            //         autoNextSelection({
+            //             container: '#hero',
+            //             itemSelector: 'input[name="hero"]',
+            //             interval: 5000,
+            //             type: 'radio'
+            //         });
+            //     }
+            // }
+        },
+        {
+            target: '#intro1_placeholder',
+            component: COMPONENTS.INTRO1,
+        },
+        {
+            target: '#intro2_placeholder',
+            component: COMPONENTS.INTRO2,
+            afterLoad() {
+                if (typeof initIntro2Slider === 'function') {
+                    initIntro2Slider('section-intro2', [
+                        'section-intro2-privilege-selected-1',
+                        'section-intro2-privilege-selected-2'
+                    ]);
+                }
+                if (typeof initLogoMarquees === 'function') {
+                    initLogoMarquees();
+                }
+            }
+        },
+        {
+            target: '#landingContact_placeholder',
+            component: COMPONENTS.LANDINGCONTACT,
+        },
+        {
+            target: '#dinning_hero_placeholder',
+            component: COMPONENTS.DINNING_HERO
+        },
+        {
+            target: '#dinning1_placeholder',
+            component: COMPONENTS.DINNING1
+        },
+        {
+            target: '#dinning2_placeholder',
+            component: COMPONENTS.DINNING2
+        },
+        {
+            target: '#privilege_hero_placeholder',
+            component: COMPONENTS.PRIVILEGE_HERO
+        },
+        {
+            target: '#privilege1_placeholder',
+            component: COMPONENTS.PRIVILEGE1
+        },
+        {
+            target: '#privilege2_placeholder',
+            component: COMPONENTS.PRIVILEGE2,
+        },
+        {
+            target: '#privilege3_placeholder',
+            component: COMPONENTS.PRIVILEGE3,
+        },
         {
             target: '#dinning-detail_hero_placeholder',
             component: COMPONENTS.DINNING_DETAIL_HERO
@@ -277,6 +282,14 @@ const landingPage = {
         {
             target: '#dinning-detail2_placeholder',
             component: COMPONENTS.DINNING_DETAIL2
+        },
+        {
+            target: '#dinning_popup_placeholder',
+            component: COMPONENTS.DINNING_POPUP
+        },
+        {
+            target: '#privilege_popup_placeholder',
+            component: COMPONENTS.PRIVILEGE_POPUP
         }
 
     ]

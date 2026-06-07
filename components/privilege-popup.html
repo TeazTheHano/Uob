@@ -1,0 +1,43 @@
+<div>
+    <style>
+        /* 1. Base styles for the dialog */
+        #popupPrivilege {
+            border: none;
+            padding: var(--ui-spacing-4xl);
+            border-radius: var(--ui-spacing-xs);
+            background-color: var(--ui-bg, #ffffff);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            margin: auto;
+            /* Required for native dialog centering */
+            max-width: 90vw;
+            width: 400px;
+        }
+
+        /* 2. Apply flexbox ONLY when the dialog is open */
+        #popupPrivilege[open] {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--ui-spacing-xl);
+        }
+
+        /* 3. Native backdrop styling (replaces your .popup-overlay) */
+        #popupPrivilege::backdrop {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        /* 4. Fixed typo in the ID selector */
+        #popupPrivilege>img {
+            height: var(--ui-spacing-5xl);
+            width: auto;
+        }
+    </style>
+
+    <dialog id="popupPrivilege" open>
+        <img src="/assets/img/Logo-O-I.png" alt="popup dining">
+        <button class="ui-button-primary ui-button-medium ui-w-full" id="closeBtn">Submit</button>
+    </dialog>
+
+    <button id="openBtn">Open Dialog</button>
+</div>
