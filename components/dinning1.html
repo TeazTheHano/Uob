@@ -1,0 +1,133 @@
+<div>
+  <style>
+    #section-dinning-intro1 .bg {
+      background-color: #F1F2F5;
+    }
+
+    #section-dinning-intro1 .bg img {
+      object-position: top left;
+    }
+
+    #section-dinning-intro1-content {
+      padding: var(--ui-spacing-7xl) var(--ui-spacing-xl);
+      gap: var(--ui-spacing-6xl);
+    }
+
+    #section-dinning-intro1-content .left {
+      height: fit-content;
+    }
+
+    #section-dinning-intro1-content .right {
+      overflow-y: hidden;
+    }
+
+    #section-dinning-intro1-content .container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+
+    #section-dinning-intro1-content .dot {
+      height: var(--ui-spacing-xl);
+      width: var(--ui-spacing-xl);
+      border-radius: 100%;
+      border: 1px solid var(--ui-secondary);
+      background-color: var(--ui-bg);
+    }
+
+    #section-dinning-intro1-content .line {
+      width: 1px;
+      height: calc(100% + var(--ui-spacing-xl));
+      top: 0;
+      z-index: -1;
+      background-color: var(--ui-secondary);
+      opacity: 0.2;
+    }
+
+    #section-dinning-intro1-content .content {
+      background-color: var(--ui-bg);
+      padding: var(--ui-spacing-xl);
+      border-radius: var(--ui-spacing-2xs);
+    }
+
+    #section-dinning-intro1-content .container:hover .dot,
+    #section-dinning-intro1-content .container:hover .line {
+      background-color: var(--ui-primary);
+      border: none;
+      transition: var(--ui-transition);
+      opacity: 1;
+    }
+
+
+    @media (min-width: 768px) {
+      #section-dinning-intro1 .bg img {
+        transform: unset;
+      }
+
+      #section-dinning-intro1-content {
+        grid-template-columns: minmax(280px, 40%) minmax(0, 1fr);
+      }
+
+      #section-dinning-intro1-content .left {
+        height: 100%;
+        justify-content: space-between;
+      }
+    }
+  </style>
+
+  <section id="section-dinning-intro1" class="ui-relative ui-w-full">
+    <div class="bg">
+      <img src="/assets/img/Pattern.png" alt="" />
+    </div>
+
+    <div id="section-dinning-intro1-content" class="ui-col2-grid ui-w-full ui-w-max-breakpoint-2xl">
+      <div class="left ui-gap-xl ui-flex-col">
+        <div class="ui-flex-col ui-gap-xl">
+          <div>
+            <p class="ui-tag" binding-name="3 bước đơn giản có ngay ưu đãi">3 bước đơn giản có ngay ưu đãi</p>
+            <h2 binding-header-lv2="Hướng dẫn sử dụng UOB Dinning">
+              Hướng dẫn sử dụng UOB Dinning
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="right ui-gap-xl ui-flex-col">
+        <div class="container ui-gap-xl">
+          <div class="mark ui-center ui-relative">
+            <div class="dot"></div>
+            <div class="line ui-absolute"></div>
+          </div>
+          <div class="content">
+            <h3 binding-name="Nhận mã quà tặng">Nhận mã quà tặng</h3>
+            <p
+              binding-name="Nhận mã quà tặng từ ngân hàng UOB thông qua tài khoản Zalo/SMS/email - chỉ áp dụng đối với Chương Trình Tặng 1 Set Menu Fine Dinning (dành riêng cho khách hàng đủ điều kiện)">
+              Nhận mã quà tặng từ ngân hàng UOB thông qua tài khoản Zalo/SMS/email - chỉ áp dụng đối với Chương Trình
+              Tặng 1 Set Menu Fine Dinning (dành riêng cho khách hàng đủ điều kiện)</p>
+          </div>
+        </div>
+        <div class="container ui-gap-xl">
+          <div class="mark ui-center ui-relative">
+            <div class="dot"></div>
+            <div class="line ui-absolute"></div>
+          </div>
+          <div class="content">
+            <h3 binding-name="Chọn nhà hàng yêu thích">Chọn nhà hàng yêu thích</h3>
+            <p binding-name="Lựa chọn thương hiệu nhà hàng yêu thích trong danh sách hơn 30 thương hiệu">
+              Lựa chọn thương hiệu nhà hàng yêu thích trong danh sách hơn 30 thương hiệu</p>
+          </div>
+        </div>
+        <div class="container ui-gap-xl">
+          <div class="mark ui-center ui-relative">
+            <div class="dot"></div>
+            <div class="line ui-absolute"></div>
+          </div>
+          <div class="content">
+            <h3 binding-name="Đặt bàn">Đặt bàn</h3>
+            <p binding-name="Đặt bàn thông qua website hoặc Tổng đài trợ lý đặt bàn">
+              Đặt bàn thông qua website hoặc Tổng đài trợ lý đặt bàn</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

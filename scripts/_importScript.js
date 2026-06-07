@@ -31,7 +31,13 @@ const App = {
         INTRO1: 'components/intro1.html',
         INTRO2: 'components/intro2.html',
         LANDINGCONTACT: 'components/landingContact.html',
-
+        DINNING_HERO: 'components/dinning_hero.html',
+        DINNING1: 'components/dinning1.html',
+        DINNING2: 'components/dinning2.html',
+        PRIVILEGE_HERO: 'components/privilege_hero.html',
+        PRIVILEGE1: 'components/privilege1.html',
+        PRIVILEGE2: 'components/privilege2.html',
+        PRIVILEGE3: 'components/privilege3.html',
     },
 
     // 3. HTML Cache Store
@@ -192,48 +198,71 @@ const COMPONENTS = App.components;
 const landingPage = {
     template: 'pages/landing.html',
     sections: [
+        // {
+        //     target: '#hero-section_placeholder',
+        //     component: COMPONENTS.HERO,
+        //     // afterLoad() {
+        //     //     if (typeof trackMousePosition === 'function') {
+        //     //         trackMousePosition('#hero');
+        //     //     }
+        //     //     if (typeof autoNextSelection === 'function') {
+        //     //         autoNextSelection({
+        //     //             container: '#hero',
+        //     //             itemSelector: 'input[name="hero"]',
+        //     //             interval: 5000,
+        //     //             type: 'radio'
+        //     //         });
+        //     //     }
+        //     // }
+        // },
+        // {
+        //     target: '#intro1_placeholder',
+        //     component: COMPONENTS.INTRO1,
+        // },
+        // {
+        //     target: '#intro2_placeholder',
+        //     component: COMPONENTS.INTRO2,
+        //     afterLoad() {
+        //         if (typeof initIntro2Slider === 'function') {
+        //             initIntro2Slider('section-intro2', [
+        //                 'section-intro2-privilege-selected-1',
+        //                 'section-intro2-privilege-selected-2'
+        //             ]);
+        //         }
+        //     }
+        // },
+        // {
+        //     target: '#landingContact_placeholder',
+        //     component: COMPONENTS.LANDINGCONTACT,
+        // },
+        // {
+        //     target: '#dinning_hero_placeholder',
+        //     component: COMPONENTS.DINNING_HERO
+        // },
+        // {
+        //     target: '#dinning1_placeholder',
+        //     component: COMPONENTS.DINNING1
+        // },
+        // {
+        //     target: '#dinning2_placeholder',
+        //     component: COMPONENTS.DINNING2
+        // },
         {
-            target: '#hero-section_placeholder',
-            component: COMPONENTS.HERO,
-            // afterLoad() {
-            //     if (typeof trackMousePosition === 'function') {
-            //         trackMousePosition('#hero');
-            //     }
-            //     if (typeof autoNextSelection === 'function') {
-            //         autoNextSelection({
-            //             container: '#hero',
-            //             itemSelector: 'input[name="hero"]',
-            //             interval: 5000,
-            //             type: 'radio'
-            //         });
-            //     }
-            // }
+            target: '#privilege_hero_placeholder',
+            component: COMPONENTS.PRIVILEGE_HERO
         },
         {
-            target: '#intro1_placeholder',
-            component: COMPONENTS.INTRO1,
+            target: '#privilege1_placeholder',
+            component: COMPONENTS.PRIVILEGE1
         },
         {
-            target: '#intro2_placeholder',
-            component: COMPONENTS.INTRO2,
-            afterLoad() {
-                if (typeof initIntro2Slider === 'function') {
-                    initIntro2Slider();
-                }
-                if (typeof initLogoMarquees === 'function') {
-                    initLogoMarquees();
-                }
-            }
+            target: '#privilege2_placeholder',
+            component: COMPONENTS.PRIVILEGE2,
         },
         {
-            target: '#landingContact_placeholder',
-            component: COMPONENTS.LANDINGCONTACT,
-            // afterLoad() {
-            //     if (typeof initContactFormValidation === 'function') {
-            //         initContactFormValidation();
-            //     }
-            // }
-        }
+            target: '#privilege3_placeholder',
+            component: COMPONENTS.PRIVILEGE3,
+        },
 
     ]
 };

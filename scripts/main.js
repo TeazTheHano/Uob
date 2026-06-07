@@ -540,18 +540,15 @@ function observeAndTrigger({
     return observer;
 }
 
-function initIntro2Slider() {
-    const section = document.getElementById('section-intro2');
+function initIntro2Slider(sectionId = 'section-intro2', tabIds = ['section-intro2-privilege-selected-1', 'section-intro2-privilege-selected-2']) {
+    const section = document.getElementById(sectionId);
     if (!section) return;
 
     const rightContainer = section.querySelector('.right');
     const items = rightContainer ? rightContainer.querySelectorAll('.item-containter') : [];
     if (!items.length) return;
 
-    const tabs = [
-        document.getElementById('section-intro2-privilege-selected-1'),
-        document.getElementById('section-intro2-privilege-selected-2')
-    ];
+    const tabs = tabIds.map(id => document.getElementById(id));
 
     let activeIndex = 0;
 
@@ -742,6 +739,10 @@ function landingPageCall() {
         autoNextTime: 5000,
     });
     initIntro2Slider();
+    initIntro2Slider('section-privile-intro2', [
+        'section-privile-intro2-privilege-selected-1',
+        'section-privile-intro2-privilege-selected-2'
+    ]);
     initLogoMarquees();
 }
 
