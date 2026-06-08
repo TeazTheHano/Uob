@@ -5,17 +5,24 @@
       display: none;
     }
 
-    #section-dinning-detail2 .ui-toggle-input:checked+.ui-toggle-label {
+    #section-dinning-detail2 .ui-toggle-input:checked + .ui-toggle-label {
+      border-radius: none;
       color: var(--ui-primary, #a78072);
       border-bottom: 1px solid currentColor;
     }
 
     /* Filter items based on selected radio toggle */
-    #section-dinning-detail2-content:has(#section-dinning-detail2-privilege-selected-1:checked) .item-containter:not([type="1"]) {
+    #section-dinning-detail2-content:has(
+        #section-dinning-detail2-privilege-selected-1:checked
+      )
+      .item-containter:not([type="1"]) {
       display: none;
     }
 
-    #section-dinning-detail2-content:has(#section-dinning-detail2-privilege-selected-2:checked) .item-containter:not([type="2"]) {
+    #section-dinning-detail2-content:has(
+        #section-dinning-detail2-privilege-selected-2:checked
+      )
+      .item-containter:not([type="2"]) {
       display: none;
     }
 
@@ -23,7 +30,10 @@
       aspect-ratio: 16/9;
     }
 
-    #section-dinning-detail2-content:has(#section-dinning-detail2-privilege-selected-3:checked) .item-containter:not([type="3"]) {
+    #section-dinning-detail2-content:has(
+        #section-dinning-detail2-privilege-selected-3:checked
+      )
+      .item-containter:not([type="3"]) {
       display: none;
     }
 
@@ -31,9 +41,8 @@
       aspect-ratio: 1;
     }
 
-
     #section-dinning-detail2-content {
-      padding: var(--ui-spacing-7xl) var(--ui-spacing-xl);
+      padding: var(--ui-spacing-11xl) var(--ui-spacing-xl);
       gap: var(--ui-spacing-6xl);
     }
 
@@ -41,7 +50,7 @@
       height: fit-content;
     }
 
-    #section-dinning-detail2-content .left>div {
+    #section-dinning-detail2-content .left > div {
       display: grid;
       grid-template-columns: auto auto auto;
     }
@@ -59,25 +68,25 @@
       min-height: fit-content;
       border-radius: var(--ui-spacing-2xs);
       overflow: hidden;
-      transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, filter 2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition:
+        transform 2s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.6s ease,
+        filter 2s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform, opacity, filter;
       display: flex;
       flex-direction: column;
       gap: var(--ui-spacing-sm);
     }
 
-
     #section-dinning-detail2-content .ui-font-label {
       font-weight: 400;
       opacity: 0.7;
     }
 
-
     @media (min-width: 768px) {
       #section-dinning-detail2-content .ui-w-full {
         width: max-content;
       }
-
 
       #section-dinning-detail2-content .left {
         height: 100%;
@@ -104,47 +113,73 @@
   <section id="section-dinning-detail2" class="ui-relative ui-w-full">
     <div class="bg"></div>
 
-    <div id="section-dinning-detail2-content" class="ui-flex-col ui-w-full ui-w-max-breakpoint-2xl">
+    <div
+      id="section-dinning-detail2-content"
+      class="ui-flex-col ui-w-full ui-w-max-breakpoint-2xl"
+    >
       <div class="left ui-gap-xl ui-flex-col">
-
-        <h2 binding-header-lv2="Thông tin thêm">
-          Thông tin thêm
-        </h2>
+        <h2 binding-header-lv2="Thông tin thêm">Thông tin thêm</h2>
         <div class="ui-w-full">
-          <input type="radio" name="section-dinning-detail2-privilege-selected"
-            id="section-dinning-detail2-privilege-selected-1" class="ui-toggle-input" checked />
-          <label for="section-dinning-detail2-privilege-selected-1" class="ui-w-full ui-toggle-label ui-button-medium"
-            binding-name="Điều kiện áp dụng">Điều kiện áp dụng</label>
-          <input type="radio" name="section-dinning-detail2-privilege-selected"
-            id="section-dinning-detail2-privilege-selected-2" class="ui-toggle-input" />
-          <label for="section-dinning-detail2-privilege-selected-2" class="ui-w-full ui-toggle-label ui-button-medium"
-            binding-name="Thực đơn món tặng">Thực đơn món tặng</label>
-          <input type="radio" name="section-dinning-detail2-privilege-selected"
-            id="section-dinning-detail2-privilege-selected-3" class="ui-toggle-input" />
-          <label for="section-dinning-detail2-privilege-selected-3" class="ui-w-full ui-toggle-label ui-button-medium"
-            binding-name="Cơ sở áp dụng">Cơ sở áp dụng</label>
+          <input
+            type="radio"
+            name="section-dinning-detail2-privilege-selected"
+            id="section-dinning-detail2-privilege-selected-1"
+            class="ui-toggle-input"
+            checked
+          />
+          <label
+            for="section-dinning-detail2-privilege-selected-1"
+            class="ui-w-full ui-toggle-label ui-button-medium"
+            binding-name="Điều kiện áp dụng"
+            >Điều kiện áp dụng</label
+          >
+          <input
+            type="radio"
+            name="section-dinning-detail2-privilege-selected"
+            id="section-dinning-detail2-privilege-selected-2"
+            class="ui-toggle-input"
+          />
+          <label
+            for="section-dinning-detail2-privilege-selected-2"
+            class="ui-w-full ui-toggle-label ui-button-medium"
+            binding-name="Thực đơn món tặng"
+            >Thực đơn món tặng</label
+          >
+          <input
+            type="radio"
+            name="section-dinning-detail2-privilege-selected"
+            id="section-dinning-detail2-privilege-selected-3"
+            class="ui-toggle-input"
+          />
+          <label
+            for="section-dinning-detail2-privilege-selected-3"
+            class="ui-w-full ui-toggle-label ui-button-medium"
+            binding-name="Cơ sở áp dụng"
+            >Cơ sở áp dụng</label
+          >
         </div>
-
       </div>
       <div class="right">
-        <div class="item-containter ui-relative ui-col-justify-end " type="1">
+        <div class="item-containter ui-relative ui-col-justify-end" type="1">
           {{description}}
         </div>
-        <div class="item-containter ui-relative ui-col-justify-end " type="2">
-          <img binding-imgpath="Image 1" src="/assets/img/Banner Dining Detail.png" alt="">
-          <div>
-            {{menu}}
-          </div>
+        <div class="item-containter ui-relative ui-col-justify-end" type="2">
+          <img
+            binding-imgpath="Image 1"
+            src="/assets/img/Banner Dining Detail.png"
+            alt=""
+          />
+          <div>{{menu}}</div>
         </div>
-        <div class="item-containter ui-relative ui-col-justify-end " type="3">
-          <img binding-imgpath="Image 1" src="/assets/img/Banner Dining Detail.png" alt="">
-          <div>
-            {{address}}
-          </div>
+        <div class="item-containter ui-relative ui-col-justify-end" type="3">
+          <img
+            binding-imgpath="Image 1"
+            src="/assets/img/Banner Dining Detail.png"
+            alt=""
+          />
+          <div>{{address}}</div>
         </div>
       </div>
     </div>
-
-
   </section>
 </div>

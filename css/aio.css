@@ -1,0 +1,1219 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap");
+
+/* d:\Gipyxl_Local\UOB\css\token.css */
+:root {
+    /* Breakpoints */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1440px;
+
+    /* Default UI Kit (Layer 2) - Light Mode */
+    --ui-primary: #A78072;
+    --ui-primary-hover: #896458;
+    --ui-primary-active: #6C4E42;
+    --ui-on-primary: #ffffff;
+
+    --ui-secondary: #64748b;
+    --ui-secondary-hover: #475569;
+    --ui-secondary-active: #334155;
+    --ui-secondary-contrast: #ffffff;
+
+    /* Semantic Colors (Light) */
+    --ui-bg: #ffffff;
+    --ui-bg-subtle: #f8fafc;
+    --ui-bg-overlay: #1A1A1AD6;
+    --ui-on-bg: #1a1a1a;
+    --ui-surface: #ffffff;
+    --ui-text: #1e293b;
+    --ui-text-muted: #555555;
+    --ui-border: #e2e8f0;
+    --ui-border-light: #f1f5f9;
+
+    /* BorderRadius */
+    --ui-radius-xs: 4px;
+    --ui-radius-sm: 8px;
+    --ui-radius-md: 12px;
+    --ui-radius-lg: 16px;
+    --ui-radius-xl: 24px;
+    --ui-radius-full: 9999px;
+
+    /* Spacings */
+    --ui-spacing-2xs: 4px;
+    --ui-spacing-xs: 8px;
+    --ui-spacing-sm: 12px;
+    --ui-spacing-md: 16px;
+    --ui-spacing-lg: 20px;
+    --ui-spacing-xl: 24px;
+    --ui-spacing-2xl: 28px;
+    --ui-spacing-3xl: 32px;
+    --ui-spacing-4xl: 36px;
+    --ui-spacing-5xl: 40px;
+    --ui-spacing-6xl: 44px;
+    --ui-spacing-7xl: 48px;
+    --ui-spacing-8xl: 52px;
+    --ui-spacing-9xl: 56px;
+    --ui-spacing-10xl: 60px;
+    --ui-spacing-11xl: 64px;
+    --ui-spacing-12xl: 68px;
+    --ui-spacing-13xl: 72px;
+    --ui-spacing-14xl: 76px;
+    --ui-spacing-15xl: 80px;
+    --ui-spacing-full: 9999px;
+
+    /* Fonts */
+    --ui-font-family: "Noto Sans", "Inter", sans-serif;
+    --ui-font-family-display: "Noto Serif", sans-serif;
+
+    --ui-font-size-base: 16px;
+    --ui-font-size-h1: 40px;
+    --ui-font-size-h2: 32px;
+    --ui-font-size-h3: 24px;
+    --ui-font-size-h4: 20px;
+    --ui-font-size-h5: 18px;
+    --ui-font-size-h6: 16px;
+    --ui-font-size-body: 16px;
+    --ui-font-size-label: 14px;
+    --ui-font-size-button: 14px;
+    --ui-font-size-caption: 12px;
+    --ui-font-size-sm: 14px;
+    --ui-font-size-md: 16px;
+    --ui-font-size-lg: 20px;
+
+    --ui-line-height-h1: 1.2;
+    --ui-line-height-h2: 1.25;
+    --ui-line-height-h3: 1.3;
+    --ui-line-height-h4: 1.35;
+    --ui-line-height-h5: 1.4;
+    --ui-line-height-h6: 1.45;
+    --ui-line-height-body: 1.5;
+    --ui-line-height-label: 1.55;
+    --ui-line-height-button: 1.6;
+    --ui-line-height-caption: 1.65;
+
+    --ui-font-weight-normal: 400;
+    --ui-font-weight-medium: 500;
+    --ui-font-weight-semibold: 600;
+    --ui-font-weight-bold: 700;
+
+    /* Shadows */
+    --ui-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --ui-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --ui-shadow-lg: 0 8px 16px -2px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+    /* Transition */
+    --ui-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ==========================================================================
+     Backward Compatibility Layer
+     Maps old FIVN token names to the new standard member_platform token names.
+     Prevents breaking layouts while transition is ongoing.
+     ========================================================================== */
+    --font-main: var(--ui-font-family);
+    --font-body: var(--ui-font-family);
+    --font-mono: monospace;
+
+    --color-primary: var(--ui-primary);
+    --color-secondary: var(--ui-secondary);
+    --color-white: var(--ui-bg);
+    --color-black: var(--ui-text);
+    --color-gray-1000: var(--ui-bg-subtle);
+    --color-gray-800: var(--ui-text-muted);
+    --color-gray-600: var(--ui-text-muted);
+    --color-gray-400: var(--ui-border);
+    --color-gray-200: var(--ui-border-light);
+    --color-gray-100: var(--ui-border-light);
+
+    --spacing-xxxs: var(--ui-spacing-2xs);
+    --spacing-xxs: var(--ui-spacing-xs);
+    --spacing-xs: var(--ui-spacing-sm);
+    --spacing-s: var(--ui-spacing-md);
+    --spacing-m: var(--ui-spacing-lg);
+    --spacing-l: var(--ui-spacing-xl);
+    --spacing-xl: var(--ui-spacing-2xl);
+    --spacing-xxl: var(--ui-spacing-4xl);
+    --spacing-xxxl: var(--ui-spacing-6xl);
+
+    --radius-s: var(--ui-radius-xs);
+    --radius-m: var(--ui-radius-sm);
+    --radius-l: var(--ui-radius-md);
+    --radius-xl: var(--ui-radius-lg);
+    --radius-round: var(--ui-radius-full);
+
+    --shadow-xs: var(--ui-shadow-sm);
+    --shadow-s: var(--ui-shadow-sm);
+    --shadow-m: var(--ui-shadow-md);
+    --shadow-l: var(--ui-shadow-lg);
+
+    --transition-fast: var(--ui-transition);
+    --transition-base: var(--ui-transition);
+}
+
+/* Dark Mode Tokens (Layer 2.5) */
+.is-dark,
+:root.is-dark {
+    /* Surface Overrides */
+    --ui-bg: #0f172a;
+    --ui-bg-subtle: #1e293b;
+    --ui-surface: #1e293b;
+    --ui-text: #f8fafc;
+    --ui-text-muted: #94a3b8;
+    --ui-border: #334155;
+    --ui-border-light: #1e293b;
+
+    /* Adjust Primary for better contrast if needed */
+    --ui-primary-contrast: #0f172a;
+
+    /* Shadows for Dark Mode */
+    --ui-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+    --ui-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+    --ui-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+}
+
+/* d:\Gipyxl_Local\UOB\css\global.css */
+
+/*++++++++++++++ RESET & GLOBAL ++++++++++++++*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: var(--ui-transition);
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: var(--ui-font-family);
+    background-color: var(--ui-bg);
+    color: var(--ui-text);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    object-position: center;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: var(--ui-font-family);
+}
+
+::selection {
+    background-color: var(--ui-primary);
+    color: var(--ui-primary-contrast);
+}
+
+/*++++++++++++++ TYPOGRAPHY (MAPPED FROM member_platform) ++++++++++++++*/
+.ui-font-h1,
+h1 {
+    font-family: var(--ui-font-family-display);
+    font-size: var(--ui-font-size-h1);
+    line-height: var(--ui-line-height-h1);
+    font-weight: var(--ui-font-weight-bold);
+    color: inherit;
+}
+
+.ui-font-h2,
+h2 {
+    font-family: var(--ui-font-family-display);
+    font-size: var(--ui-font-size-h2);
+    line-height: var(--ui-line-height-h2);
+    font-weight: var(--ui-font-weight-bold);
+    color: inherit;
+}
+
+.ui-font-h3,
+h3 {
+    font-family: var(--ui-font-family-display);
+    font-size: var(--ui-font-size-h3);
+    line-height: var(--ui-line-height-h3);
+    font-weight: var(--ui-font-weight-semibold);
+    color: inherit;
+}
+
+.ui-font-h4,
+h4 {
+    font-family: var(--ui-font-family-display);
+    font-size: var(--ui-font-size-h4);
+    line-height: var(--ui-line-height-h4);
+    font-weight: var(--ui-font-weight-medium);
+    color: inherit;
+}
+
+.ui-font-h5,
+h5 {
+    font-family: var(--ui-font-family-display);
+    font-size: var(--ui-font-size-h5);
+    line-height: var(--ui-line-height-h5);
+    font-weight: var(--ui-font-weight-medium);
+    color: inherit;
+}
+
+.ui-font-h6,
+h6 {
+    font-family: var(--ui-font-family-display);
+    font-size: var(--ui-font-size-h6);
+    line-height: var(--ui-line-height-h6);
+    font-weight: var(--ui-font-weight-semibold);
+    color: inherit;
+}
+
+.ui-font-body,
+p {
+    font-family: var(--ui-font-family);
+    font-size: var(--ui-font-size-body);
+    line-height: var(--ui-line-height-body);
+    font-weight: var(--ui-font-weight-normal);
+    color: var(--ui-text-muted);
+}
+
+.ui-font-label {
+    font-family: var(--ui-font-family);
+    font-size: var(--ui-font-size-label);
+    line-height: var(--ui-line-height-label);
+    font-weight: var(--ui-font-weight-medium);
+    color: inherit;
+}
+
+.ui-font-button {
+    font-family: var(--ui-font-family);
+    font-size: var(--ui-font-size-button);
+    line-height: var(--ui-line-height-button);
+    font-weight: var(--ui-font-weight-medium);
+    color: inherit;
+}
+
+.ui-font-caption {
+    font-family: var(--ui-font-family);
+    font-size: var(--ui-font-size-caption);
+    line-height: var(--ui-line-height-caption);
+    font-weight: var(--ui-font-weight-normal);
+    color: inherit;
+}
+
+/* Secondary Typography Helpers */
+.ui-tag {
+    color: var(--ui-secondary);
+    font-size: var(--ui-font-size-caption);
+    font-weight: var(--ui-font-weight-semibold);
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    font-family: inherit;
+}
+
+.ui-font-subbody {
+    font-size: var(--ui-font-size-sm);
+    font-weight: var(--ui-font-weight-normal);
+}
+
+.ui-font-mini {
+    font-size: var(--ui-font-size-caption);
+    font-weight: var(--ui-font-weight-normal);
+}
+
+.ui-text-bold {
+    font-weight: var(--ui-font-weight-bold);
+}
+
+.ui-text-justify {
+    text-align: justify;
+}
+
+.ui-text-center {
+    text-align: center;
+}
+
+/*++++++++++++++ LAYOUT & FLEX/GRID HELPERS (NAMESPACE PREVENT CONFLICTS) ++++++++++++++*/
+
+
+.ui-w-max-breakpoint-2xl {
+    max-width: var(--breakpoint-2xl, 1440px);
+    margin: auto;
+}
+
+.ui-w-inherit {
+    width: inherit;
+}
+
+.ui-w-fit {
+    width: fit-content;
+}
+
+.ui-w-max {
+    width: max-content;
+}
+
+.ui-w-full {
+    width: 100%;
+}
+
+.ui-h-full {
+    height: 100%;
+}
+
+.ui-h-fit {
+    height: fit-content;
+}
+
+.ui-relative {
+    position: relative;
+}
+
+.ui-absolute {
+    position: absolute;
+}
+
+.ui-d-none {
+    display: none;
+}
+
+.ui-overflow-hidden {
+    overflow: hidden;
+}
+
+/* Flex & Grid layouts */
+.ui-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.ui-flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.ui-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.ui-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ui-row-h-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.ui-row-v-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ui-row-h-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ui-row-align-between {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.ui-row-between-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ui-row-center-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.ui-col-align-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ui-col-justify-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ui-col-justify-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* Col layouts */
+.ui-col2-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--ui-spacing-md);
+}
+
+.ui-col2-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--ui-spacing-md);
+}
+
+@media (max-width: 768px) {
+    .ui-col2-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* GAP UTILITIES */
+.ui-gap-2xs {
+    gap: var(--ui-spacing-2xs);
+}
+
+.ui-gap-xs {
+    gap: var(--ui-spacing-xs);
+}
+
+.ui-gap-sm {
+    gap: var(--ui-spacing-sm);
+}
+
+.ui-gap-md {
+    gap: var(--ui-spacing-md);
+}
+
+.ui-gap-lg {
+    gap: var(--ui-spacing-lg);
+}
+
+.ui-gap-xl {
+    gap: var(--ui-spacing-xl);
+}
+
+.ui-gap-2xl {
+    gap: var(--ui-spacing-2xl);
+}
+
+.ui-m-auto {
+    margin: auto;
+}
+
+/* Scrollbar Hide Helper */
+.ui-scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.ui-scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Width boundaries */
+.ui-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: auto;
+    padding-left: var(--ui-spacing-md);
+    padding-right: var(--ui-spacing-md);
+}
+
+section {
+    margin: auto;
+    overflow: hidden;
+}
+
+section>div[id$="_content"] {
+    padding: var(--ui-spacing-4xl) var(--ui-spacing-lg);
+}
+
+@media (max-width: 767px) {
+    section>div[id$="_content"] {
+        padding: var(--ui-spacing-2xl) var(--ui-spacing-md);
+    }
+}
+
+/* Line clamps */
+.ui-lineclamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.ui-lineclamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.ui-lineclamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.ui-lineclamp-keep-height-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(2 * 1.4em);
+}
+
+.ui-lineclamp-keep-height-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(3 * 1.4em);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--ui-border);
+    opacity: 0.5;
+}
+
+/*++++++++++++++ REUSABLE ANIMATIONS & EFFECTS ++++++++++++++*/
+
+/* 1. Global Utilities */
+.ui-scroll-smooth {
+    scroll-behavior: smooth !important;
+}
+
+.ui-scroll-auto {
+    scroll-behavior: auto !important;
+}
+
+.ui-bg-grid-pattern {
+    background-image: linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* 2. Floating Animation (E.g. Icons, Cards, Hero banners) */
+@keyframes ui-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.ui-animate-float {
+    animation: ui-float 6s ease-in-out infinite;
+}
+
+/* 3. Spin Animation (E.g. Loading indicator, spinners) */
+@keyframes ui-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ui-animate-spin {
+    animation: ui-spin 1s linear infinite;
+}
+
+/* 4. Pulse / Breathing Animation (E.g. Badges, online status, active elements) */
+@keyframes ui-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+.ui-animate-pulse {
+    animation: ui-pulse 2s ease-in-out infinite;
+}
+
+/* 5. Fade-in Transitions (E.g. Modal entrances, content loads) */
+@keyframes ui-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes ui-fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ui-animate-fade-in {
+    animation: ui-fade-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.ui-animate-fade-in-up {
+    animation: ui-fade-in-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 6. Slide Transitions (E.g. Drawer menus, toast alerts) */
+@keyframes ui-slide-in-right {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes ui-slide-out-right {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.ui-animate-slide-in-right {
+    animation: ui-slide-in-right 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.ui-animate-slide-out-right {
+    animation: ui-slide-out-right 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 7. Shimmer Skeleton Loading Effect (E.g. Cards/text placeholders while loading) */
+@keyframes ui-shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.ui-shimmer-skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--ui-bg-subtle);
+    border-radius: var(--ui-radius-sm);
+}
+
+.ui-shimmer-skeleton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.2) 20%,
+            rgba(255, 255, 255, 0.5) 60%,
+            rgba(255, 255, 255, 0) 100%);
+    animation: ui-shimmer 1.8s infinite;
+}
+
+/* Dark mode adjustment for shimmer */
+.is-dark .ui-shimmer-skeleton::after,
+:root.is-dark .ui-shimmer-skeleton::after {
+    background-image: linear-gradient(90deg,
+            rgba(15, 23, 42, 0) 0%,
+            rgba(15, 23, 42, 0.2) 20%,
+            rgba(15, 23, 42, 0.5) 60%,
+            rgba(15, 23, 42, 0) 100%);
+}
+
+/* 8. Indeterminate Progress Bar Loaders (E.g. Linear top page loader, processed bars) */
+@keyframes ui-progress-indeterminate {
+    0% {
+        left: -35%;
+        right: 100%;
+    }
+
+    60% {
+        left: 100%;
+        right: -90%;
+    }
+
+    100% {
+        left: 100%;
+        right: -90%;
+    }
+}
+
+.ui-progress-bar {
+    position: relative;
+    height: 4px;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--ui-border-light);
+    border-radius: var(--ui-radius-full);
+}
+
+.ui-progress-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: auto;
+    background-color: var(--ui-primary);
+    animation: ui-progress-indeterminate 1.5s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
+
+/* 9. Grid Moving / Cyber pan */
+@keyframes ui-grid-pan {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 40px 40px;
+    }
+}
+
+.ui-animate-grid-pan {
+    animation: ui-grid-pan 20s linear infinite;
+}
+
+[class^="ui-hamburger"] {
+    --bg-color: var(--ui-on-bg);
+    --text-color: var(--ui-bg);
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   REUSABLE DROPDOWN MENU SYSTEM
+   Highly accessible, theme-aware, and supports both Hover-trigger and 
+   native HTML5 Click-trigger (<details>/<summary>).
+   ========================================================================== */
+
+/* 1. Main Parent Container */
+.ui-dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Dropdown Menu Panel */
+.ui-dropdown-menu {
+    position: absolute;
+    top: calc(100% + var(--ui-spacing-2xs));
+    /* Offset slightly from trigger */
+    left: 0;
+    z-index: 1000000;
+
+    /* Panel Dimensions & Layout */
+    min-width: 200px;
+    width: max-content;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ui-spacing-2xs);
+    padding: var(--ui-spacing-2xs);
+
+    /* Theme Stylings (Light/Dark Mode Adaptive) */
+    background-color: var(--ui-surface);
+    border: 1px solid var(--ui-border);
+    /* border-radius: var(--ui-radius-md); */
+    box-shadow: var(--ui-shadow-md);
+
+    /* Animation Core State: Starts hidden and shifted down slightly */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0.2s;
+}
+
+/* 3. Modifier: Right Alignment (For elements on the right of navbars) */
+.ui-dropdown-right .ui-dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+/* 4. Dropdown Menu Item */
+.ui-dropdown-item {
+    color: currentColor;
+    background-color: unset;
+    border: unset;
+    padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
+    transition: var(--ui-transition);
+    font-family: var(--ui-font-family);
+    font-size: var(--ui-font-size-label);
+    font-weight: var(--ui-font-weight-normal);
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    flex: 1;
+}
+
+.ui-dropdown-item * {
+    color: currentColor;
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+/* Hover & Active states for items */
+.ui-dropdown-item:hover {
+    background-color: var(--ui-primary) !important;
+    color: var(--ui-on-primary) !important;
+}
+
+.ui-dropdown-item:active {
+    background-color: var(--ui-primary-active);
+}
+
+/* Item styling for destructive/danger actions (e.g., Logout) */
+.ui-dropdown-item.ui-destructive {
+    color: #ef4444;
+    /* Danger red */
+}
+
+.ui-dropdown-item.ui-destructive:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* 5. Separator Divider Line */
+.ui-dropdown-divider {
+    height: 1px;
+    background-color: var(--ui-border);
+    margin: var(--ui-spacing-2xs) 0;
+    border: none;
+}
+
+/* 6. Arrow Indicator Chevron */
+.ui-dropdown-chevron {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+    pointer-events: none;
+}
+
+
+/* ==========================================================================
+   TRIGGER METHODS & ANIMATIONS (Pure CSS)
+   ========================================================================== */
+
+/* Dropdown Slide-Down Keyframe */
+@keyframes ui-dropdown-slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- METHOD A: Hover-Triggered Dropdowns --- */
+.ui-dropdown-hover:hover .ui-dropdown-menu {
+    animation: ui-dropdown-slide-down 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.ui-dropdown-hover:hover .ui-dropdown-chevron {
+    transform: rotate(180deg);
+}
+
+/* --- METHOD B: Native HTML5 Click-Triggered Dropdowns (using <details>) --- */
+details.ui-dropdown {
+    list-style: none;
+}
+
+/* Remove default browser disclosure arrow */
+details.ui-dropdown>summary {
+    list-style: none;
+    outline: none;
+    cursor: pointer;
+}
+
+details.ui-dropdown>summary * {
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+
+details.ui-dropdown>summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Open State (Triggered natively by browser when clicked) */
+details.ui-dropdown[open] .ui-dropdown-menu {
+    animation: ui-dropdown-slide-down 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+details.ui-dropdown[open] .ui-dropdown-chevron {
+    transform: rotate(180deg);
+}
+
+details.ui-dropdown[open] summary {
+    color: var(--ui-primary);
+    font-weight: 900;
+}
+
+/* ==========================================================================
+   REUSABLE BUTTON COMPONENT
+   Base Reset, Variants, Sizes, and Special States
+   ========================================================================== */
+
+/* 1. Base Reset & Layout */
+[class*=" ui-button-"],
+[class^="ui-button"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ui-font-family);
+    font-weight: 600;
+    border: 1px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+    transition: var(--ui-transition);
+    color: inherit;
+    text-decoration: none;
+    border-radius: var(--ui-spacing-2xs);
+    box-sizing: border-box;
+}
+
+[class^="ui-button-"] * {
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* 2. Style Variants */
+/* Primary Solid Button */
+.ui-button-primary {
+    background-color: var(--ui-primary);
+    color: var(--ui-on-primary);
+    border-color: var(--ui-primary);
+}
+
+.ui-button-primary:hover {
+    background-color: var(--ui-primary-hover);
+    border-color: var(--ui-primary-hover);
+}
+
+.ui-button-primary:active {
+    background-color: var(--ui-primary-active);
+    border-color: var(--ui-primary-active);
+}
+
+/* Primary White Button (Contrast variant) */
+.ui-button-primary-w {
+    background-color: var(--ui-bg);
+    color: var(--ui-on-bg);
+    border-color: var(--ui-bg);
+}
+
+.ui-button-primary-w:hover {
+    background-color: var(--ui-primary);
+    color: var(--ui-on-primary);
+    border-color: var(--ui-primary);
+}
+
+.ui-button-primary-w:active {
+    background-color: var(--ui-primary-active);
+    color: var(--ui-on-primary);
+    border-color: var(--ui-primary-active);
+}
+
+/* Secondary Outline Button */
+.ui-button-secondary {
+    background-color: transparent;
+    color: currentColor;
+    border-color: currentColor;
+}
+
+.ui-button-secondary:hover {
+    background-color: var(--ui-primary);
+    color: var(--ui-on-primary);
+    border-color: var(--ui-primary);
+}
+
+.ui-button-secondary:active {
+    background-color: var(--ui-primary-active);
+    color: var(--ui-on-primary);
+    border-color: var(--ui-primary-active);
+}
+
+/* Text Link Button */
+.ui-button-link {
+    background-color: transparent;
+    border-color: transparent;
+    color: currentColor;
+    padding: 0;
+}
+
+.ui-button-link:hover {
+    color: var(--ui-primary);
+}
+
+/* Icon-Only Button */
+.ui-button-icon {
+    aspect-ratio: 1;
+    padding: 0;
+    display: flex;
+}
+
+.ui-button-icon span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ui-spacing-xl);
+    height: var(--ui-spacing-xl);
+    color: currentColor;
+}
+
+/* 3. Sizes */
+.ui-button-small {
+    padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
+    font-size: var(--ui-font-size-caption);
+    line-height: var(--ui-line-height-caption);
+    gap: var(--ui-spacing-xs);
+}
+
+.ui-button-small span {
+    font-size: 0.75rem;
+}
+
+.ui-button-medium {
+    padding: var(--ui-spacing-sm) var(--ui-spacing-md);
+    font-size: var(--ui-font-size-label);
+    line-height: var(--ui-line-height-label);
+    gap: var(--ui-spacing-xs);
+}
+
+.ui-button-medium span {
+    font-size: 0.85rem;
+}
+
+.ui-button-large {
+    padding: var(--ui-spacing-md) var(--ui-spacing-2xl);
+    font-size: var(--ui-font-size-body);
+    line-height: var(--ui-line-height-body);
+    gap: var(--ui-spacing-sm);
+}
+
+.ui-button-large span {
+    font-size: 1rem;
+}
+
+/* 4. Special Helpers / Components */
+.uob-button-special-img {
+    width: var(--ui-spacing-lg);
+    height: var(--ui-spacing-lg);
+}
+
+details.ui-dropdown[open] [class^="ui-button-"] .uob-button-special-img {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .ui-mobile-hide {
+        display: none !important;
+    }
+
+    .ui-mobile-show {
+        display: block !important;
+    }
+
+    .ui-mobile-flexWrap {
+        flex-wrap: wrap !important;
+    }
+
+    .ui-mobile-flexColumn {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* Standard responsive font scales mapping to member_platform variables */
+    h1,
+    .p-ref-h1 {
+        font-size: var(--ui-font-size-h2) !important;
+        line-height: var(--ui-line-height-h2) !important;
+    }
+
+    h2,
+    .p-ref-h2 {
+        font-size: var(--ui-font-size-h3) !important;
+        line-height: var(--ui-line-height-h3) !important;
+    }
+
+    h3,
+    .p-ref-h3 {
+        font-size: var(--ui-font-size-h4) !important;
+        line-height: var(--ui-line-height-h4) !important;
+    }
+}

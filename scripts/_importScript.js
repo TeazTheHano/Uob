@@ -229,17 +229,17 @@ const landingPage = {
         {
             target: '#intro2_placeholder',
             component: COMPONENTS.INTRO2,
-            afterLoad() {
-                if (typeof initIntro2Slider === 'function') {
-                    initIntro2Slider('section-intro2', [
-                        'section-intro2-privilege-selected-1',
-                        'section-intro2-privilege-selected-2'
-                    ]);
-                }
-                if (typeof initLogoMarquees === 'function') {
-                    initLogoMarquees();
-                }
-            }
+            // afterLoad() {
+            //     if (typeof initIntro2Slider === 'function') {
+            //         initIntro2Slider('section-intro2', [
+            //             'section-intro2-privilege-selected-1',
+            //             'section-intro2-privilege-selected-2'
+            //         ]);
+            //     }
+            //     if (typeof initLogoMarquees === 'function') {
+            //         initLogoMarquees();
+            //     }
+            // }
         },
         {
             target: '#landingContact_placeholder',

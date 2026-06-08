@@ -699,159 +699,215 @@ function initLogoMarquees() {
 // CALLING FUNCTIONs
 headerScroll();
 
-function landingPageCall() {
-    sliderControl({
-        listElementQuery: '#Course_content_cards',
-        childElement: '.card',
-        nextBtnQuery: '#Course .cards-slider-controller-next',
-        prevBtnQuery: '#Course .cards-slider-controller-prev',
-        filtersQuery: 'input[name="Course_content_cate"]'
-    });
-    sliderControl({
-        listElementQuery: '#News_content_cards',
-        childElement: '.card',
-        nextBtnQuery: '#News .cards-slider-controller-next',
-        prevBtnQuery: '#News .cards-slider-controller-prev',
-        filtersQuery: 'input[name="News_content_cate"]'
-    });
+// function landingPageCall() {
+//     sliderControl({
+//         listElementQuery: '#Course_content_cards',
+//         childElement: '.card',
+//         nextBtnQuery: '#Course .cards-slider-controller-next',
+//         prevBtnQuery: '#Course .cards-slider-controller-prev',
+//         filtersQuery: 'input[name="Course_content_cate"]'
+//     });
+//     sliderControl({
+//         listElementQuery: '#News_content_cards',
+//         childElement: '.card',
+//         nextBtnQuery: '#News .cards-slider-controller-next',
+//         prevBtnQuery: '#News .cards-slider-controller-prev',
+//         filtersQuery: 'input[name="News_content_cate"]'
+//     });
 
-    trackMousePosition('#Programme')
-    trackMousePosition('#Contact')
-    trackMousePosition('#hero')
-    eventQuarterText('#Event_content_cards .card');
-    autoNextSelection({
-        container: '#hero',
-        itemSelector: 'input[name="hero"]',
-        interval: 5000,
-        type: 'radio'
-    });
+//     trackMousePosition('#Programme')
+//     trackMousePosition('#Contact')
+//     trackMousePosition('#hero')
+//     eventQuarterText('#Event_content_cards .card');
+//     autoNextSelection({
+//         container: '#hero',
+//         itemSelector: 'input[name="hero"]',
+//         interval: 5000,
+//         type: 'radio'
+//     });
 
-    autoSlide({
-        listElementQuery: '#Feedback_content_cards',
-        itemQuery: '.card',
-        delayTime: 3000
-    });
-    PagingContent({
-        containerQuery: '#Partner_content_cards',
-        itemsQuery: '.card',
-        paginationContainerQuery: '#Partner_pagination',
-        itemsPerPage: 10,
-        autoNextTime: 5000,
-    });
-    initIntro2Slider();
-    initIntro2Slider('section-privile-intro2', [
-        'section-privile-intro2-privilege-selected-1',
-        'section-privile-intro2-privilege-selected-2'
-    ]);
-    initLogoMarquees();
-}
+//     autoSlide({
+//         listElementQuery: '#Feedback_content_cards',
+//         itemQuery: '.card',
+//         delayTime: 3000
+//     });
+//     PagingContent({
+//         containerQuery: '#Partner_content_cards',
+//         itemsQuery: '.card',
+//         paginationContainerQuery: '#Partner_pagination',
+//         itemsPerPage: 10,
+//         autoNextTime: 5000,
+//     });
+//     initIntro2Slider();
+//     initIntro2Slider('section-privile-intro2', [
+//         'section-privile-intro2-privilege-selected-1',
+//         'section-privile-intro2-privilege-selected-2'
+//     ]);
+//     initLogoMarquees();
+// }
 
-function courseListPageCall() {
-    PagingContent({
-        containerQuery: '#Course_content_cards',
-        itemsQuery: '.card',
-        paginationContainerQuery: '#Course_pagination',
-        itemsPerPage: 9,
-        filtersQuery: 'input[name="Course_content_cate"]'
-    })
-    sliderControl({
-        listElementQuery: '#Related_content_cards',
-        childElement: '.card',
-        nextBtnQuery: '#Related .cards-slider-controller-next',
-        prevBtnQuery: '#Related .cards-slider-controller-prev'
-    });
-}
+// function courseListPageCall() {
+//     PagingContent({
+//         containerQuery: '#Course_content_cards',
+//         itemsQuery: '.card',
+//         paginationContainerQuery: '#Course_pagination',
+//         itemsPerPage: 9,
+//         filtersQuery: 'input[name="Course_content_cate"]'
+//     })
+//     sliderControl({
+//         listElementQuery: '#Related_content_cards',
+//         childElement: '.card',
+//         nextBtnQuery: '#Related .cards-slider-controller-next',
+//         prevBtnQuery: '#Related .cards-slider-controller-prev'
+//     });
+// }
 
-function eventListPageCall() {
-    PagingContent({
-        containerQuery: '#Course_content_cards',
-        itemsQuery: '.card',
-        paginationContainerQuery: '#Course_pagination',
-        itemsPerPage: 12,
-        filtersQuery: 'input[name="Course_content_cate"]'
-    })
-    eventQuarterText('#Course_content_cards .card');
-    formFillFromHtmlContent({
-        formQuery: '[id="65218bb1-57eb-dc54-4d0d-00cf5ac21e86"].after-login-show',
+// function eventListPageCall() {
+//     PagingContent({
+//         containerQuery: '#Course_content_cards',
+//         itemsQuery: '.card',
+//         paginationContainerQuery: '#Course_pagination',
+//         itemsPerPage: 12,
+//         filtersQuery: 'input[name="Course_content_cate"]'
+//     })
+//     eventQuarterText('#Course_content_cards .card');
+//     formFillFromHtmlContent({
+//         formQuery: '[id="65218bb1-57eb-dc54-4d0d-00cf5ac21e86"].after-login-show',
 
-        formTargetQueryIds: [
-            'input#fullName',
-            'input#mobile',
-            'input#email',
-        ],
+//         formTargetQueryIds: [
+//             'input#fullName',
+//             'input#mobile',
+//             'input#email',
+//         ],
 
-        contentQueryIds: [
-            '#CourseDetailDescription #AfterLogin span.displayName',
-            '#CourseDetailDescription #AfterLogin span.displayMobile',
-            '#CourseDetailDescription #AfterLogin span.displayEmail',
-        ]
-    })
-    sliderControl({
-        listElementQuery: '#Course_content_cards',
-        childElement: '.card',
-        nextBtnQuery: '#Related .cards-slider-controller-next',
-        prevBtnQuery: '#Related .cards-slider-controller-prev'
-    });
-    observeAndTrigger({
-        observeTargetQuery: '#EventSignUp',
-        triggerCondition: 'h4.check:not(:empty)',
-        triggerSelector: '#EventSignUp',
-        triggerEventOn: 'notification-show',
-        triggerEventOff: 'notification-hide',
-        offDelay: 3000
-    });
+//         contentQueryIds: [
+//             '#CourseDetailDescription #AfterLogin span.displayName',
+//             '#CourseDetailDescription #AfterLogin span.displayMobile',
+//             '#CourseDetailDescription #AfterLogin span.displayEmail',
+//         ]
+//     })
+//     sliderControl({
+//         listElementQuery: '#Course_content_cards',
+//         childElement: '.card',
+//         nextBtnQuery: '#Related .cards-slider-controller-next',
+//         prevBtnQuery: '#Related .cards-slider-controller-prev'
+//     });
+//     observeAndTrigger({
+//         observeTargetQuery: '#EventSignUp',
+//         triggerCondition: 'h4.check:not(:empty)',
+//         triggerSelector: '#EventSignUp',
+//         triggerEventOn: 'notification-show',
+//         triggerEventOff: 'notification-hide',
+//         offDelay: 3000
+//     });
 
-    if (window.location.pathname.includes('vc-101-hieu-ve-venture-capital-tong-quan-cho-founder')) {
-        disableEventFormWhenReady();
-        console.log('disableEventForm');
+//     if (window.location.pathname.includes('vc-101-hieu-ve-venture-capital-tong-quan-cho-founder')) {
+//         disableEventFormWhenReady();
+//         console.log('disableEventForm');
 
+//     }
+// }
+
+// function disableEventFormWhenReady() {
+//     const observer = new MutationObserver(() => {
+//         let form = document.querySelector('[id="65218bb1-57eb-dc54-4d0d-00cf5ac21e86"].after-login-show');
+
+//         if (form) {
+//             let button = form.querySelector('button[type="submit"]');
+
+//             if (button) {
+//                 button.disabled = true;
+//                 button.style.cursor = 'not-allowed';
+//                 button.title = 'Form đã đóng đăng ký';
+//                 console.log('✅ Form disabled via observer');
+//                 observer.disconnect(); // stop luôn
+//             }
+//         }
+//     });
+
+//     observer.observe(document.body, {
+//         childList: true,
+//         subtree: true,
+//     });
+// }
+
+// switch (true) {
+//     case window.location.pathname.includes('/pages/danh-sach-khoa-hoc') ||
+//         window.location.pathname.includes('/danh-sach-khoa-hoc') ||
+//         window.location.pathname.includes('/pages/danh-sach-bai-viet/') ||
+//         window.location.pathname.includes('/danh-sach-bai-viet/') ||
+//         window.location.pathname.includes('/pages/bai-viet/') ||
+//         window.location.pathname.includes('/bai-viet/') ||
+//         window.location.pathname.includes('/pages/san-pham/') ||
+//         window.location.pathname.includes('/san-pham/')
+//         :
+//         courseListPageCall();
+//         break;
+
+//     case window.location.pathname.includes('/pages/danh-sach-su-kien/') ||
+//         window.location.pathname.includes('/danh-sach-su-kien') ||
+//         window.location.pathname.includes('/pages/su-kien') ||
+//         window.location.pathname.includes('/su-kien')
+//         :
+//         eventListPageCall();
+//         break;
+//     default:
+//         landingPageCall();
+//         break;
+// }
+
+function runWhenExists(elementId, callback) {
+    const check = () => {
+        const el = document.getElementById(elementId);
+        if (el) {
+            callback(el);
+            return true;
+        }
+        return false;
+    };
+
+    if (check()) return;
+
+    const startObserver = () => {
+        if (check()) return;
+        const observer = new MutationObserver((mutations, obs) => {
+            if (check()) {
+                obs.disconnect();
+            }
+        });
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    };
+
+    if (document.body) {
+        startObserver();
+    } else {
+        window.addEventListener('DOMContentLoaded', startObserver);
     }
 }
 
-function disableEventFormWhenReady() {
-    const observer = new MutationObserver(() => {
-        let form = document.querySelector('[id="65218bb1-57eb-dc54-4d0d-00cf5ac21e86"].after-login-show');
-
-        if (form) {
-            let button = form.querySelector('button[type="submit"]');
-
-            if (button) {
-                button.disabled = true;
-                button.style.cursor = 'not-allowed';
-                button.title = 'Form đã đóng đăng ký';
-                console.log('✅ Form disabled via observer');
-                observer.disconnect(); // stop luôn
-            }
-        }
-    });
-
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-    });
+const afterLoad = () => {
+    if (typeof initIntro2Slider === 'function') {
+        runWhenExists('section-intro2', () => {
+            initIntro2Slider('section-intro2', [
+                'section-intro2-privilege-selected-1',
+                'section-intro2-privilege-selected-2'
+            ]);
+        });
+        runWhenExists('section-privile-intro2', () => {
+            initIntro2Slider('section-privile-intro2', [
+                'section-privile-intro2-privilege-selected-1',
+                'section-privile-intro2-privilege-selected-2'
+            ]);
+        });
+    }
+    if (typeof initLogoMarquees === 'function') {
+        runWhenExists('section-intro2-logoSlider', () => {
+            initLogoMarquees();
+        });
+    }
 }
 
-switch (true) {
-    case window.location.pathname.includes('/pages/danh-sach-khoa-hoc') ||
-        window.location.pathname.includes('/danh-sach-khoa-hoc') ||
-        window.location.pathname.includes('/pages/danh-sach-bai-viet/') ||
-        window.location.pathname.includes('/danh-sach-bai-viet/') ||
-        window.location.pathname.includes('/pages/bai-viet/') ||
-        window.location.pathname.includes('/bai-viet/') ||
-        window.location.pathname.includes('/pages/san-pham/') ||
-        window.location.pathname.includes('/san-pham/')
-        :
-        courseListPageCall();
-        break;
-
-    case window.location.pathname.includes('/pages/danh-sach-su-kien/') ||
-        window.location.pathname.includes('/danh-sach-su-kien') ||
-        window.location.pathname.includes('/pages/su-kien') ||
-        window.location.pathname.includes('/su-kien')
-        :
-        eventListPageCall();
-        break;
-    default:
-        landingPageCall();
-        break;
-}
+afterLoad();
