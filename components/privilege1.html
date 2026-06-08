@@ -1,32 +1,32 @@
-<div>
+<div id="9947fe6b-21e3-e303-dc0b-0984c5e813e3">
   <style>
-    #section-privilege-intro1 .bg {
+    #section-step-intro1 .bg {
       background-color: #f1f2f5;
     }
 
-    #section-privilege-intro1 .bg img {
+    #section-step-intro1 .bg img {
       object-position: top left;
     }
 
-    #section-privilege-intro1-content {
+    #section-step-intro1-content {
       padding: var(--ui-spacing-11xl) var(--ui-spacing-xl);
       gap: var(--ui-spacing-6xl);
     }
 
-    #section-privilege-intro1-content .left {
+    #section-step-intro1-content .left {
       height: fit-content;
     }
 
-    #section-privilege-intro1-content .right {
+    #section-step-intro1-content .right {
       overflow-y: hidden;
     }
 
-    #section-privilege-intro1-content .container {
+    #section-step-intro1-content .container {
       display: grid;
       grid-template-columns: auto 1fr;
     }
 
-    #section-privilege-intro1-content .dot {
+    #section-step-intro1-content .dot {
       height: var(--ui-spacing-xl);
       width: var(--ui-spacing-xl);
       border-radius: 100%;
@@ -34,7 +34,7 @@
       background-color: var(--ui-bg);
     }
 
-    #section-privilege-intro1-content .line {
+    #section-step-intro1-content .line {
       width: 1px;
       height: calc(100% + var(--ui-spacing-xl));
       top: 0;
@@ -43,14 +43,14 @@
       opacity: 0.2;
     }
 
-    #section-privilege-intro1-content .content {
+    #section-step-intro1-content .content {
       background-color: var(--ui-bg);
       padding: var(--ui-spacing-xl);
       border-radius: var(--ui-spacing-2xs);
     }
 
-    #section-privilege-intro1-content .container:hover .dot,
-    #section-privilege-intro1-content .container:hover .line {
+    #section-step-intro1-content .container:hover .dot,
+    #section-step-intro1-content .container:hover .line {
       background-color: var(--ui-primary);
       border: none;
       transition: var(--ui-transition);
@@ -58,38 +58,45 @@
     }
 
     @media (min-width: 768px) {
-      #section-privilege-intro1 .bg img {
+      #section-step-intro1 .bg img {
         transform: unset;
       }
 
-      #section-privilege-intro1-content {
+      #section-step-intro1-content {
         grid-template-columns: minmax(280px, 40%) minmax(0, 1fr);
       }
 
-      #section-privilege-intro1-content .left {
+      #section-step-intro1-content .left {
         height: 100%;
         justify-content: space-between;
       }
     }
   </style>
 
-  <section id="section-privilege-intro1" class="ui-relative ui-w-full">
+  <section id="section-step-intro1" class="ui-relative ui-w-full">
     <div class="bg">
-      <img binding-imgpath="pattern" src="/assets/img/Pattern.png" alt="" />
+      <img
+        binding-imgpath="https://static.izzi.asia/images/2026/6/8/2606088690_Pattern.png"
+        src="https://static.izzi.asia/images/2026/6/8/2606088690_Pattern.png"
+        alt=""
+      />
     </div>
 
     <div
-      id="section-privilege-intro1-content"
+      id="section-step-intro1-content"
       class="ui-col2-grid ui-w-full ui-w-max-breakpoint-2xl"
     >
       <div class="left ui-gap-xl ui-flex-col">
         <div class="ui-flex-col ui-gap-xl">
           <div>
-            <p class="ui-tag" binding-name="3 bước đơn giản có ngay ưu đãi">
+            <p
+              class="ui-tag"
+              binding-name="              3 bước đơn giản có ngay ưu đãi            "
+            >
               3 bước đơn giản có ngay ưu đãi
             </p>
-            <h2 binding-header-lv2="Hướng dẫn sử dụng UOB Privilege">
-              Hướng dẫn sử dụng UOB Privilege
+            <h2 binding-header-lv2="Hướng dẫn sử dụng UOB step">
+              Hướng dẫn sử dụng UOB step
             </h2>
           </div>
         </div>
@@ -104,11 +111,11 @@
           <div class="content">
             <h3 binding-name="Nhận mã quà tặng">Nhận mã quà tặng</h3>
             <p
-              binding-name="Nhận mã quà tặng từ ngân hàng UOB thông qua tài khoản Zalo/SMS/email - chỉ áp dụng đối với Chương Trình Tặng 1 Set Menu Fine privilege (dành riêng cho khách hàng đủ điều kiện)"
+              binding-name="              Nhận mã quà tặng từ ngân hàng UOB thông qua tài khoản              Zalo/SMS/email - chỉ áp dụng đối với Chương Trình Tặng 1 Set Menu              Fine step (dành riêng cho khách hàng đủ điều kiện)            "
             >
               Nhận mã quà tặng từ ngân hàng UOB thông qua tài khoản
               Zalo/SMS/email - chỉ áp dụng đối với Chương Trình Tặng 1 Set Menu
-              Fine privilege (dành riêng cho khách hàng đủ điều kiện)
+              Fine step (dành riêng cho khách hàng đủ điều kiện)
             </p>
           </div>
         </div>
@@ -118,11 +125,13 @@
             <div class="line ui-absolute"></div>
           </div>
           <div class="content">
-            <h3 binding-name="Chọn nhà hàng yêu thích">
+            <h3
+              binding-name="              Chọn nhà hàng yêu thích            "
+            >
               Chọn nhà hàng yêu thích
             </h3>
             <p
-              binding-name="Lựa chọn thương hiệu nhà hàng yêu thích trong danh sách hơn 30 thương hiệu"
+              binding-name="              Lựa chọn thương hiệu nhà hàng yêu thích trong danh sách hơn 30              thương hiệu            "
             >
               Lựa chọn thương hiệu nhà hàng yêu thích trong danh sách hơn 30
               thương hiệu
@@ -137,7 +146,7 @@
           <div class="content">
             <h3 binding-name="Đặt bàn">Đặt bàn</h3>
             <p
-              binding-name="Đặt bàn thông qua website hoặc Tổng đài trợ lý đặt bàn"
+              binding-name="              Đặt bàn thông qua website hoặc Tổng đài trợ lý đặt bàn            "
             >
               Đặt bàn thông qua website hoặc Tổng đài trợ lý đặt bàn
             </p>

@@ -27,7 +27,7 @@
     }
 
     #section-dinning-detail2-content .item-containter[type="2"] img {
-      aspect-ratio: 16/9;
+      /* aspect-ratio: 16/9; */
     }
 
     #section-dinning-detail2-content:has(
@@ -35,10 +35,6 @@
       )
       .item-containter:not([type="3"]) {
       display: none;
-    }
-
-    #section-dinning-detail2-content .item-containter[type="3"] img {
-      aspect-ratio: 1;
     }
 
     #section-dinning-detail2-content {
@@ -102,10 +98,7 @@
       #section-dinning-detail2-content .item-containter[type="3"] {
         display: grid;
         grid-template-columns: 1fr 1fr;
-      }
-
-      #section-dinning-detail2-content .item-containter[type="2"] img {
-        aspect-ratio: 21/9;
+        gap: var(--ui-spacing-md);
       }
     }
   </style>
@@ -114,6 +107,7 @@
     <div class="bg"></div>
 
     <div
+      repeat="detaildata"
       id="section-dinning-detail2-content"
       class="ui-flex-col ui-w-full ui-w-max-breakpoint-2xl"
     >
@@ -165,19 +159,33 @@
         </div>
         <div class="item-containter ui-relative ui-col-justify-end" type="2">
           <img
-            binding-imgpath="Image 1"
-            src="/assets/img/Banner Dining Detail.png"
+            src="{{images|getthumbnailbyindex:1|getPath:?mode"
+            ="crop&amp;width"
+            ="1600&amp;height"
+            ="900}}"
             alt=""
           />
           <div>{{menu}}</div>
         </div>
         <div class="item-containter ui-relative ui-col-justify-end" type="3">
-          <img
-            binding-imgpath="Image 1"
-            src="/assets/img/Banner Dining Detail.png"
-            alt=""
-          />
-          <div>{{address}}</div>
+          <div repeat="addresses">
+            <iframe
+              width="100%"
+              height="300"
+              style="border: 0"
+              loading="lazy"
+              allowfullscreen
+              src="https://maps.google.com/maps?q={{detailAddress}}&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            >
+            </iframe>
+            <div>
+              <a
+                href="https://www.google.com/maps/search/{{detailAddress}}"
+                target="_blank"
+                >{{name}}: {{detailAddress}}</a
+              >
+            </div>
+          </div>
         </div>
       </div>
     </div>
