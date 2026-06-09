@@ -5,24 +5,18 @@
       display: none;
     }
 
-    #section-dinning-detail2 .ui-toggle-input:checked + .ui-toggle-label {
+    #section-dinning-detail2 .ui-toggle-input:checked+.ui-toggle-label {
       border-radius: none;
       color: var(--ui-primary, #a78072);
       border-bottom: 1px solid currentColor;
     }
 
     /* Filter items based on selected radio toggle */
-    #section-dinning-detail2-content:has(
-        #section-dinning-detail2-privilege-selected-1:checked
-      )
-      .item-containter:not([type="1"]) {
+    #section-dinning-detail2-content:has(#section-dinning-detail2-privilege-selected-1:checked) .item-containter:not([type="1"]) {
       display: none;
     }
 
-    #section-dinning-detail2-content:has(
-        #section-dinning-detail2-privilege-selected-2:checked
-      )
-      .item-containter:not([type="2"]) {
+    #section-dinning-detail2-content:has(#section-dinning-detail2-privilege-selected-2:checked) .item-containter:not([type="2"]) {
       display: none;
     }
 
@@ -30,10 +24,7 @@
       /* aspect-ratio: 16/9; */
     }
 
-    #section-dinning-detail2-content:has(
-        #section-dinning-detail2-privilege-selected-3:checked
-      )
-      .item-containter:not([type="3"]) {
+    #section-dinning-detail2-content:has(#section-dinning-detail2-privilege-selected-3:checked) .item-containter:not([type="3"]) {
       display: none;
     }
 
@@ -46,7 +37,7 @@
       height: fit-content;
     }
 
-    #section-dinning-detail2-content .left > div {
+    #section-dinning-detail2-content .left>div {
       display: grid;
       grid-template-columns: auto auto auto;
     }
@@ -95,7 +86,7 @@
         height: fit-content;
       }
 
-      #section-dinning-detail2-content .item-containter[type="3"] > div {
+      #section-dinning-detail2-content .item-containter[type="3"]>div {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--ui-spacing-md);
@@ -106,51 +97,22 @@
   <section id="section-dinning-detail2" class="ui-relative ui-w-full">
     <div class="bg"></div>
 
-    <div
-      repeat="detaildata"
-      id="section-dinning-detail2-content"
-      class="ui-flex-col ui-w-full ui-w-max-breakpoint-2xl"
-    >
+    <div repeat="detaildata" id="section-dinning-detail2-content" class="ui-flex-col ui-w-full ui-w-max-breakpoint-2xl">
       <div class="left ui-gap-xl ui-flex-col">
-        <h2 binding-header-lv2="Thông tin thêm">Thông tin thêm</h2>
+        <h2 binding-name="Thông tin thêm">Thông tin thêm</h2>
         <div class="ui-w-full">
-          <input
-            type="radio"
-            name="section-dinning-detail2-privilege-selected"
-            id="section-dinning-detail2-privilege-selected-1"
-            class="ui-toggle-input"
-            checked
-          />
-          <label
-            for="section-dinning-detail2-privilege-selected-1"
-            class="ui-w-full ui-toggle-label ui-button-medium"
-            binding-name="Điều kiện áp dụng"
-            >Điều kiện áp dụng</label
-          >
-          <input
-            type="radio"
-            name="section-dinning-detail2-privilege-selected"
-            id="section-dinning-detail2-privilege-selected-2"
-            class="ui-toggle-input"
-          />
-          <label
-            for="section-dinning-detail2-privilege-selected-2"
-            class="ui-w-full ui-toggle-label ui-button-medium"
-            binding-name="Thực đơn món tặng"
-            >Thực đơn món tặng</label
-          >
-          <input
-            type="radio"
-            name="section-dinning-detail2-privilege-selected"
-            id="section-dinning-detail2-privilege-selected-3"
-            class="ui-toggle-input"
-          />
-          <label
-            for="section-dinning-detail2-privilege-selected-3"
-            class="ui-w-full ui-toggle-label ui-button-medium"
-            binding-name="Cơ sở áp dụng"
-            >Cơ sở áp dụng</label
-          >
+          <input type="radio" name="section-dinning-detail2-privilege-selected"
+            id="section-dinning-detail2-privilege-selected-1" class="ui-toggle-input" checked />
+          <label for="section-dinning-detail2-privilege-selected-1" class="ui-w-full ui-toggle-label ui-button-medium"
+            binding-name="Điều kiện áp dụng">Điều kiện áp dụng</label>
+          <input type="radio" name="section-dinning-detail2-privilege-selected"
+            id="section-dinning-detail2-privilege-selected-2" class="ui-toggle-input" />
+          <label for="section-dinning-detail2-privilege-selected-2" class="ui-w-full ui-toggle-label ui-button-medium"
+            binding-name="Thực đơn món tặng">Thực đơn món tặng</label>
+          <input type="radio" name="section-dinning-detail2-privilege-selected"
+            id="section-dinning-detail2-privilege-selected-3" class="ui-toggle-input" />
+          <label for="section-dinning-detail2-privilege-selected-3" class="ui-w-full ui-toggle-label ui-button-medium"
+            binding-name="Cơ sở áp dụng">Cơ sở áp dụng</label>
         </div>
       </div>
       <div class="right">
@@ -158,32 +120,17 @@
           {{description}}
         </div>
         <div class="item-containter ui-relative ui-col-justify-end" type="2">
-          <img
-            src="{{images|getthumbnailbyindex:1|getPath:?mode"
-            ="crop&amp;width"
-            ="1600&amp;height"
-            ="900}}"
-            alt=""
-          />
+          <img src="{{images|getthumbnailbyindex:1|getPath:?mode"="crop&amp;width"="1600&amp;height"="900}}" alt="" />
           <div>{{menu}}</div>
         </div>
         <div class="item-containter ui-relative ui-col-justify-end" type="3">
           <div repeat="addresses">
-            <iframe
-              width="100%"
-              height="300"
-              style="border: 0"
-              loading="lazy"
-              allowfullscreen
-              src="https://maps.google.com/maps?q={{detailAddress}}&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            >
+            <iframe width="100%" height="300" style="border: 0" loading="lazy" allowfullscreen
+              src="https://maps.google.com/maps?q={{detailAddress}}&t=&z=15&ie=UTF8&iwloc=&output=embed">
             </iframe>
             <div>
-              <a
-                href="https://www.google.com/maps/search/{{detailAddress}}"
-                target="_blank"
-                >{{name}}: {{detailAddress}}</a
-              >
+              <a href="https://www.google.com/maps/search/{{detailAddress}}" target="_blank">{{name}}:
+                {{detailAddress}}</a>
             </div>
           </div>
         </div>

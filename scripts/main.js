@@ -896,12 +896,12 @@ const afterLoad = () => {
                 'section-intro2-privilege-selected-2'
             ]);
         });
-        runWhenExists('section-privile-intro2', () => {
-            initIntro2Slider('section-privile-intro2', [
-                'section-privile-intro2-privilege-selected-1',
-                'section-privile-intro2-privilege-selected-2'
-            ]);
-        });
+        // runWhenExists('section-privile-intro2', () => {
+        //     initIntro2Slider('section-privile-intro2', [
+        //         'section-privile-intro2-privilege-selected-1',
+        //         'section-privile-intro2-privilege-selected-2'
+        //     ]);
+        // });
     }
     if (typeof initLogoMarquees === 'function') {
         runWhenExists('section-intro2-logoSlider', () => {
@@ -914,7 +914,7 @@ function initPrivilege2Popup() {
     // Auto reset form to step 1 when popup is closed
     const closeControl = document.getElementById('popup-privilege2-close');
     if (closeControl) {
-        closeControl.addEventListener('change', function() {
+        closeControl.addEventListener('change', function () {
             if (this.checked) {
                 const firstStep = document.getElementById('privilege2-step-1');
                 if (firstStep) firstStep.checked = true;
@@ -923,19 +923,19 @@ function initPrivilege2Popup() {
     }
 
     // Validate required fields before moving to next step
-    document.querySelectorAll('.priv2-next-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
+    document.querySelectorAll('.priv2-next-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
             const form = btn.closest('form');
             if (!form) return;
 
             // Find all invalid required fields in this form
-            const invalid = Array.from(form.querySelectorAll('[required]')).filter(function(el) {
+            const invalid = Array.from(form.querySelectorAll('[required]')).filter(function (el) {
                 return !el.validity.valid;
             });
 
             if (invalid.length > 0) {
                 // Highlight each invalid field
-                invalid.forEach(function(el) {
+                invalid.forEach(function (el) {
                     el.classList.add('priv2-field-error');
                     el.addEventListener('input', function onFix() {
                         el.classList.remove('priv2-field-error');
