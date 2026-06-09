@@ -5,7 +5,7 @@
       display: none;
     }
 
-    #section-dinning-intro2 .ui-toggle-input:checked + .ui-toggle-label {
+    #section-dinning-intro2 .ui-toggle-input:checked+.ui-toggle-label {
       border-radius: none;
       color: var(--ui-primary, #a78072);
       border-bottom: 1px solid currentColor;
@@ -15,9 +15,7 @@
       display: none;
     }
 
-    #section-dinning-intro2
-      .ui-toggle-input[type="radio"]:checked
-      + #section-dinning-intro2-privilege-all {
+    #section-dinning-intro2 .ui-toggle-input[type="radio"]:checked+#section-dinning-intro2-privilege-all {
       background-image: none;
     }
 
@@ -27,10 +25,7 @@
     }
 
     /* Filter items based on selected radio toggle */
-    #section-dinning-intro2-content:has(
-        #section-dinning-intro2-privilege-selected:checked
-      )
-      .item-containter:not([type="2"]) {
+    #section-dinning-intro2-content:has(#section-dinning-intro2-privilege-selected:checked) .item-containter:not([type="2"]) {
       display: none;
     }
 
@@ -43,7 +38,7 @@
       height: fit-content;
     }
 
-    #section-dinning-intro2-content .left > div {
+    #section-dinning-intro2-content .left>div {
       display: grid;
       grid-template-columns: auto auto;
     }
@@ -127,49 +122,38 @@
   <section id="section-dinning-intro2" class="ui-relative ui-w-full">
     <div class="bg"></div>
 
-    <div
-      id="section-dinning-intro2-content"
-      class="ui-flex-col ui-w-full ui-w-max-breakpoint-2xl"
-    >
+    <div id="section-dinning-intro2-content" class="ui-flex-col ui-w-full ui-w-max-breakpoint-2xl">
       <div class="left ui-gap-xl ui-flex-col">
         <h2 binding-header-lv2="Các chương trình đặc quyền Ưu tiên đẳng cấp">
           Các chương trình đặc quyền Ưu tiên đẳng cấp
         </h2>
         <div class="ui-w-full">
-          <input
-            type="radio"
-            name="section-dinning-intro2-privilege-selected"
-            id="section-dinning-intro2-privilege-all"
-            class="ui-toggle-input"
-            checked
-          />
-          <label
-            for="section-dinning-intro2-privilege-all"
-            class="ui-w-full ui-toggle-label ui-button-medium"
-            binding-name="Tất cả"
-            >Tất cả</label
-          >
-          <input
-            type="radio"
-            name="section-dinning-intro2-privilege-selected"
-            id="section-dinning-intro2-privilege-selected"
-            class="ui-toggle-input"
-          />
-          <label
-            for="section-dinning-intro2-privilege-selected"
-            class="ui-w-full ui-toggle-label ui-button-medium"
-            binding-name="Chương trình tặng món"
-            >Chương trình tặng món</label
-          >
+          <input type="radio" name="section-dinning-intro2-privilege-selected" id="section-dinning-intro2-privilege-all"
+            class="ui-toggle-input" checked />
+          <label for="section-dinning-intro2-privilege-all" class="ui-w-full ui-toggle-label ui-button-medium"
+            binding-name="Tất cả">Tất cả</label>
+          <input type="radio" name="section-dinning-intro2-privilege-selected"
+            id="section-dinning-intro2-privilege-selected" class="ui-toggle-input" />
+          <label for="section-dinning-intro2-privilege-selected" class="ui-w-full ui-toggle-label ui-button-medium"
+            binding-name="Chương trình tặng món">Chương trình tặng món</label>
         </div>
       </div>
       <div class="right ui-gap-sm">
-        <a
-          repeat="product|param:categories.id:85bab2ca-72a8-3f2f-cd5d-3ef1e675f11e|sort:createdDate:desc"
-          href="/{{languageCode}}/san-pham/{{friendlyUrl}}"
-          type="1"
-          class="item-containter ui-relative ui-col-justify-end"
-        >
+        <a repeat="product|param:categories.id:85bab2ca-72a8-3f2f-cd5d-3ef1e675f11e|sort:createdDate:desc"
+          href="/{{languageCode}}/san-pham/{{friendlyUrl}}" type="1"
+          class="item-containter ui-relative ui-col-justify-end">
+          <div class="content ui-gap-xl ui-flex-col">
+            <div class="ui-gap-xl ui-flex-col">
+              <h4>{{name}}</h4>
+            </div>
+          </div>
+          <div class="bg">
+            <img src="https://static.izzi.asia{{images.path}}" alt="{{name}}" />
+          </div>
+        </a>
+        <a repeat="product|param:categories.id:d295cfd7-4349-adb6-b39e-9fb10c7f8d7d|sort:createdDate:desc"
+          href="/{{languageCode}}/san-pham/{{friendlyUrl}}" type="2"
+          class="item-containter ui-relative ui-col-justify-end">
           <div class="content ui-gap-xl ui-flex-col">
             <div class="ui-gap-xl ui-flex-col">
               <h4>{{name}}</h4>

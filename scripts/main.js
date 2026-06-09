@@ -910,4 +910,58 @@ const afterLoad = () => {
     }
 }
 
+function initPrivilege2Popup() {
+    // Auto reset form to step 1 when popup is closed
+    const closeControl = document.getElementById('popup-privilege2-close');
+    if (closeControl) {
+        closeControl.addEventListener('change', function() {
+            if (this.checked) {
+                const firstStep = document.getElementById('privilege2-step-1');
+                if (firstStep) firstStep.checked = true;
+            }
+        });
+    }
+
+    // Validate required fields before moving to next step
+    document.querySelectorAll('.priv2-next-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const form = btn.closest('form');
+            if (!form) return;
+
+            // Find all invalid required fields in this form
+            const invalid = Array.from(form.querySelectorAll('[required]')).filter(function(el) {
+                return !el.validity.valid;
+            });
+
+            if (invalid.length > 0) {
+                // Highlight each invalid field
+                invalid.forEach(function(el) {
+                    el.classList.add('priv2-field-error');
+                    el.addEventListener('input', function onFix() {
+                        el.classList.remove('priv2-field-error');
+                        el.removeEventListener('input', onFix);
+                    });
+                    el.addEventListener('change', function onFix() {
+                        el.classList.remove('priv2-field-error');
+                        el.removeEventListener('change', onFix);
+                    });
+                });
+                // Scroll first invalid into view
+                invalid[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                invalid[0].focus();
+                return;
+            }
+
+            // All valid — advance to next step
+            const nextStepId = btn.getAttribute('data-next-step');
+            const nextRadio = document.getElementById(nextStepId);
+            if (nextRadio) nextRadio.checked = true;
+        });
+    });
+}
+
 afterLoad();
+
+runWhenExists('popupPrivilege2', () => {
+    initPrivilege2Popup();
+});

@@ -108,7 +108,7 @@
 
         @media (min-width: 768px) {
             #popupDinning {
-                max-width: 50vw;
+                max-width: 600px;
             }
         }
     </style>
@@ -118,15 +118,16 @@
         <label for="popup-dinning-close" class="popup-dinning-overlay"></label>
 
         <div id="popupDinning">
-            <img src="https://static.izzi.asia/images/2026/6/8/2606085423_b455cde8378a735ff31d3bedf9f8c1382f9d9f19.png" binding-imgpath="https://static.izzi.asia/images/2026/6/8/2606085423_b455cde8378a735ff31d3bedf9f8c1382f9d9f19.png" alt="logo">
+            <img src="https://static.izzi.asia/images/2026/6/8/2606088923_574ec0ed80f8b7edcd239ddd51a232ce69152e04.png"
+                binding-imgpath="https://static.izzi.asia/images/2026/6/8/2606088923_574ec0ed80f8b7edcd239ddd51a232ce69152e04.png"
+                alt="logo">
             <label for="popup-dinning-close" class="popup-close">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
             </label>
             <div class="ui-flex-col ui-gap-md">
-                <h1 binding-name="SORAE - Mordern Japanese Restaurant" class="ui-text-center">SORAE - Mordern Japanese
-                    Restaurant</h1>
+                <h1 class="ui-text-center">{{name}}</h1>
                 <p class="ui-font-label ui-text-center"
                     binding-name="Mã kích hoạt được in trên thư mời sử dụng dịch vụ hoặc liên hệ với Hotline (028) 7305 6896 để kiểm tra thông tin">
                     Mã kích hoạt được in trên thư mời sử dụng dịch vụ hoặc liên hệ với Hotline (028) 7305 6896 để kiểm

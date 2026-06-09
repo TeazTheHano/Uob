@@ -1218,3 +1218,8 @@ details.ui-dropdown[open] [class^="ui-button-"] .uob-button-special-img {
         line-height: var(--ui-line-height-h4) !important;
     }
 }
+
+/* Ghi đè CSS cho các đối tượng có ID chứa cụm "content" */
+[id*="content"] {
+    padding: calc(var(--ui-spacing-11xl) * 1.5) var(--ui-spacing-xl) !important;
+}

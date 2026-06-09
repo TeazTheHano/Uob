@@ -61,42 +61,25 @@
 
   <section id="section-dinning-detail1" class="ui-relative ui-w-full">
     <div class="bg">
-      <img
-        binding-imgpath="https://static.izzi.asia/images/2026/6/8/2606088690_Pattern.png"
-        src="https://static.izzi.asia/images/2026/6/8/2606088690_Pattern.png"
-        alt=""
-      />
+      <img binding-imgpath="https://static.izzi.asia/images/2026/6/8/2606088690_Pattern.png"
+        src="https://static.izzi.asia/images/2026/6/8/2606088690_Pattern.png" alt="" />
     </div>
 
-    <div
-      id="section-dinning-detail1-content"
-      repeat="detaildata"
-      class="ui-col2-grid ui-w-full ui-w-max-breakpoint-2xl"
-    >
+    <div id="section-dinning-detail1-content" repeat="detaildata"
+      class="ui-col2-grid ui-w-full ui-w-max-breakpoint-2xl">
       <div class="left ui-gap-xl ui-flex-col">
         <div class="ui-flex-col ui-gap-xl">
           <h2>{{name}}</h2>
           <p class="ui-text-justify">{{subDescription}}</p>
         </div>
         <div class="ui-gap-md cta">
-          <label
-            for="popup-dinning-open"
-            class="ui-button-primary ui-button-large ui-center"
-            style="cursor: pointer"
-          >
+          <label for="popup-dinning-open" class="ui-button-primary ui-button-large ui-center" style="cursor: pointer">
             <p binding-btntext="Đặt bàn ngay">Đặt bàn ngay</p>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_424_816)">
                 <path
                   d="M14.3331 0H5.99976V2H12.5858L0.0170898 14.5687L1.43109 15.9827L13.9998 3.414V10H15.9998V1.66667C15.9998 0.748 15.2524 0 14.3331 0Z"
-                  fill="currentColor"
-                />
+                  fill="currentColor" />
               </g>
               <defs>
                 <clipPath id="clip0_424_816">
@@ -112,14 +95,8 @@
         </div>
       </div>
       <div class="right">
-        <img
-          src="{{images|getthumbnailbyindex:0|getPath:?mode"
-          ="crop&amp;width"
-          ="1600&amp;height"
-          ="900}}"
-          alt=""
-        />
-        
+        <img src="{{images|getthumbnailbyindex:0|getPath:?mode"="crop&amp;width"="1600&amp;height"="900}}" alt="" />
+
       </div>
     </div>
   </section>

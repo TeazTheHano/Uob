@@ -94,7 +94,7 @@
             border: 1px solid var(--ui-bg);
             border-radius: 50%;
             aspect-ratio: 1;
-            width: var(--ui-spacing-xl);
+            width: var(--ui-spacing-4xl);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -106,8 +106,8 @@
             width: 100%;
             height: 1px;
             position: absolute;
-            top: calc(var(--ui-spacing-xl) / 2);
-            left: 50%;
+            top: calc(var(--ui-spacing-4xl) / 2);
+            left: 0;
             background-color: var(--ui-bg);
             z-index: -1;
             opacity: 0.5;
@@ -123,31 +123,67 @@
         }
 
         /* Active step styles in process container */
-        #privilege2-step-1:checked ~ .popup-privilege2-container #step-item-1 .num,
-        #privilege2-step-2:checked ~ .popup-privilege2-container #step-item-2 .num,
-        #privilege2-step-3:checked ~ .popup-privilege2-container #step-item-3 .num {
+        #privilege2-step-1:checked~.popup-privilege2-container #step-item-1 .num,
+        #privilege2-step-2:checked~.popup-privilege2-container #step-item-2 .num,
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-3 .num {
             background-color: var(--ui-primary);
             border-color: var(--ui-primary);
             color: var(--ui-on-primary);
         }
 
-        #privilege2-step-1:checked ~ .popup-privilege2-container #step-item-1 .label,
-        #privilege2-step-2:checked ~ .popup-privilege2-container #step-item-2 .label,
-        #privilege2-step-3:checked ~ .popup-privilege2-container #step-item-3 .label {
+        #privilege2-step-1:checked~.popup-privilege2-container #step-item-1 .label,
+        #privilege2-step-2:checked~.popup-privilege2-container #step-item-2 .label,
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-3 .label {
             color: var(--ui-primary);
             font-weight: var(--ui-font-weight-semibold);
         }
 
         /* Connecting lines active highlights */
-        #privilege2-step-2:checked ~ .popup-privilege2-container #step-item-1 .line,
-        #privilege2-step-3:checked ~ .popup-privilege2-container #step-item-1 .line {
+        #privilege2-step-2:checked~.popup-privilege2-container #step-item-1 .line,
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-1 .line {
             background-color: var(--ui-primary);
             opacity: 1;
         }
 
-        #privilege2-step-3:checked ~ .popup-privilege2-container #step-item-2 .line {
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-2 .line {
             background-color: var(--ui-primary);
             opacity: 1;
+        }
+
+        /* Completed step styles: steps before the active one show checkmark */
+        #privilege2-step-2:checked~.popup-privilege2-container #step-item-1 .num,
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-1 .num,
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-2 .num {
+            background-color: var(--ui-bg);
+            border-color: var(--ui-bg);
+            color: var(--ui-on-bg);
+            cursor: pointer;
+        }
+
+        /* Hide the number text for completed steps, show checkmark via ::after */
+        #privilege2-step-2:checked~.popup-privilege2-container #step-item-1 .num .step-number,
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-1 .num .step-number,
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-2 .num .step-number {
+            display: none;
+        }
+
+        #privilege2-step-2:checked~.popup-privilege2-container #step-item-1 .num::after,
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-1 .num::after,
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-2 .num::after {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 10px;
+            border-right: 2px solid var(--ui-on-bg);
+            border-bottom: 2px solid var(--ui-on-bg);
+            transform: rotate(45deg) translate(-1px, -1px);
+        }
+
+        /* Completed step num label hover effect */
+        #privilege2-step-2:checked~.popup-privilege2-container #step-item-1 .num:hover,
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-1 .num:hover,
+        #privilege2-step-3:checked~.popup-privilege2-container #step-item-2 .num:hover {
+            opacity: 0.75;
         }
 
         #popupPrivilege2 form {
@@ -162,15 +198,15 @@
             display: none;
         }
 
-        #privilege2-step-1:checked ~ .popup-privilege2-container form[type="1"] {
+        #privilege2-step-1:checked~.popup-privilege2-container form[type="1"] {
             display: block;
         }
 
-        #privilege2-step-2:checked ~ .popup-privilege2-container form[type="2"] {
+        #privilege2-step-2:checked~.popup-privilege2-container form[type="2"] {
             display: block;
         }
 
-        #privilege2-step-3:checked ~ .popup-privilege2-container form[type="3"] {
+        #privilege2-step-3:checked~.popup-privilege2-container form[type="3"] {
             display: block;
         }
 
@@ -210,8 +246,38 @@
 
         @media (min-width: 768px) {
             #popupPrivilege2 {
-                max-width: 50vw;
+                max-width: 600px;
             }
+        }
+
+        /* Invalid field highlight */
+        @keyframes priv2-shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-6px);
+            }
+
+            40% {
+                transform: translateX(6px);
+            }
+
+            60% {
+                transform: translateX(-4px);
+            }
+
+            80% {
+                transform: translateX(4px);
+            }
+        }
+
+        #popupPrivilege2 .priv2-field-error {
+            border-color: #ef4444 !important;
+            animation: priv2-shake 0.35s ease;
         }
     </style>
 
@@ -220,7 +286,9 @@
         <label for="popup-privilege2-close" class="popup-privilege2-overlay"></label>
 
         <div id="popupPrivilege2">
-            <img src="https://static.izzi.asia/images/2026/6/8/2606085423_b455cde8378a735ff31d3bedf9f8c1382f9d9f19.png" binding-imgpath="https://static.izzi.asia/images/2026/6/8/2606085423_b455cde8378a735ff31d3bedf9f8c1382f9d9f19.png" alt="logo">
+            <img src="https://static.izzi.asia/images/2026/6/8/2606088923_574ec0ed80f8b7edcd239ddd51a232ce69152e04.png"
+                binding-imgpath="https://static.izzi.asia/images/2026/6/8/2606088923_574ec0ed80f8b7edcd239ddd51a232ce69152e04.png"
+                alt="logo">
             <label for="popup-privilege2-close" class="popup-close">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -238,22 +306,22 @@
 
             <div class="process-container">
                 <div class="ui-relative" id="step-item-1">
-                    <div class="num">1</div>
+                    <label for="privilege2-step-1" class="num"><span class="step-number">1</span></label>
                     <div class="line"></div>
                     <div class="label" binding-name="Thông tin khách hàng">
                         Thông tin khách hàng
                     </div>
                 </div>
                 <div class="ui-relative" id="step-item-2">
-                    <div class="num">2</div>
+                    <label for="privilege2-step-2" class="num"><span class="step-number">2</span></label>
                     <div class="line"></div>
                     <div class="label" binding-name="Thông tin chuyến bay">
                         Thông tin chuyến bay
                     </div>
                 </div>
                 <div class="ui-relative" id="step-item-3">
-                    <div class="num">3</div>
-                    <!-- No line extending off the edge for step 3 -->
+                    <label for="privilege2-step-3" class="num"><span class="step-number">3</span></label>
+                    <div class="line"></div>
                     <div class="label" binding-name="Thông tin thêm">
                         Thông tin thêm
                     </div>
@@ -314,8 +382,9 @@
                         required minlength="10" maxlength="15" inputmode="numeric">
                 </div>
 
-                <label for="privilege2-step-2" class="ui-button-primary ui-button-medium ui-w-full ui-center" 
-                    style="cursor: pointer; margin-top: var(--ui-spacing-xl);">Nhập thông tin chuyến bay</label>
+                <button type="button" class="ui-button-primary ui-button-medium ui-w-full ui-center priv2-next-btn"
+                    data-next-step="privilege2-step-2" style="cursor: pointer; margin-top: var(--ui-spacing-xl);">Nhập
+                    thông tin chuyến bay</button>
             </form>
 
             <form action="" type="2">
@@ -388,8 +457,9 @@
 
                 </div>
 
-                <label for="privilege2-step-3" class="ui-button-primary ui-button-medium ui-w-full ui-center" 
-                    style="cursor: pointer; margin-top: var(--ui-spacing-xl);">Nhập thông tin thêm</label>
+                <button type="button" class="ui-button-primary ui-button-medium ui-w-full ui-center priv2-next-btn"
+                    data-next-step="privilege2-step-3" style="cursor: pointer; margin-top: var(--ui-spacing-xl);">Nhập
+                    thông tin thêm</button>
             </form>
 
             <form action="" type="3">
@@ -410,21 +480,4 @@
             </form>
         </div>
     </div>
-
-    <script>
-        (function() {
-            // Auto reset form to step 1 when popup is closed
-            const closeControl = document.getElementById('popup-privilege2-close');
-            if (closeControl) {
-                closeControl.addEventListener('change', function() {
-                    if (this.checked) {
-                        const firstStep = document.getElementById('privilege2-step-1');
-                        if (firstStep) {
-                            firstStep.checked = true;
-                        }
-                    }
-                });
-            }
-        })();
-    </script>
 </div>
