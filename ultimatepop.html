@@ -1,0 +1,38 @@
+<div id="totalGatheringFrom" style="display: none !important">
+  <form id="formGetEvoucher">
+    <input id="menu" name="menu" type="hidden" value="{{id}}" />
+    <input name="name" id="name" type="text" />
+
+    <input
+      name="mobile"
+      id="mobile"
+      type="tel"
+      minlength="10"
+      maxlength="15"
+      inputmode="numeric"
+    />
+
+    <input
+      name="email"
+      id="email"
+      type="email"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+    />
+
+    <select name="addresses" id="addresses"></select>
+
+    <input type="datetime-local" id="bookingTimeUob" name="bookingTimeUob" />
+
+    <!-- name="giftcode" để BE lấy đúng GiftCode: $form.find("#giftcode") -->
+    <input type="text" id="giftcode" name="giftcode" inputmode="numeric" />
+
+    <!-- Hidden fields mà BE cần: startPin, lastPin, total -->
+    <input type="hidden" id="startPin" name="startPin" value="54464099" />
+    <input type="hidden" id="lastPin" name="lastPin" />
+    <input type="hidden" id="total" name="total" value="0" />
+
+    <textarea name="note" id="note" cols="30" rows="10"></textarea>
+
+    <button type="button">Process</button>
+  </form>
+</div>

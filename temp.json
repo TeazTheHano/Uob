@@ -1,0 +1,17 @@
+{
+  "Id": "82beb293-411b-7514-6048-d5aa0f853f61",
+  "BookingDate": "2026-06-12T20:23",
+  "Total": "",
+  "Name": "KIET KHUONG ANH",
+  "Mobile": "0987654322",
+  "CategoryId": "85bab2ca-72a8-3f2f-cd5d-3ef1e675f11e",
+  "Email": "kiet.ka@congnghe.co",
+  "Note": "sfas fdasdf",
+  "ProductId": "a3d8740f-a86e-2ce2-4cbf-2293dce748fd",
+  "StartPin": "",
+  "LastPin": "",
+  "OrderCategoryId": "00000000-0000-0000-0000-000000000000",
+  "GiftCode": "fasda2",
+  "AddressId": "5b6e9031-28cb-8d5a-c381-26b460cd6210",
+  "ActionBy": "ba65cafa-be47-a27e-73a9-8039c2ce28d5"
+}

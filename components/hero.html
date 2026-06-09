@@ -2,6 +2,7 @@
   <style>
     #section-hero .bg img {
       object-position: 75% center;
+      filter: brightness(0.8);
     }
 
     #section-hero-content {
@@ -9,7 +10,7 @@
       padding: var(--ui-spacing-xl);
     }
 
-    #section-hero-content>div {
+    #section-hero-content > div {
       display: flex;
       flex-direction: column;
     }
@@ -27,7 +28,7 @@
         padding: var(--ui-spacing-15xl);
       }
 
-      #section-hero-content>div {
+      #section-hero-content > div {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -41,19 +42,33 @@
 
   <section id="section-hero" class="ui-relative">
     <div class="bg">
-      <img binding-imgpath="Hero Banner" src="assets/img/Hero Banner.png" alt="Hero Banner" />
+      <img
+        binding-imgpath="https://static.izzi.asia/images/2026/6/8/2606080160_HeroBanner.jpg"
+        src="https://static.izzi.asia/images/2026/6/8/2606080160_HeroBanner.jpg"
+        alt="Hero Banner"
+      />
     </div>
 
-    <div id="section-hero-content" class="ui-col-justify-end ui-w-max-breakpoint-2xl ui-gap-xl">
+    <div
+      id="section-hero-content"
+      class="ui-col-justify-end ui-w-max-breakpoint-2xl ui-gap-xl"
+    >
       <h1>Chào mừng đến với <br />UOB Privilege Banking</h1>
       <div class="ui-gap-md">
         <a class="ui-button-primary-w ui-button-large" binding-btnhref="#">
           <p binding-btntext="Trải nghiệm đặc quyền">Trải nghiệm đặc quyền</p>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <g clip-path="url(#clip0_424_816)">
               <path
                 d="M14.3331 0H5.99976V2H12.5858L0.0170898 14.5687L1.43109 15.9827L13.9998 3.414V10H15.9998V1.66667C15.9998 0.748 15.2524 0 14.3331 0Z"
-                fill="currentColor" />
+                fill="currentColor"
+              />
             </g>
             <defs>
               <clipPath id="clip0_424_816">

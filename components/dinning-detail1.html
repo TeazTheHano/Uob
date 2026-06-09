@@ -38,6 +38,14 @@
       height: 100%;
     }
 
+    #section-dinning-detail1-content .cta label {
+      display: none;
+    }
+
+    #section-dinning-detail1-content .cta label:first-child {
+      display: flex;
+    }
+
     @media (min-width: 768px) {
       #section-dinning-detail1 .bg img {
         transform: unset;
@@ -80,7 +88,8 @@
         </div>
         <div class="ui-gap-md cta">
           <label
-            for="popup-dinning-open"
+            repeat="categories"
+            for={{subDescription}}
             class="ui-button-primary ui-button-large ui-center"
             style="cursor: pointer"
           >
@@ -106,9 +115,9 @@
             </svg>
           </label>
 
-          <a class="ui-button-secondary ui-button-large" binding-btnhref="#">
+          <!-- <a class="ui-button-secondary ui-button-large" binding-btnhref="#">
             <p binding-btntext="Chi tiết menu">Chi tiết menu</p>
-          </a>
+          </a> -->
         </div>
       </div>
       <div class="right">
@@ -119,7 +128,6 @@
           ="900}}"
           alt=""
         />
-        
       </div>
     </div>
   </section>

@@ -896,18 +896,217 @@ const afterLoad = () => {
                 'section-intro2-privilege-selected-2'
             ]);
         });
-        runWhenExists('section-privile-intro2', () => {
-            initIntro2Slider('section-privile-intro2', [
-                'section-privile-intro2-privilege-selected-1',
-                'section-privile-intro2-privilege-selected-2'
-            ]);
-        });
+        // runWhenExists('section-privile-intro2', () => {
+        //     initIntro2Slider('section-privile-intro2', [
+        //         'section-privile-intro2-privilege-selected-1',
+        //         'section-privile-intro2-privilege-selected-2'
+        //     ]);
+        // });
     }
     if (typeof initLogoMarquees === 'function') {
         runWhenExists('section-intro2-logoSlider', () => {
             initLogoMarquees();
         });
     }
+
+    if (typeof handleUnusedPopups === 'function') {
+        handleUnusedPopups();
+    }
+
+    if (typeof initPopupFormSync === 'function') {
+        initPopupFormSync();
+    }
+
+    if (typeof initLiveFormSync === 'function') {
+        initLiveFormSync();
+    }
 }
 
 afterLoad();
+
+function handleUnusedPopups() {
+    document.addEventListener('click', function (e) {
+        const label = e.target.closest('#section-dinning-detail1-content .cta label');
+        if (!label) return;
+
+        const forAttr = label.getAttribute('for');
+        if (!forAttr || forAttr.includes('{{')) return;
+
+        const prefixes = ['popup-dinning', 'popup-privilege2', 'popup-privilege'];
+        let activePrefix = null;
+
+        for (const prefix of prefixes) {
+            if (forAttr.startsWith(prefix)) {
+                activePrefix = prefix;
+                break;
+            }
+        }
+
+        if (activePrefix) {
+            prefixes.forEach(prefix => {
+                if (prefix !== activePrefix) {
+                    const containers = document.querySelectorAll(`.${prefix}-container`);
+                    containers.forEach(container => {
+                        container.remove();
+                    });
+                }
+            });
+        }
+    });
+}
+
+function initPopupFormSync() {
+    document.addEventListener('click', function (e) {
+        const btn = e.target.closest('#popupDinning form button, #popupPrivilege form button, #popupPrivilege2 form button');
+        if (!btn) return;
+
+        const wrapper = btn.closest('#popupDinning, #popupPrivilege, #popupPrivilege2');
+        if (!wrapper) return;
+
+        const forms = wrapper.querySelectorAll('form');
+        let isValid = true;
+
+        for (const form of forms) {
+            if (!form.checkValidity()) {
+                isValid = false;
+
+                // Nếu là form nhiều bước, chuyển về bước bị lỗi trước khi hiển thị popup lỗi
+                const type = form.getAttribute('type');
+                if (type) {
+                    const stepRadio = document.getElementById(`privilege2-step-${type}`);
+                    if (stepRadio) stepRadio.checked = true;
+
+                    setTimeout(() => form.reportValidity(), 50);
+                } else {
+                    form.reportValidity();
+                }
+                break;
+            }
+        }
+
+        if (isValid) {
+            e.preventDefault();
+            // Sync lần cuối rồi log + submit
+            syncPopupFieldsToTarget(wrapper);
+            logFormGetEvoucher();
+            submitFormGetEvoucher();
+        }
+    });
+}
+
+// Live sync: mỗi khi user nhập/chọn trong popup → cập nhật ngay vào formGetEvoucher
+function initLiveFormSync() {
+    const popupSelectors = '#popupDinning, #popupPrivilege, #popupPrivilege2';
+
+    document.addEventListener('input', function (e) {
+        const wrapper = e.target.closest(popupSelectors);
+        if (!wrapper) return;
+        syncPopupFieldsToTarget(wrapper);
+    });
+
+    document.addEventListener('change', function (e) {
+        const wrapper = e.target.closest(popupSelectors);
+        if (!wrapper) return;
+        syncPopupFieldsToTarget(wrapper);
+    });
+}
+
+// Đồng bộ giá trị từ popup wrapper → formGetEvoucher
+function syncPopupFieldsToTarget(wrapper) {
+    const targetForm = document.getElementById('formGetEvoucher');
+    if (!targetForm) {
+        console.warn('Không tìm thấy formGetEvoucher để đồng bộ dữ liệu');
+        return;
+    }
+
+    const targetInputs = targetForm.querySelectorAll('input, select, textarea');
+
+    targetInputs.forEach(targetInput => {
+        const id = targetInput.id;
+        const name = targetInput.name;
+
+        let sourceInput = null;
+
+        const sourceId = id ? id.replace('formGetEvoucher_', '') : null;
+
+        if (sourceId) {
+            sourceInput = wrapper.querySelector(`#${sourceId}`);
+        }
+
+        if (!sourceInput && name) {
+            sourceInput = wrapper.querySelector(`[name="${name}"]`);
+        }
+
+        if (sourceInput) {
+            // Nếu là <select> và target đang rỗng options → copy options trước rồi mới set value
+            // (đặc biệt quan trọng với #addresses vì options render động từ server)
+            if (
+                targetInput.tagName === 'SELECT' &&
+                sourceInput.tagName === 'SELECT' &&
+                targetInput.options.length <= 1 &&
+                sourceInput.options.length > 1
+            ) {
+                targetInput.innerHTML = sourceInput.innerHTML;
+            }
+            targetInput.value = sourceInput.value;
+        }
+    });
+
+    // Mapping đặc biệt: cardLast6Digits từ popup → startPin trong formGetEvoucher
+    const cardLast6Input = wrapper.querySelector('[name="cardLast6Digits"]');
+    if (cardLast6Input) {
+        const targetStartPin = targetForm.querySelector('[name="startPin"]');
+        if (targetStartPin) {
+            targetStartPin.value = cardLast6Input.value;
+        }
+    }
+
+    // Xử lý field riêng của privilege-popup2: serviceType → ghi vào note
+    const serviceTypeInput = wrapper.querySelector('[name="serviceType"]');
+    if (serviceTypeInput) {
+        const selectedOption = serviceTypeInput.options[serviceTypeInput.selectedIndex];
+        const valueText = selectedOption ? selectedOption.text : '';
+
+        if (valueText && serviceTypeInput.value) {
+            let labelText = 'Loại dịch vụ';
+            const labelEl = wrapper.querySelector(`label[for="${serviceTypeInput.id}"]`);
+            if (labelEl) labelText = labelEl.innerText.trim();
+
+            const targetNote = targetForm.querySelector('[name="note"]');
+            const sourceNote = wrapper.querySelector('[name="note"]');
+            const noteVal = sourceNote ? sourceNote.value : '';
+
+            const extraInfo = `${labelText}: ${valueText}`;
+            if (targetNote) {
+                targetNote.value = noteVal ? `${noteVal}\n${extraInfo}` : extraInfo;
+            }
+        }
+    }
+}
+
+// Log toàn bộ data của formGetEvoucher ra console
+function logFormGetEvoucher() {
+    const targetForm = document.getElementById('formGetEvoucher');
+    if (!targetForm) return;
+
+    const data = {};
+    targetForm.querySelectorAll('input, select, textarea').forEach(el => {
+        const key = el.id || el.name || el.type;
+        data[key] = el.value;
+    });
+
+    console.log('[formGetEvoucher] data:', data);
+}
+
+// Nhấn button submit trong formGetEvoucher
+function submitFormGetEvoucher() {
+    const targetForm = document.getElementById('formGetEvoucher');
+    if (!targetForm) return;
+
+    const processBtn = targetForm.querySelector('button');
+    if (processBtn) {
+        processBtn.click();
+    } else {
+        targetForm.submit();
+    }
+}
