@@ -1,0 +1,529 @@
+<div id="e9e2bf1e-da67-f8db-c126-4257c681fba3">
+  <input
+    type="radio"
+    name="popup-privilege2-control"
+    id="popup-privilege2-open"
+    style="display: none"
+  />
+  <input
+    type="radio"
+    name="popup-privilege2-control"
+    id="popup-privilege2-close"
+    style="display: none"
+    checked=""
+  />
+
+  <input
+    type="radio"
+    name="privilege2-step"
+    id="privilege2-step-1"
+    style="display: none"
+    checked=""
+  />
+  <input
+    type="radio"
+    name="privilege2-step"
+    id="privilege2-step-2"
+    style="display: none"
+  />
+  <input
+    type="radio"
+    name="privilege2-step"
+    id="privilege2-step-3"
+    style="display: none"
+  />
+
+  <style>
+    .popup-privilege2-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .popup-privilege2-container input[type="datetime-local"],
+    .popup-privilege2-container option {
+      color: #514d4d;
+    }
+
+    .popup-privilege2-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--ui-bg-overlay);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 1;
+    }
+
+    body:has(#popup-privilege2-open:checked) {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    #popupPrivilege2 {
+      position: relative;
+      z-index: 2;
+      border: none;
+      padding: var(--ui-spacing-4xl);
+      border-radius: var(--ui-spacing-xs);
+      background-color: var(--ui-on-bg, #ffffff);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      color: var(--ui-bg);
+      box-sizing: border-box;
+
+      /* Center horizontally and add vertical margin for natural scroll */
+      margin: 40px auto;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    #popup-privilege2-open:checked ~ .popup-privilege2-container {
+      display: block;
+    }
+
+    .popup-close {
+      cursor: pointer;
+      position: absolute;
+      top: var(--ui-spacing-xl);
+      right: var(--ui-spacing-xl);
+      z-index: 10;
+    }
+
+    #popupPrivilege2 > img {
+      height: var(--ui-spacing-5xl);
+      width: auto;
+      margin: 0 auto var(--ui-spacing-xl) auto;
+      display: block;
+    }
+
+    #popupPrivilege2 .ui-flex-col {
+      margin-bottom: var(--ui-spacing-xl);
+    }
+
+    #popupPrivilege2 .process-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      margin-bottom: var(--ui-spacing-xl);
+    }
+
+    #popupPrivilege2 .process-container > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #popupPrivilege2 .process-container .num {
+      color: var(--ui-on-primary);
+      background-color: var(--ui-on-bg);
+      border: 1px solid var(--ui-bg);
+      border-radius: 50%;
+      aspect-ratio: 1;
+      width: var(--ui-spacing-4xl);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: var(--ui-font-weight-semibold);
+      transition: var(--ui-transition);
+    }
+
+    #popupPrivilege2 .process-container .line {
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: calc(var(--ui-spacing-4xl) / 2);
+      left: 0;
+      background-color: var(--ui-bg);
+      z-index: -1;
+      opacity: 0.5;
+      transition: var(--ui-transition);
+    }
+
+    #popupPrivilege2 .process-container .label {
+      text-align: center;
+      font-size: var(--ui-font-size-caption);
+      margin-top: var(--ui-spacing-xs);
+      color: var(--ui-text-muted);
+      transition: var(--ui-transition);
+    }
+
+    /* Active step styles in process container */
+    #privilege2-step-1:checked ~ .popup-privilege2-container #step-item-1 .num,
+    #privilege2-step-2:checked ~ .popup-privilege2-container #step-item-2 .num,
+    #privilege2-step-3:checked ~ .popup-privilege2-container #step-item-3 .num {
+      background-color: var(--ui-primary);
+      border-color: var(--ui-primary);
+      color: var(--ui-on-primary);
+    }
+
+    #privilege2-step-1:checked
+      ~ .popup-privilege2-container
+      #step-item-1
+      .label,
+    #privilege2-step-2:checked
+      ~ .popup-privilege2-container
+      #step-item-2
+      .label,
+    #privilege2-step-3:checked
+      ~ .popup-privilege2-container
+      #step-item-3
+      .label {
+      color: var(--ui-primary);
+      font-weight: var(--ui-font-weight-semibold);
+    }
+
+    /* Connecting lines active highlights */
+    #privilege2-step-2:checked ~ .popup-privilege2-container #step-item-1 .line,
+    #privilege2-step-3:checked
+      ~ .popup-privilege2-container
+      #step-item-1
+      .line {
+      background-color: var(--ui-primary);
+      opacity: 1;
+    }
+
+    #privilege2-step-3:checked
+      ~ .popup-privilege2-container
+      #step-item-2
+      .line {
+      background-color: var(--ui-primary);
+      opacity: 1;
+    }
+
+    /* Completed step styles: steps before the active one show checkmark */
+    #privilege2-step-2:checked ~ .popup-privilege2-container #step-item-1 .num,
+    #privilege2-step-3:checked ~ .popup-privilege2-container #step-item-1 .num,
+    #privilege2-step-3:checked ~ .popup-privilege2-container #step-item-2 .num {
+      background-color: var(--ui-bg);
+      border-color: var(--ui-bg);
+      color: var(--ui-on-bg);
+      cursor: pointer;
+    }
+
+    /* Hide the number text for completed steps, show checkmark via ::after */
+    #privilege2-step-2:checked
+      ~ .popup-privilege2-container
+      #step-item-1
+      .num
+      .step-number,
+    #privilege2-step-3:checked
+      ~ .popup-privilege2-container
+      #step-item-1
+      .num
+      .step-number,
+    #privilege2-step-3:checked
+      ~ .popup-privilege2-container
+      #step-item-2
+      .num
+      .step-number {
+      display: none;
+    }
+
+    #privilege2-step-2:checked
+      ~ .popup-privilege2-container
+      #step-item-1
+      .num::after,
+    #privilege2-step-3:checked
+      ~ .popup-privilege2-container
+      #step-item-1
+      .num::after,
+    #privilege2-step-3:checked
+      ~ .popup-privilege2-container
+      #step-item-2
+      .num::after {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 10px;
+      border-right: 2px solid var(--ui-on-bg);
+      border-bottom: 2px solid var(--ui-on-bg);
+      transform: rotate(45deg) translate(-1px, -1px);
+    }
+
+    /* Completed step num label hover effect */
+    #privilege2-step-2:checked
+      ~ .popup-privilege2-container
+      #step-item-1
+      .num:hover,
+    #privilege2-step-3:checked
+      ~ .popup-privilege2-container
+      #step-item-1
+      .num:hover,
+    #privilege2-step-3:checked
+      ~ .popup-privilege2-container
+      #step-item-2
+      .num:hover {
+      opacity: 0.75;
+    }
+
+    #popupPrivilege2 form {
+      width: 100%;
+      margin-bottom: var(--ui-spacing-xl);
+    }
+
+    /* Step forms switching logic */
+    #popupPrivilege2 form[type="1"],
+    #popupPrivilege2 form[type="2"],
+    #popupPrivilege2 form[type="3"] {
+      display: none;
+    }
+
+    #privilege2-step-1:checked ~ .popup-privilege2-container form[type="1"] {
+      display: block;
+    }
+
+    #privilege2-step-2:checked ~ .popup-privilege2-container form[type="2"] {
+      display: block;
+    }
+
+    #privilege2-step-3:checked ~ .popup-privilege2-container form[type="3"] {
+      display: block;
+    }
+
+    #popupPrivilege2 input,
+    #popupPrivilege2 select,
+    #popupPrivilege2 textarea {
+      background-color: var(--ui-bg) !important;
+      border-radius: var(--ui-radius-sm);
+      padding: var(--ui-spacing-sm) var(--ui-spacing-md);
+      outline: none;
+      border: 1px solid var(--ui-on-bg, black) !important;
+      color: var(--ui-on-bg, black) !important;
+      font-size: var(--ui-font-size-body);
+      margin-bottom: var(--ui-spacing-md);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #popupPrivilege2 label:has(+ input:required):after {
+      content: " *";
+      color: red;
+    }
+
+    #popupPrivilege2 form div:not([class*="ui-col2-grid"]) {
+      display: flex;
+      flex-direction: column;
+      gap: var(--ui-spacing-xs);
+    }
+
+    @media (max-width: 767px) {
+      #popupPrivilege2 {
+        margin: 20px auto;
+        padding: var(--ui-spacing-xl);
+        max-width: 95vw;
+      }
+    }
+
+    @media (min-width: 768px) {
+      #popupPrivilege2 {
+        max-width: 600px;
+      }
+    }
+
+    /* Invalid field highlight */
+    @keyframes priv2-shake {
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(-6px);
+      }
+
+      40% {
+        transform: translateX(6px);
+      }
+
+      60% {
+        transform: translateX(-4px);
+      }
+
+      80% {
+        transform: translateX(4px);
+      }
+    }
+
+    #popupPrivilege2 .priv2-field-error {
+      border-color: #ef4444 !important;
+      animation: priv2-shake 0.35s ease;
+    }
+  </style>
+
+  <div class="popup-privilege2-container">
+    <label
+      for="popup-privilege2-close"
+      class="popup-privilege2-overlay"
+    ></label>
+
+    <div id="popupPrivilege2" repeat="detaildata">
+      <img
+        src="https://static.izzi.asia/images/2026/6/8/2606088923_574ec0ed80f8b7edcd239ddd51a232ce69152e04.png"
+        binding-imgpath="https://static.izzi.asia/images/2026/6/8/2606088923_574ec0ed80f8b7edcd239ddd51a232ce69152e04.png"
+        alt="logo"
+      />
+      <label for="popup-privilege2-close" class="popup-close">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          ></path>
+        </svg>
+      </label>
+      <div class="ui-flex-col ui-gap-md">
+        <p
+          class="ui-font-label ui-text-center"
+          binding-name="          Đặc quyền        "
+        >
+          Đặc quyền
+        </p>
+        <h1
+          binding-name="          Đặt dịch vụ đón tiễn ưu tiên        "
+          class="ui-text-center"
+        >
+          Đặt dịch vụ đón tiễn ưu tiên
+        </h1>
+        <p
+          class="ui-font-label ui-text-center"
+          binding-name="          Hãy nhập đủ thông tin để chúng tôi có thể phục vụ quý khách đầy đủ và          tốt nhất. Sau khi điền đầy đủ thông tin, chuyên viên chăm sóc khách          hàng của chúng tôi sẽ liên hệ lại để xác nhận thông tin chính xác          trước khi tiến hành áp dụng đặc quyền cho khách hàng        "
+        >
+          Hãy nhập đủ thông tin để chúng tôi có thể phục vụ quý khách đầy đủ và
+          tốt nhất. Sau khi điền đầy đủ thông tin, chuyên viên chăm sóc khách
+          hàng của chúng tôi sẽ liên hệ lại để xác nhận thông tin chính xác
+          trước khi tiến hành áp dụng đặc quyền cho khách hàng
+        </p>
+      </div>
+
+      <form>
+        <input
+          id="privilege2_menu"
+          name="menu"
+          type="text"
+          value="{{id}}"
+          class="ui-d-none"
+        />
+        <div class="ui-col2-grid">
+          <div>
+            <label for="privilege2_name">Họ và tên khách hàng</label>
+            <input
+              name="name"
+              id="privilege2_name"
+              type="text"
+              placeholder="Nhập họ và tên"
+              required=""
+            />
+          </div>
+          <div>
+            <label for="privilege2_mobile">Số điện thoại đăng ký với UOB</label>
+            <input
+              name="mobile"
+              id="privilege2_mobile"
+              type="tel"
+              placeholder="Nhập số điện thoại"
+              required=""
+              minlength="10"
+              maxlength="15"
+              inputmode="numeric"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="privilege2_email">Email đăng ký với UOB</label>
+          <input
+            name="email"
+            id="privilege2_email"
+            type="email"
+            placeholder="Nhập email liên hệ"
+            required=""
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          />
+        </div>
+
+        <div class="ui-col2-grid">
+          <div>
+            <label for="privilege2_addresses">Chọn sân bay</label>
+            <select name="addresses" id="privilege2_addresses" required="">
+              <option value="">--Chọn sân bay--</option>
+              <option value="dd96d250-241d-494c-b712-5d6c5e87873b">
+                Sân bay Quốc tế Nội Bài (HAN)
+              </option>
+              <option value="1ba2a1ac-4650-4f09-b7f3-52d3215cf1a3">
+                Sân bay Quốc tế Tân Sơn Nhất (SGN)
+              </option>
+            </select>
+          </div>
+          <div>
+            <label for="privilege2_bookingTimeUob">Ngày giờ đến sân bay</label>
+            <input
+              type="datetime-local"
+              id="privilege2_bookingTimeUob"
+              name="bookingTimeUob"
+              required=""
+            />
+          </div>
+        </div>
+
+        <!-- <div class="ui-col2-grid">
+          <div>
+            <label for="privilege2_cardLast6Digits" class="ui-d-none">6 số cuối số điện thoại</label>
+            <input class="ui-d-none" type="text" id="privilege2_cardLast6Digits" name="cardLast6Digits" inputmode="numeric" pattern="[0-9]*" placeholder="Nhập 6 số cuối số điện thoại" maxlength="6" minlength="6">
+          </div> -->
+        <div>
+          <label for="privilege2_serviceType">Loại dịch vụ</label>
+          <select name="serviceType" id="privilege2_serviceType" required="">
+            <option value="">--Chọn loại dịch vụ--</option>
+            <option value="sendoff">Đón ưu tiên</option>
+            <option value="pickup">Tiễn ưu tiên</option>
+          </select>
+        </div>
+        <!-- </div> -->
+
+        <div>
+          <label for="privilege2_giftcode">Mã voucher sử dụng</label>
+          <input
+            type="text"
+            id="privilege2_giftcode"
+            name="giftcode"
+            inputmode="numeric"
+            placeholder="Nhập mã voucher của bạn để sử dụng"
+            required=""
+          />
+        </div>
+
+        <div>
+          <label for="privilege2_note">Ghi chú</label>
+          <textarea
+            name="note"
+            id="privilege2_note"
+            cols="30"
+            rows="10"
+            placeholder="Vui lòng ghi chú thời gian dự kiến tới sân bay"
+          ></textarea>
+        </div>
+        <button
+          for="popup-privilege-close"
+          class="ui-button-primary ui-button-medium ui-w-full ui-center"
+          style="cursor: pointer"
+        >
+          Đặt dịch vụ
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
