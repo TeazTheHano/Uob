@@ -1022,14 +1022,16 @@ function submitFormGetEvoucher() {
     }
 }
 
-// ĐOẠN CODE ĐỘC LẬP - QUẢN LÝ LẮNG NGHE API, ĐA NGÔN NGỮ VÀ CHẶN ALERT
+// ĐOẠN CODE ĐỘC LẬP - QUẢN LÝ LẮNG NGHE API, ĐA NGÔN NGỮ THEO URL, CHẶN ALERT & FALLBACK DỰ PHÒNG
 const ApiListener = (function () {
     // ==================== CONFIG THEO HTML CỦA BẠN ====================
     const CONFIG = {
+        // Cấu hình cho Popup LỖI (Success: false)
         error: {
             inputOpenId: 'popup-error-open',
             textSelector: '#popuperror .ui-font-label'
         },
+        // Cấu hình cho Popup THÀNH CÔNG (Success: true)
         success: {
             inputOpenId: 'popup-confirm-open',
             textSelector: '#popupConfirm .ui-font-label'
@@ -1050,18 +1052,14 @@ const ApiListener = (function () {
 
     // Hàm tự động xác định ngôn ngữ hiện tại của trang (VI hoặc EN)
     function getCurrentLanguage() {
-        // 1. Lấy đường dẫn URL hiện tại (ví dụ: "/vi-VN/san-pham/sushi-tei" hoặc "/en-US/page/...")
         const currentPath = window.location.pathname.toLowerCase();
-        let detectedLang = 'vi'; // Mặc định ban đầu là tiếng Việt
+        let detectedLang = 'vi';
 
-        // 2. Kiểm tra nếu URL có chứa chuỗi định danh tiếng Anh (en-us, en-gb, /en/, v.v.)
         if (currentPath.includes('/en-') || currentPath.includes('/en/')) {
             detectedLang = 'en';
         }
 
-        // 3. ĐỒNG BỘ VÀO HTML: Cập nhật thẳng thuộc tính lang của thẻ <html> cho đồng nhất hệ thống
         document.documentElement.lang = detectedLang;
-
         return detectedLang;
     }
     // =================================================================
@@ -1095,48 +1093,65 @@ const ApiListener = (function () {
     function getTranslatedMessage(beMessage) {
         if (!beMessage) return "";
 
-        const currentLang = getCurrentLanguage(); // Lấy 'en' hoặc 'vi'
-
-        // Tìm xem câu dịch có tồn tại trong từ điển không
+        const currentLang = getCurrentLanguage();
         const translation = DICTIONARY[beMessage.trim()];
 
         if (translation && translation[currentLang]) {
-            return translation[currentLang]; // Trả về câu đã dịch theo đúng ngôn ngữ trang
+            return translation[currentLang];
         }
 
-        return beMessage; // Nếu BE trả về câu lạ chưa có trong từ điển, giữ nguyên câu gốc của BE
+        return beMessage;
     }
 
+    // Hàm mở popup (Trả về true nếu mở thành công, false nếu không tìm thấy DOM)
     function triggerPopup(type, rawMessage) {
         const target = CONFIG[type];
-        if (!target) return;
+        if (!target) return false;
+
+        const inputOpen = document.getElementById(target.inputOpenId);
+        const textNode = document.querySelector(target.textSelector);
+
+        // NẾU THIẾU POPUP HOẶC THIẾU NƠI HIỂN THỊ CHỮ -> BÁO THẤT BẠI ĐỂ DÙNG ALERT GỐC
+        if (!inputOpen || !textNode) {
+            console.warn(`⚠️ Không tìm thấy thành phần Popup cho [${type.toUpperCase()}]. Chuyển hướng sang Alert mặc định.`);
+            return false;
+        }
 
         // Tiến hành dịch câu thông báo trước khi đưa vào HTML
         const translatedMessage = getTranslatedMessage(rawMessage);
-
         if (translatedMessage) {
-            const textNode = document.querySelector(target.textSelector);
-            if (textNode) textNode.innerText = translatedMessage;
+            textNode.innerText = translatedMessage;
         }
 
-        const inputOpen = document.getElementById(target.inputOpenId);
-        if (inputOpen) {
-            inputOpen.checked = true;
-            console.log(`🚨 Đã kích hoạt Popup [${type.toUpperCase()}]`);
-        }
+        inputOpen.checked = true;
+        console.log(`🚨 Đã kích hoạt Popup [${type.toUpperCase()}]`);
+        return true; // Mở popup custom thành công
     }
 
     function handleResponseData(resData) {
         if (!isListening) return;
 
+        let isPopupOpened = false;
+        const rawMessage = resData ? resData.Message : "";
+
         if (resData && resData.Success === false) {
-            triggerPopup('error', resData.Message || "Err!");
+            isPopupOpened = triggerPopup('error', rawMessage || "Err!");
         }
         else if (resData && resData.Success === true) {
-            triggerPopup('success', resData.Message);
+            isPopupOpened = triggerPopup('success', rawMessage);
         }
 
-        setTimeout(stopListening, 100);
+        // 🔄 FALLBACK MECHANISM: Nếu triggerPopup thất bại (bằng false)
+        if (!isPopupOpened && rawMessage) {
+            stopListening(); // Khôi phục lại alert gốc ngay lập tức
+
+            // Dịch câu thông báo trước khi alert ra cho đồng bộ ngôn ngữ luôn
+            const translatedAlertMsg = getTranslatedMessage(rawMessage);
+            originalAlert(translatedAlertMsg);
+        } else {
+            // Nếu dùng popup custom thành công thì nhả alert sau 100ms như cũ
+            setTimeout(stopListening, 100);
+        }
     }
 
     // ĐÁNH CHẶN FETCH API
