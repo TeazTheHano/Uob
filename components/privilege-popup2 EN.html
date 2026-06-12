@@ -388,24 +388,22 @@
       <div class="ui-flex-col ui-gap-md">
         <p
           class="ui-font-label ui-text-center"
-          binding-name="          Đặc quyền        "
+          binding-name="          Privilege        "
         >
-          Đặc quyền
+          Privilege
         </p>
         <h1
-          binding-name="          Đặt dịch vụ đón tiễn ưu tiên        "
+          binding-name="          Priority International Airport Assistance        "
           class="ui-text-center"
         >
-          Đặt dịch vụ đón tiễn ưu tiên
+          Priority International Airport Assistance
         </h1>
         <p
           class="ui-font-label ui-text-center"
-          binding-name="          Hãy nhập đủ thông tin để chúng tôi có thể phục vụ quý khách đầy đủ và          tốt nhất. Sau khi điền đầy đủ thông tin, chuyên viên chăm sóc khách          hàng của chúng tôi sẽ liên hệ lại để xác nhận thông tin chính xác          trước khi tiến hành áp dụng đặc quyền cho khách hàng        "
+          binding-name="          The activation code is printed on the service invitation letter or          contact Hotline (028) 7305 6896 to check the information.        "
         >
-          Hãy nhập đủ thông tin để chúng tôi có thể phục vụ quý khách đầy đủ và
-          tốt nhất. Sau khi điền đầy đủ thông tin, chuyên viên chăm sóc khách
-          hàng của chúng tôi sẽ liên hệ lại để xác nhận thông tin chính xác
-          trước khi tiến hành áp dụng đặc quyền cho khách hàng
+          The activation code is printed on the service invitation letter or
+          contact Hotline (028) 7305 6896 to check the information.
         </p>
       </div>
 
@@ -420,23 +418,27 @@
 
         <div>
           <label for="privilege2_name"
-            >Nhập họ và tên của khách hàng</label
+            >Customer's full name</label
           >
           <input
             name="name"
             id="privilege2_name"
             type="text"
-            placeholder="Nhập họ và tên (Chú ý: Không dấu)"
+            placeholder="Enter your full name"
             required
           />
         </div>
         <div>
-          <label for="privilege2_mobile">Số điện thoại đăng ký với UOB</label>
+          <label
+            for="privilege2_mobile"
+            binding-name="Customer's phone number registered with UOB"
+            >Customer's phone number registered with UOB</label
+          >
           <input
             name="mobile"
             id="privilege2_mobile"
             type="tel"
-            placeholder="Nhập số điện thoại"
+            placeholder="Enter customer's phone number"
             required
             minlength="10"
             maxlength="15"
@@ -445,12 +447,16 @@
         </div>
 
         <div>
-          <label for="privilege2_email">Email đăng ký với UOB</label>
+          <label
+            for="privilege2_email"
+            binding-name="Customer's email registered with UOB"
+            >Customer's email registered with UOB</label
+          >
           <input
             name="email"
             id="privilege2_email"
             type="email"
-            placeholder="Nhập email liên hệ"
+            placeholder="Enter customer's email"
             required
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           />
@@ -458,19 +464,25 @@
 
         <div class="ui-col2-grid">
           <div>
-            <label for="privilege2_addresses">Chọn sân bay</label>
+            <label for="privilege2_addresses" binding-name="Select airport"
+              >Select airport</label
+            >
             <select name="addresses" id="privilege2_addresses" required>
-              <option value>--Chọn sân bay--</option>
+              <option value>--Select airport--</option>
               <option value="dd96d250-241d-494c-b712-5d6c5e87873b">
-                Sân bay Quốc tế Nội Bài (HAN)
+                Noi Bai International Airport (HAN)
               </option>
               <option value="1ba2a1ac-4650-4f09-b7f3-52d3215cf1a3">
-                Sân bay Quốc tế Tân Sơn Nhất (SGN)
+                Tan Son Nhat International Airport (SGN)
               </option>
             </select>
           </div>
           <div>
-            <label for="privilege2_bookingTimeUob">Ngày giờ đến sân bay</label>
+            <label
+              for="privilege2_bookingTimeUob"
+              binding-name="Arrival time at the airport"
+              >Arrival time at the airport</label
+            >
             <input
               type="datetime-local"
               id="privilege2_bookingTimeUob"
@@ -486,42 +498,52 @@
             <input class="ui-d-none" type="text" id="privilege2_cardLast6Digits" name="cardLast6Digits" inputmode="numeric" pattern="[0-9]*" placeholder="Nhập 6 số cuối số điện thoại" maxlength="6" minlength="6">
           </div> -->
         <div>
-          <label for="privilege2_serviceType">Loại dịch vụ</label>
+          <label for="privilege2_serviceType" binding-name="Service type"
+            >Service type</label
+          >
           <select name="serviceType" id="privilege2_serviceType" required>
-            <option value>--Chọn loại dịch vụ--</option>
-            <option value="sendoff">Đón ưu tiên</option>
-            <option value="pickup">Tiễn ưu tiên</option>
+            <option
+              value
+              binding-name="              --Select service type--            "
+            >
+              --Select service type--
+            </option>
+            <option value="sendoff" binding-name="Pickup">Pickup</option>
+            <option value="pickup" binding-name="Sendoff">Sendoff</option>
           </select>
         </div>
         <!-- </div> -->
 
         <div>
-          <label for="privilege2_giftcode">Mã voucher sử dụng</label>
+          <label for="privilege2_giftcode" binding-name="Gift code used"
+            >Gift code used</label
+          >
           <input
             type="text"
             id="privilege2_giftcode"
             name="giftcode"
-            placeholder="Nhập mã voucher của bạn để sử dụng"
+            placeholder="Enter gift code"
             required
           />
         </div>
 
         <div>
-          <label for="privilege2_note">Ghi chú</label>
+          <label for="privilege2_note" binding-name="Note">Note</label>
           <textarea
             name="note"
             id="privilege2_note"
             cols="30"
             rows="10"
-            placeholder="Vui lòng ghi chú thời gian dự kiến tới sân bay"
+            placeholder="Please enter your expected arrival time at the airport"
           ></textarea>
         </div>
         <button
           for="popup-privilege-close"
           class="ui-button-primary ui-button-medium ui-w-full ui-center"
           style="cursor: pointer"
+          binding-name="          Book service        "
         >
-          Đặt dịch vụ
+          Book service
         </button>
       </form>
     </div>

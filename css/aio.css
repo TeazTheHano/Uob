@@ -1236,3 +1236,65 @@ label[for*="cardLast6Digits"],
 input[name*="cardLast6Digits"] {
     display: none !important;
 }
+
+#popupDinning input,
+#popupDinning select,
+#popupDinning textarea,
+#popupDinning input::placeholder,
+#popupDinning textarea::placeholder,
+#popupDinning select::placeholder,
+#popupDinning input:-ms-input-placeholder,
+#popupDinning textarea:-ms-input-placeholder,
+#popupDinning select:-ms-input-placeholder,
+#popupDinning input::-ms-input-placeholder,
+#popupDinning textarea::-ms-input-placeholder,
+#popupDinning select::-ms-input-placeholder,
+#popupPrivilege input,
+#popupPrivilege select,
+#popupPrivilege textarea,
+#popupPrivilege input::placeholder,
+#popupPrivilege textarea::placeholder,
+#popupPrivilege select::placeholder,
+#popupPrivilege input:-ms-input-placeholder,
+#popupPrivilege textarea:-ms-input-placeholder,
+#popupPrivilege select:-ms-input-placeholder,
+#popupPrivilege input::-ms-input-placeholder,
+#popupPrivilege textarea::-ms-input-placeholder,
+#popupPrivilege select::-ms-input-placeholder,
+#popupPrivilege2 input,
+#popupPrivilege2 select,
+#popupPrivilege2 textarea,
+#popupPrivilege2 input::placeholder,
+#popupPrivilege2 textarea::placeholder,
+#popupPrivilege2 select::placeholder,
+#popupPrivilege2 input:-ms-input-placeholder,
+#popupPrivilege2 textarea:-ms-input-placeholder,
+#popupPrivilege2 select:-ms-input-placeholder,
+#popupPrivilege2 input::-ms-input-placeholder,
+#popupPrivilege2 textarea::-ms-input-placeholder,
+#popupPrivilege2 select::-ms-input-placeholder {
+    background-color: var(--ui-bg) !important;
+    border-radius: var(--ui-radius-sm);
+    padding: var(--ui-spacing-sm) var(--ui-spacing-md);
+    outline: none;
+    border: 1px solid var(--ui-on-bg, black) !important;
+    color: var(--ui-on-bg, black) !important;
+    font-size: var(--ui-font-size-body);
+    margin-bottom: var(--ui-spacing-md);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#logo {
+    color: currentColor
+}
+
+#section-intro1-content .right>img,
+#section-privile-intro3-content .right>img {
+    object-position: 60% center;
+}
+
+#section-privile-intro2-content .right .content {
+    overflow-y: scroll;
+    scrollbar-width: none;
+}

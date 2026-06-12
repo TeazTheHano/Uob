@@ -45,6 +45,7 @@ const App = {
         PRIVILEGE_POPUP: 'components/privilege-popup.html',
         PRIVILEGE_POPUP2: 'components/privilege-popup2.html',
         CONFIRM_POPUP: 'components/confirm-popup.html',
+        ERR_POPUP: 'components/error-popup.html',
     },
 
     // 3. HTML Cache Store
@@ -300,6 +301,10 @@ const landingPage = {
         {
             target: '#confirm_popup_placeholder',
             component: COMPONENTS.CONFIRM_POPUP
+        },
+        {
+            target: '#error_popup_placeholder',
+            component: COMPONENTS.ERR_POPUP
         }
 
     ]

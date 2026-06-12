@@ -174,22 +174,26 @@
         />
         <div class="ui-col2-grid">
           <div>
-            <label for="dinning_name">Họ và tên người đặt bàn</label>
+            <label for="dinning_name" binding-name="Customer's name"
+              >Customer's name</label
+            >
             <input
               name="name"
               id="dinning_name"
               type="text"
-              placeholder="Nhập họ và tên"
+              placeholder="Enter customer's name"
               required
             />
           </div>
           <div>
-            <label for="dinning_mobile">Số điện thoại người đặt bàn</label>
+            <label for="dinning_mobile" binding-name="Customer's phone"
+              >Customer's phone</label
+            >
             <input
               name="mobile"
               id="dinning_mobile"
               type="tel"
-              placeholder="Nhập số điện thoại"
+              placeholder="Enter customer's phone"
               required
               minlength="10"
               maxlength="15"
@@ -199,45 +203,47 @@
         </div>
 
         <div>
-          <label for="dinning_email">Email đặt bàn</label>
+          <label for="dinning_email" binding-name="Customer's email"
+            >Customer's email</label
+          >
           <input
             name="email"
             id="dinning_email"
             type="email"
-            placeholder="Nhập email liên hệ"
+            placeholder="Enter customer's email"
             required
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           />
         </div>
         <div>
-          <label for="total">Số người</label>
+          <label for="total" binding-name="Number of people">Number of people</label>
           <select name="total" id="dinning_total" required>
-            <option value>-- Chọn số người --</option>
-            <option value="1">1 người</option>
-            <option value="2">2 người</option>
-            <option value="3">3 người</option>
-            <option value="4">4 người</option>
-            <option value="5">5 người</option>
-            <option value="6">6 người</option>
-            <option value="7">7 người</option>
-            <option value="8">8 người</option>
-            <option value="9">9 người</option>
-            <option value="10">10 người</option>
+            <option value>-- Select --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
           </select>
         </div>
 
         <div class="ui-col2-grid">
           <div>
-            <label for="dinning_addresses">Chọn địa điểm đặt bàn</label>
+            <label for="dinning_addresses" binding-name="Choose location">Choose location</label>
             <select name="addresses" id="dinning_addresses" required>
-              <option value>--Chọn địa điểm--</option>
+              <option value>-- Select --</option>
               <option repeat="addresses" value="{{id}}">
                 {{name}} - {{detailAddress}}
               </option>
             </select>
           </div>
           <div>
-            <label for="dinning_bookingTimeUob">Ngày giờ đặt bàn</label>
+            <label for="dinning_bookingTimeUob" binding-name="Date and time" >Date and time</label>
             <input
               type="datetime-local"
               id="dinning_bookingTimeUob"
@@ -249,47 +255,48 @@
 
         <div class="ui-col2-grid">
           <div>
-            <label for="dinning_cardLast6Digits">6 số thẻ hoặc 8 số visa</label>
+            <label for="dinning_cardLast6Digits" binding-name="6 or 8 digit of card or visa" >6 or 8 digit of card or visa</label>
             <input
               type="text"
               id="dinning_cardLast6Digits"
               name="cardLast6Digits"
               inputmode="numeric"
               pattern="[0-9]*"
-              placeholder="Nhập 6 số thẻ hoặc 8 số visa"
+              placeholder="Enter 6 or 8 digit"
               maxlength="8"
               minlength="6"
             />
           </div>
           <div>
-            <label for="dinning_giftcode">4 số cuối thẻ</label>
+            <label for="dinning_giftcode" binding-name="4 digit of card">4 digit of card</label>
             <input
               type="text"
               id="dinning_lastPin"
               name="lastPin"
               inputmode="numeric"
-              placeholder="Nhập 4 số cuối thẻ"
+              placeholder="Enter 4 digit"
               required
             />
           </div>
         </div>
 
         <div>
-          <label for="dinning_note">Ghi chú</label>
+          <label for="dinning_note" binding-name="Note">Note</label>
           <textarea
             name="note"
             id="dinning_note"
             cols="30"
             rows="10"
-            placeholder="Ghi chú cho buổi đặt bàn"
+            placeholder="Note for booking"
           ></textarea>
         </div>
         <button
           for="popup-privilege-close"
           class="ui-button-primary ui-button-medium ui-w-full ui-center"
           style="cursor: pointer"
+          binding-name="Book Service"
         >
-          Đặt dịch vụ
+          Book Service
         </button>
       </form>
     </div>

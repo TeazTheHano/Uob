@@ -10,7 +10,7 @@
     name="popup-privilege-control"
     id="popup-privilege-close"
     style="display: none"
-    checked=""
+    checked
   />
 
   <style>
@@ -176,7 +176,7 @@
         </p>
       </div>
 
-      <form>
+      <form style="margin-top: 20px">
         <input
           id="privilege_menu"
           name="menu"
@@ -184,17 +184,19 @@
           value="{{id}}"
           class="ui-d-none"
         />
+        <div>
+          <label for="privilege_name"
+            >Họ và tên của người đặt bàn</label
+          >
+          <input
+            name="name"
+            id="privilege_name"
+            type="text"
+            placeholder="Nhập họ và tên"
+            required
+          />
+        </div>
         <div class="ui-col2-grid">
-          <div>
-            <label for="privilege_name">Họ và tên người đặt bàn</label>
-            <input
-              name="name"
-              id="privilege_name"
-              type="text"
-              placeholder="Nhập họ và tên"
-              required=""
-            />
-          </div>
           <div>
             <label for="privilege_mobile">Số điện thoại người đặt bàn</label>
             <input
@@ -202,31 +204,30 @@
               id="privilege_mobile"
               type="tel"
               placeholder="Nhập số điện thoại"
-              required=""
+              required
               minlength="10"
               maxlength="15"
               inputmode="numeric"
             />
           </div>
-        </div>
-
-        <div>
-          <label for="privilege_email">Email đặt bàn</label>
-          <input
-            name="email"
-            id="privilege_email"
-            type="email"
-            placeholder="Nhập email liên hệ"
-            required=""
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-          />
+          <div>
+            <label for="privilege_email">Email đặt bàn</label>
+            <input
+              name="email"
+              id="privilege_email"
+              type="email"
+              placeholder="Nhập email liên hệ"
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            />
+          </div>
         </div>
 
         <div class="ui-col2-grid">
           <div>
             <label for="privilege_addresses">Chọn địa điểm đặt bàn</label>
-            <select name="addresses" id="privilege_addresses" required="">
-              <option value="">--Chọn địa điểm--</option>
+            <select name="addresses" id="privilege_addresses" required>
+              <option value>--Chọn địa điểm--</option>
               <option repeat="addresses" value="{{id}}">
                 {{name}} - {{detailAddress}}
               </option>
@@ -238,7 +239,7 @@
               type="datetime-local"
               id="privilege_bookingTimeUob"
               name="bookingTimeUob"
-              required=""
+              required
             />
           </div>
         </div>
@@ -261,17 +262,16 @@
             />
           </div> -->
 
-          <div>
-            <label for="privilege_giftcode">Mã voucher sử dụng</label>
-            <input
-              type="text"
-              id="privilege_giftcode"
-              name="giftcode"
-              inputmode="numeric"
-              placeholder="Nhập mã voucher của bạn để sử dụng"
-              required=""
-            />
-          </div>
+        <div>
+          <label for="privilege_giftcode">Mã voucher sử dụng</label>
+          <input
+            type="text"
+            id="privilege_giftcode"
+            name="giftcode"
+            placeholder="Nhập mã voucher của bạn để sử dụng"
+            required
+          />
+        </div>
         <!-- </div> -->
 
         <div>

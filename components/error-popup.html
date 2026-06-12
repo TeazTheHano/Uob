@@ -1,0 +1,161 @@
+<div>
+  <input
+    type="radio"
+    name="popup-error-control"
+    id="popup-error-open"
+    style="display: none"
+  />
+  <input
+    type="radio"
+    name="popup-error-control"
+    id="popup-error-close"
+    style="display: none"
+    checked
+  />
+
+  <style>
+    .popup-error-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .popup-error-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 1;
+    }
+
+    body:has(#popup-error-open:checked) {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    #popuperror {
+      position: relative;
+      z-index: 2;
+      border: none;
+      padding: var(--ui-spacing-4xl);
+      border-radius: var(--ui-spacing-xs);
+      background-color: var(--ui-bg, #ffffff);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      color: var(--ui-text);
+      box-sizing: border-box;
+
+      /* Center horizontally and add vertical margin for natural scroll */
+      margin: 40px auto;
+      width: 90%;
+      max-width: 450px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--ui-spacing-xl);
+    }
+
+    #popup-error-open:checked ~ .popup-error-container {
+      display: block;
+    }
+
+    #popuperror > img {
+      height: var(--ui-spacing-5xl);
+      width: auto;
+    }
+
+    @media (max-width: 767px) {
+      #popuperror {
+        margin: 20px auto;
+        padding: var(--ui-spacing-xl);
+        max-width: 95vw;
+      }
+    }
+  </style>
+
+  <div class="popup-error-container">
+    <label for="popup-error-close" class="popup-error-overlay"></label>
+
+    <div id="popuperror">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="120px"
+        viewBox="0 -960 960 960"
+        width="120px"
+        fill="rgb(139, 0, 0)"
+      >
+        <path
+          d="M503.5-289.48q9.5-9.48 9.5-23.5t-9.48-23.52q-9.48-9.5-23.5-9.5t-23.52 9.48q-9.5 9.48-9.5 23.5t9.48 23.52q9.48 9.5 23.5 9.5t23.52-9.48ZM453-433h60v-253h-60v253Zm27.27 353q-82.74 0-155.5-31.5Q252-143 197.5-197.5t-86-127.34Q80-397.68 80-480.5t31.5-155.66Q143-709 197.5-763t127.34-85.5Q397.68-880 480.5-880t155.66 31.5Q709-817 763-763t85.5 127Q880-563 880-480.27q0 82.74-31.5 155.5Q817-252 763-197.68q-54 54.31-127 86Q563-80 480.27-80Z"
+        />
+      </svg>
+      <h1 binding-name="Có lỗi xảy ra">Có lỗi xảy ra</h1>
+      <p
+        class="ui-font-label"
+        binding-description="Hệ thống gặp sự cố, vui lòng liên hệ qua Zalo để được hỗ trợ"
+      >
+        Hệ thống gặp sự cố, vui lòng liên hệ qua Zalo để được hỗ trợ
+      </p>
+
+      <div class="ui-w-full">
+        <a
+          href="https://zalo.me/84938111862"
+          binding-btnhref="https://zalo.me/84938111862"
+          target="_blank"
+          class="ui-button-primary ui-button-medium"
+        >
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.58561 23.9774C6.09627 23.9774 4.60105 24.0273 3.11054 23.9715C1.34806 23.9003 0 22.4094 0 20.6312C0 14.893 0.0105961 9.15366 0 3.40957C0 1.44501 1.5223 0.0751683 3.27419 0.0253125C5.10731 -0.0245432 6.94631 0.0146292 8.78532 0.0146292C8.81829 0.0146292 8.86185 -0.00198938 8.87833 0.0526145C8.86774 0.151139 8.76884 0.163009 8.70879 0.200995C7.628 0.839623 6.64021 1.60408 5.81136 2.55015C4.44211 4.1123 3.49199 5.90592 3.17058 7.99155C2.6031 11.6726 3.74395 14.798 6.32468 17.406C6.78266 17.8737 6.84271 18.2369 6.47773 18.8637C6.03623 19.6174 5.36397 20.1291 4.64932 20.5967C4.57279 20.6407 4.49627 20.6953 4.41974 20.7451C4.30554 20.8437 4.37618 20.8935 4.4739 20.9374C4.49627 20.9873 4.52335 21.0312 4.55631 21.0751C5.18383 21.6366 5.77839 22.2361 6.39532 22.8082C6.68494 23.0777 6.97339 23.359 7.25242 23.6391C7.3678 23.7472 7.55853 23.7804 7.58561 23.9774Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M7.58561 23.9774C7.55853 23.7851 7.3678 23.7519 7.25242 23.6368C6.97457 23.3507 6.68494 23.0753 6.39531 22.8058C5.77839 22.2337 5.18383 21.6342 4.55631 21.0728C4.52334 21.0288 4.49626 20.9849 4.47389 20.9351C5.86551 21.2105 7.22416 21.0229 8.56162 20.611C9.0149 20.4733 9.467 20.3356 9.92616 20.2205C10.237 20.1374 10.5643 20.154 10.8645 20.2644C14.3247 21.4633 17.7402 21.3541 21.1015 19.8679C22.4707 19.2578 23.7211 18.3983 24.7795 17.3264C24.8337 17.2718 24.8725 17.1888 24.9702 17.1828C25.0197 17.26 24.9926 17.3419 24.9926 17.425V20.6442C25.0032 22.4818 23.5409 23.9786 21.7184 23.9953H21.6913C19.7264 24.0059 17.7625 23.9953 15.7976 23.9953H7.91173C7.80459 23.9834 7.6951 23.9774 7.58561 23.9774Z"
+              fill="currentColor"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M15.2489 8.7928V8.47705H16.1861V12.9118H15.6504C15.4302 12.9118 15.2501 12.7326 15.2501 12.5106C14.8722 12.7884 14.406 12.9546 13.9021 12.9546C12.6399 12.9546 11.6168 11.9242 11.6168 10.6529C11.6168 9.38158 12.6399 8.35122 13.9021 8.35122C14.4048 8.34885 14.871 8.51385 15.2489 8.7928ZM11.3731 7.19504C11.3731 7.46332 11.3378 7.68173 11.1647 7.93932L11.1435 7.96306C11.1059 8.00579 11.0176 8.10788 10.9752 8.16248L7.96707 11.9681H11.3719V12.5071C11.3719 12.7302 11.1918 12.9107 10.9705 12.9107H6.56015V12.6566C6.56015 12.3456 6.63668 12.2067 6.73322 12.0619L9.93912 8.0604H6.69319V7.05023H11.3731V7.19504ZM17.3222 12.9118C17.1374 12.9118 16.9879 12.7611 16.9879 12.5759V7.05141H17.991V12.9118H17.3222ZM20.9567 8.32036C22.227 8.32036 23.2572 9.35902 23.2572 10.6387C23.2572 11.9195 22.227 12.9569 20.9567 12.9569C19.6863 12.9569 18.6562 11.9183 18.6562 10.6387C18.6562 9.35902 19.6852 8.32036 20.9567 8.32036ZM13.9009 12.0049C14.6438 12.0049 15.2454 11.3984 15.2454 10.6505C15.2454 9.90387 14.6438 9.29729 13.9009 9.29729C13.158 9.29729 12.5564 9.90387 12.5564 10.6505C12.5564 11.3995 13.1592 12.0049 13.9009 12.0049ZM20.9567 12.0038C21.7031 12.0038 22.3094 11.3924 22.3094 10.6398C22.3094 9.88726 21.7031 9.27711 20.9567 9.27711C20.2091 9.27711 19.6039 9.88726 19.6039 10.6398C19.6027 11.3924 20.2079 12.0038 20.9567 12.0038Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <p binding-btntext="Zalo">Zalo</p>
+        </a>
+        <img
+          style="padding: var(--ui-spacing-2xl)"
+          src="https://static.izzi.asia/images/2026/6/12/2606120473_qrzalomezalome84938111862.png"
+          binding-imgpath="https://static.izzi.asia/images/2026/6/12/2606120473_qrzalomezalome84938111862.png"
+          alt=""
+        />
+      </div>
+
+      <p
+        class="msg-content ui-absolute"
+        style="color: transparent; font-size: 10px"
+      ></p>
+
+      <label
+        for="popup-error-close"
+        class="ui-button-secondary ui-button-medium ui-w-full ui-center"
+        style="cursor: pointer"
+        >Đóng</label
+      >
+    </div>
+  </div>
+</div>
