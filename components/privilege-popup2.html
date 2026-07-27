@@ -419,15 +419,22 @@
         />
 
         <div>
-          <label for="privilege2_name"
-            >Nhập họ và tên của khách hàng</label
-          >
+          <label for="privilege2_name">Nhập họ và tên của khách hàng</label>
           <input
             name="name"
             id="privilege2_name"
             type="text"
             placeholder="Nhập họ và tên (Chú ý: Không dấu)"
             required
+            pattern="^[a-zA-Z\s]*$"
+            oninput="
+              this.value = this.value
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/đ/g, 'd')
+                .replace(/Đ/g, 'D')
+                .replace(/[^a-zA-Z\s]/g, '')
+            "
           />
         </div>
         <div>

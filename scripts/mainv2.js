@@ -1128,6 +1128,18 @@ const ApiListener = (function () {
         return true; // Mở popup custom thành công
     }
 
+    function closeAllModals() {
+        const closeIds = [
+            'popup-dinning-close',
+            'popup-privilege-close',
+            'popup-privilege2-close'
+        ];
+        closeIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.checked = true;
+        });
+    }
+
     function handleResponseData(resData) {
         if (!isListening) return;
 
@@ -1138,6 +1150,7 @@ const ApiListener = (function () {
             isPopupOpened = triggerPopup('error', rawMessage || "Err!");
         }
         else if (resData && resData.Success === true) {
+            closeAllModals();
             isPopupOpened = triggerPopup('success', rawMessage);
         }
 

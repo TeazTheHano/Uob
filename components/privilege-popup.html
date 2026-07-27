@@ -185,15 +185,22 @@
           class="ui-d-none"
         />
         <div>
-          <label for="privilege_name"
-            >Họ và tên của người đặt bàn</label
-          >
+          <label for="privilege_name">Họ và tên của người đặt bàn</label>
           <input
             name="name"
             id="privilege_name"
             type="text"
-            placeholder="Nhập họ và tên"
+            placeholder="Nhập họ và tên (không dấu)"
             required
+            pattern="^[a-zA-Z\s]*$"
+            oninput="
+              this.value = this.value
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/đ/g, 'd')
+                .replace(/Đ/g, 'D')
+                .replace(/[^a-zA-Z\s]/g, '')
+            "
           />
         </div>
         <div class="ui-col2-grid">

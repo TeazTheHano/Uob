@@ -1,4 +1,4 @@
-<div id="9347c663-4312-53f3-9683-d4793ae9b019">
+<div id="7b3caafb-67c1-4129-a2dc-2cec3d35a4cd">
   <input
     type="radio"
     name="popup-dinning-control"
@@ -10,7 +10,7 @@
     name="popup-dinning-control"
     id="popup-dinning-close"
     style="display: none"
-    checked
+    checked=""
   />
 
   <style>
@@ -86,12 +86,12 @@
     #popupDinning input,
     #popupDinning select,
     #popupDinning textarea {
-      background-color: var(--ui-bg) !important;
+      background-color: transparent;
       border-radius: var(--ui-radius-sm);
       padding: var(--ui-spacing-sm) var(--ui-spacing-md);
       outline: none;
-      border: 1px solid var(--ui-on-bg, black) !important;
-      color: var(--ui-on-bg, black) !important;
+      border: 1px solid var(--ui-bg, #ffffff);
+      color: var(--ui-bg, #ffffff);
       font-size: var(--ui-font-size-body);
       margin-bottom: var(--ui-spacing-md);
       width: 100%;
@@ -122,9 +122,16 @@
         max-width: 600px;
       }
     }
-    label[for*="cardLast6Digits"],
-    input[name*="cardLast6Digits"] {
-      display: block !important;
+
+    #popupDinning select,
+    #popupDinning input[type="datetime-local"] {
+      color: #514d4d;
+    }
+
+    #popupDinning
+      input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+      filter: brightness(0) invert(1);
+      cursor: pointer;
     }
   </style>
 
@@ -141,7 +148,7 @@
         <svg
           width="24"
           height="24"
-          viewBox="0 0 24 24"
+          viewbox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -157,40 +164,33 @@
         <h1 class="ui-text-center">{{name}}</h1>
         <p
           class="ui-font-label ui-text-center"
-          binding-name="          Mã kích hoạt được in trên thư mời sử dụng dịch vụ hoặc liên hệ với          Hotline&nbsp;(028) 7305 6896&nbsp;để kiểm tra thông tin        "
+          binding-name="Mã kích hoạt được in trên thư mời sử dụng dịch vụ hoặc liên hệ với Hotline&nbsp;(028) 7305 6896&nbsp;để kiểm tra thông tin"
         >
           Mã kích hoạt được in trên thư mời sử dụng dịch vụ hoặc liên hệ với
           Hotline&nbsp;(028) 7305 6896&nbsp;để kiểm tra thông tin
         </p>
       </div>
 
-      <form>
-        <input
-          id="dinning_menu"
-          name="menu"
-          type="text"
-          value="{{id}}"
-          class="ui-d-none"
-        />
+      <form id="formGetEvoucher">
         <div class="ui-col2-grid">
           <div>
-            <label for="dinning_name">Họ và tên người đặt bàn</label>
+            <label for="name">Họ và tên người đặt bàn</label>
             <input
               name="name"
-              id="dinning_name"
+              id="name"
               type="text"
               placeholder="Nhập họ và tên"
-              required
+              required=""
             />
           </div>
           <div>
-            <label for="dinning_mobile">Số điện thoại người đặt bàn</label>
+            <label for="mobile">Số điện thoại người đặt bàn</label>
             <input
               name="mobile"
-              id="dinning_mobile"
+              id="mobile"
               type="tel"
               placeholder="Nhập số điện thoại"
-              required
+              required=""
               minlength="10"
               maxlength="15"
               inputmode="numeric"
@@ -199,92 +199,88 @@
         </div>
 
         <div>
-          <label for="dinning_email">Email đặt bàn</label>
+          <label for="email">Email đặt bàn</label>
           <input
             name="email"
-            id="dinning_email"
+            id="email"
             type="email"
             placeholder="Nhập email liên hệ"
-            required
+            required=""
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           />
-        </div>
-        <div>
-          <label for="total">Số người</label>
-          <select name="total" id="dinning_total" required>
-            <option value>-- Chọn số người --</option>
-            <option value="1">1 người</option>
-            <option value="2">2 người</option>
-            <option value="3">3 người</option>
-            <option value="4">4 người</option>
-            <option value="5">5 người</option>
-            <option value="6">6 người</option>
-            <option value="7">7 người</option>
-            <option value="8">8 người</option>
-            <option value="9">9 người</option>
-            <option value="10">10 người</option>
-          </select>
         </div>
 
         <div class="ui-col2-grid">
           <div>
-            <label for="dinning_addresses">Chọn địa điểm đặt bàn</label>
-            <select name="addresses" id="dinning_addresses" required>
-              <option value>--Chọn địa điểm--</option>
+            <label for="address">Chọn địa điểm đặt bàn</label>
+            <select name="address" id="addresses" required="">
+              <option value="">--Chọn địa điểm--</option>
               <option repeat="addresses" value="{{id}}">
                 {{name}} - {{detailAddress}}
               </option>
             </select>
           </div>
           <div>
-            <label for="dinning_bookingTimeUob">Ngày giờ đặt bàn</label>
+            <label for="date">Ngày giờ đặt bàn</label>
             <input
               type="datetime-local"
-              id="dinning_bookingTimeUob"
+              id="bookingTimeUob"
               name="bookingTimeUob"
-              required
+              required=""
             />
           </div>
         </div>
 
+        <input id="menu" name="menu" type="text" value="{{id}}" type="hidden" />
         <div class="ui-col2-grid">
           <div>
-            <label for="dinning_cardLast6Digits">6 số thẻ hoặc 8 số visa</label>
+            <label for="card_start">6 số MC hoặc 8 số VISA đầu tiên</label>
             <input
               type="text"
-              id="dinning_cardLast6Digits"
-              name="cardLast6Digits"
+              id="startPin"
+              name="card_start"
               inputmode="numeric"
               pattern="[0-9]*"
-              placeholder="Nhập 6 số thẻ hoặc 8 số visa"
-              maxlength="8"
-              minlength="6"
+              placeholder="Nhập các số đầu của thẻ"
             />
           </div>
           <div>
-            <label for="dinning_giftcode">4 số cuối thẻ</label>
+            <label for="card_end">4 số cuối thẻ</label>
             <input
               type="text"
-              id="dinning_lastPin"
-              name="lastPin"
+              id="lastPin"
+              name="card_end"
               inputmode="numeric"
-              placeholder="Nhập 4 số cuối thẻ"
-              required
+              pattern="[0-9]*"
+              placeholder="Nhập các số đầu của thẻ"
             />
           </div>
         </div>
 
         <div>
-          <label for="dinning_note">Ghi chú</label>
+          <label for="code">Mã voucher sử dụng</label>
+          <input
+            type="text"
+            id="giftcode"
+            name="code"
+            inputmode="numeric"
+            placeholder="Nhập mã voucher của bạn để sử dụng"
+            required=""
+          />
+        </div>
+
+        <div>
+          <label for="note">Ghi chú</label>
           <textarea
             name="note"
-            id="dinning_note"
+            id="note"
             cols="30"
             rows="10"
             placeholder="Ghi chú cho buổi đặt bàn"
           ></textarea>
         </div>
         <button
+          type="button"
           for="popup-privilege-close"
           class="ui-button-primary ui-button-medium ui-w-full ui-center"
           style="cursor: pointer"
